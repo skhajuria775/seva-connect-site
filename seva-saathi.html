@@ -409,6 +409,7 @@ document.getElementById('sevaSaathiForm').addEventListener('submit', async funct
     return;
   }
 
+  if (btn.disabled) return;
   btn.disabled = true;
   btn.textContent = 'Submit ho raha hai...';
   msg.className = 'ss-form-msg';
