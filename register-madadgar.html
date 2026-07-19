@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madadgar Bano - Seva Connect | Madad Ka Haath Badhaiye</title>
+<meta name="description" content="Seva Connect pe Madadgar bano. Verified zarooratmandon ki seedhi madad karo. Bilkul free. Koi middleman nahi.">
+<link rel="canonical" href="https://sevaconnect.in/register-madadgar.html">
+<meta property="og:title" content="Madadgar Bano - Seva Connect">
+<meta property="og:description" content="Aapka ek kadam kisi ki zindagi badal sakta hai. Abhi register karo.">
+<meta property="og:url" content="https://sevaconnect.in/register-madadgar.html">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="form.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .madadgar-hero {
+    background: linear-gradient(135deg, #004E89 0%, #1a1a2e 100%);
+    padding: 60px 20px 50px;
+    text-align: center;
+    color: white;
+  }
+  .madadgar-hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .madadgar-hero h1 span {
+    color: #FF6B35;
+  }
+  .madadgar-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .trust-badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    color: white;
+  }
+  .progress-wrap {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-bar {
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  #progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #004E89, #FF6B35);
+    border-radius: 3px;
+    width: 33%;
+    transition: width 0.4s ease;
+  }
+  .step-dots {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .step-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #aaa;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .step-dot.active {
+    background: #FF6B35;
+    color: white;
+    transform: scale(1.1);
+  }
+  .step-dot.done {
+    background: #28a745;
+    color: white;
+  }
+  .step-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -20px;
+    font-size: 0.65rem;
+    color: #888;
+    white-space: nowrap;
+  }
+  .form-container {
+    max-width: 620px;
+    margin: 30px auto;
+    padding: 0 16px 60px;
+  }
+  .form-step {
+    display: none;
+  }
+  .form-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .step-header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 16px;
+    border-left: 4px solid #FF6B35;
+  }
+  .step-header h2 {
+    font-size: 1.4rem;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+  }
+  .step-header p {
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #212529;
+    font-size: 0.95rem;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="tel"],
+  .form-group input[type="email"],
+  .form-group input[type="url"],
+  .form-group input[type="number"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #FF6B35;
+    box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+  }
+  .error-msg {
+    color: #dc3545;
+    font-size: 0.82rem;
+    margin-top: 5px;
+    display: block;
+    min-height: 18px;
+  }
+  .hint {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+  .checkbox-item:hover {
+    border-color: #FF6B35;
+    background: rgba(255,107,53,0.05);
+  }
+  .checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #FF6B35;
+    cursor: pointer;
+  }
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .radio-item:hover {
+    border-color: #004E89;
+    background: rgba(0,78,137,0.05);
+  }
+  .radio-item input[type="radio"] {
+    accent-color: #004E89;
+    width: 18px;
+    height: 18px;
+  }
+  .terms-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+  }
+  .terms-item input {
+    margin-top: 2px;
+    accent-color: #28a745;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .terms-item span {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+  }
+  .summary-box {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    margin-bottom: 24px;
+  }
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9rem;
+  }
+  .summary-item:last-child { border-bottom: none; }
+  .summary-label { color: #6c757d; font-weight: 500; }
+  .summary-value { color: #212529; font-weight: 600; text-align: right; max-width: 60%; }
+  .btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .btn-next, .btn-submit {
+    flex: 1;
+    padding: 16px;
+    background: linear-gradient(135deg, #FF6B35, #ff8c5a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+  }
+  .btn-next:hover, .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+  }
+  .btn-back {
+    padding: 16px 24px;
+    background: transparent;
+    color: #6c757d;
+    border: 2px solid #e9ecef;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-back:hover {
+    border-color: #aaa;
+    color: #444;
+  }
+  .motivation-hint {
+    background: linear-gradient(135deg, rgba(0,78,137,0.05), rgba(255,107,53,0.05));
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid #004E89;
+  }
+  .motivation-hint p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  /* Loading Overlay */
+  #loadingOverlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.92);
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e9ecef;
+    border-top-color: #FF6B35;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #loadingOverlay p {
+    color: #444;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  /* Success Screen */
+  .success-screen {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .success-circle {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 25px rgba(40,167,69,0.3);
+  }
+  .success-screen h2 {
+    font-size: 1.6rem;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  .success-screen > p {
+    color: #6c757d;
+    margin-bottom: 24px;
+  }
+  .case-id-box {
+    background: linear-gradient(135deg, #004E89, #1a1a2e);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    margin: 16px 0 24px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .case-id-box:hover { transform: scale(1.02); }
+  .case-id-hint { font-size: 0.8rem; opacity: 0.8; margin-top: 4px; }
+  .next-steps-box {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .next-steps-box h3 {
+    margin-bottom: 12px;
+    color: #1a1a2e;
+    font-size: 1rem;
+  }
+  .next-steps-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .next-steps-box ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  .next-steps-box ul li:last-child { border-bottom: none; }
+  .social-grow-box {
+    background: linear-gradient(135deg, #fff3f0, #fff);
+    border: 2px solid rgba(255,107,53,0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .social-grow-box h3 {
+    color: #FF6B35;
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  .social-grow-box p {
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 14px;
+  }
+  .social-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .social-btn {
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-yt { background: #FF0000; color: white; }
+  .btn-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: white; }
+  .btn-fb { background: #1877F2; color: white; }
+  .btn-wa-share { background: #25D366; color: white; }
+  .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-share-main {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+  }
+  @media (max-width: 480px) {
+    .checkbox-grid { grid-template-columns: 1fr; }
+    .trust-badges { gap: 10px; }
+    .btn-group { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+      <div>
+        <span class="logo-text">Seva Connect</span>
+        <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="cases.html">Cases</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="register-madadgar.html" class="btn-nav-donor active">🤝 Madadgar Bano</a>
+      <a href="register-needy.html" class="btn-nav-needy">🙏 Madad Chahiye</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()">☰</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="madadgar-hero">
+  <h1>🤝 Madad Ka Haath<br><span>Badhaiye</span></h1>
+  <p>Verified zarooratmandon se seedha judo. Aapka ek kadam kisi ki poori zindagi badal sakta hai.</p>
+  <div class="trust-badges">
+    <span class="trust-badge">✅ 100% Free</span>
+    <span class="trust-badge">🔒 Verified Cases Only</span>
+    <span class="trust-badge">🤝 Direct Connection</span>
+    <span class="trust-badge">🙏 No Middleman</span>
+  </div>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div id="progressFill" style="width: 33%;"></div>
+  </div>
+  <div class="step-dots">
+    <div class="step-dot active" id="dot1" data-label="Aapke Baare Mein">1</div>
+    <div class="step-dot" id="dot2" data-label="Kaise Help Karein">2</div>
+    <div class="step-dot" id="dot3" data-label="Confirm Karein">3</div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-container">
+  <form id="madadgarForm">
+
+    <!-- STEP 1: Personal Info -->
+    <div class="form-step active" id="step1">
+      <div class="step-header">
+        <h2>📋 Aapke Baare Mein</h2>
+        <p>Thodi si jaankari taaki hum sahi match kar sakein</p>
+      </div>
+
+      <div class="form-group">
+        <label>Poora Naam *</label>
+        <input type="text" id="name" placeholder="Aapka poora naam" maxlength="100">
+        <span class="error-msg" id="nameError"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="phone" placeholder="10-digit mobile number" maxlength="10">
+        <span class="error-msg" id="phoneError"></span>
+        <span class="hint">📱 Yeh number match ke liye use hoga</span>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="Aapka email address" required>
+        <span class="error-msg" id="emailError"></span>
+        <span class="hint">📧 Match details, Shukriya video notification aur Certificate is email par aayega</span>
+      </div>
+
+      <div class="form-group">
+        <label>City *</label>
+        <input type="text" id="city" placeholder="Aapki city ka naam">
+        <span class="error-msg" id="cityError"></span>
+      </div>
+
+      <div class="form-group">
+        <label>State *</label>
+        <select id="state">
+          <option value="">State select karo</option>
+          <option>Andhra Pradesh</option>
+          <option>Arunachal Pradesh</option>
+          <option>Assam</option>
+          <option>Bihar</option>
+          <option>Chhattisgarh</option>
+          <option>Delhi</option>
+          <option>Goa</option>
+          <option>Gujarat</option>
+          <option>Haryana</option>
+          <option>Himachal Pradesh</option>
+          <option>Jharkhand</option>
+          <option>Jammu & Kashmir</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Manipur</option>
+          <option>Meghalaya</option>
+          <option>Mizoram</option>
+          <option>Nagaland</option>
+          <option>Odisha</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Sikkim</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>Tripura</option>
+          <option>Uttar Pradesh</option>
+          <option>Uttarakhand</option>
+          <option>West Bengal</option>
+        </select>
+        <span class="error-msg" id="stateError"></span>
+      </div>
+
+      <div class="form-group">
+        <label>PIN Code *</label>
+        <input type="tel" id="pincode" placeholder="6-digit PIN code" maxlength="6">
+        <span class="error-msg" id="pinError"></span>
+      </div>
+
+      <button type="button" onclick="goToStep(2)" class="btn-next">
+        Aage Badho →
+      </button>
+    </div>
+
+    <!-- STEP 2: How You Help -->
+    <div class="form-step" id="step2">
+      <div class="step-header">
+        <h2>❤️ Aap Kaise Help Karna Chahte Hain?</h2>
+        <p>Jo aap dil se kar sako — wohi chuniye</p>
+      </div>
+
+      <div class="form-group">
+        <label>Help Categories * (ek ya zyada select karo)</label>
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="food"> <span>🍚 Khaana</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="education"> <span>📚 Padhaai</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="medical"> <span>🏥 Ilaaj</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="shelter"> <span>🏠 Aashiyana</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="clothes"> <span>👕 Kapde</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="skills"> <span>💼 Hunar/Naukri</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="elderly"> <span>👴 Buzurg Seva</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="categories" value="emergency"> <span>🚨 Emergency</span>
+          </label>
+        </div>
+        <span class="error-msg" id="categoryError"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Monthly Madad Capacity *</label>
+        <select id="budget">
+          <option value="">Approximate amount select karo</option>
+          <option value="500">₹500 tak</option>
+          <option value="1000">₹1,000 tak</option>
+          <option value="2000">₹2,000 tak</option>
+          <option value="5000">₹5,000 tak</option>
+          <option value="10000">₹10,000 tak</option>
+          <option value="99999">₹10,000 se zyada</option>
+        </select>
+        <span class="error-msg" id="budgetError"></span>
+        <span class="hint">💡 Yeh sirf estimate hai — koi binding nahi</span>
+      </div>
+
+      <div class="form-group">
+        <label>Aap Kahan Tak Help Kar Sakte Hain? *</label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="reach" value="city">
+            <span>🏙️ Sirf meri city mein</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="reach" value="state">
+            <span>🗺️ Mere state mein</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="reach" value="india">
+            <span>🇮🇳 Pure India mein</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="reach" value="global" checked>
+            <span>🌍 Kaheen bhi (Sabse zyada help hogi)</span>
+          </label>
+        </div>
+        <span class="error-msg" id="reachError"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Aap Madad Kyun Karna Chahte Hain? (Optional Video)</label>
+        <div class="motivation-hint">
+          <p>📹 Apni dil ki baat share karo! Ek short video banao aur YouTube pe upload karke link daalo. Log aapse inspire honge. Ya baad mein bhi de sakte ho.</p>
+        </div>
+        <input type="url" id="motivationVideo" placeholder="YouTube video link (optional)">
+      </div>
+
+      <div class="btn-group">
+        <button type="button" onclick="goToStep(1)" class="btn-back">← Wapas</button>
+        <button type="button" onclick="goToStep(3)" class="btn-next">Aage →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Confirm -->
+    <div class="form-step" id="step3">
+      <div class="step-header">
+        <h2>✅ Ek Baar Check Karo</h2>
+        <p>Sab sahi hai? Phir register karo!</p>
+      </div>
+
+      <div class="summary-box" id="formSummary">
+        <!-- JS se fill hoga -->
+      </div>
+
+      <label class="terms-item">
+        <input type="checkbox" id="terms1">
+        <span>Main samajhta/samajhti hun ki Seva Connect sirf connect karta hai — platform koi paisa nahi leta. Mujhe seedha zarooratmand se deal karni hogi.</span>
+      </label>
+
+      <label class="terms-item">
+        <input type="checkbox" id="terms2">
+        <span>Main genuine madad karna chahta/chahti hun aur koi fake activity nahi karunga/karungi.</span>
+      </label>
+
+      <label class="terms-item">
+        <input type="checkbox" id="terms3">
+        <span>Main Seva Connect ki Privacy Policy aur Terms of Use se agree karta/karti hun.</span>
+      </label>
+
+      <div class="btn-group">
+        <button type="button" onclick="goToStep(2)" class="btn-back">← Wapas</button>
+        <button type="submit" class="btn-submit">🎉 Madadgar Bano!</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS SCREEN -->
+    <div class="form-step" id="stepSuccess">
+      <div class="success-screen">
+        <div class="success-circle">🎊</div>
+        <h2>Shukriya! Aap Madadgar Ban Gaye!</h2>
+        <p>Aapka ek kadam ek zindagi badlne wala hai!</p>
+
+        <div class="case-id-box" onclick="copyCaseId()" title="Click to copy">
+          <div>Aapka Madadgar ID:</div>
+          <div id="displayMadadgarId">M-XXXXXXX</div>
+          <div class="case-id-hint">👆 Click karke copy karo</div>
+        </div>
+
+        <div class="next-steps-box">
+          <h3>⏭️ Aage Kya Hoga?</h3>
+          <ul>
+            <li>✅ 24-48 ghante mein aapko match email aayega</li>
+            <li>📧 Email mein zarooratmand ka poora case aur phone number milega</li>
+            <li>📞 Aap seedha unse contact karo — help directly karo</li>
+            <li>🤝 Koi beech wala nahi — aap aur woh seedha baat karenge</li>
+            <li>🌟 Help ke baad zarooratmand khud aapke liye Shukriya video banayega — hum email karenge</li>
+          </ul>
+        </div>
+
+        <div class="social-grow-box">
+          <h3>🚀 Mission Ko Aur Badhaiye!</h3>
+          <p>Aapne ek kadam uthaya — ab hazaron logon tak yeh khushkhabri pahunchao</p>
+          <div class="social-btns">
+            <a href="https://youtube.com/@officialsevaconnect?sub_confirmation=1" target="_blank" class="social-btn btn-yt">📺 Subscribe</a>
+            <a href="https://instagram.com/officialsevaconnect" target="_blank" class="social-btn btn-ig">📸 Follow</a>
+            <a href="https://facebook.com/officialsevaconnect" target="_blank" class="social-btn btn-fb">👥 Like</a>
+          </div>
+        </div>
+
+        <button onclick="shareRegistration()" class="btn-share-main">
+          💬 3 Doston Ko Batao — WhatsApp Pe Share Karo
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<!-- LOADING OVERLAY -->
+<div id="loadingOverlay">
+  <div class="loader"></div>
+  <p>Aapki registration ho rahi hai... 🙏</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">🙏 Seva Connect</div>
+      <p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+      <p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgars se milata hai.</p>
+      <div class="social-links">
+        <a href="https://youtube.com/@officialsevaconnect" target="_blank" title="YouTube">📺</a>
+        <a href="https://instagram.com/officialsevaconnect" target="_blank" title="Instagram">📸</a>
+        <a href="https://facebook.com/officialsevaconnect" target="_blank" title="Facebook">👥</a>
+        <a href="https://wa.me/919858105224" target="_blank" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <h4>Platform</h4>
+      <a href="cases.html">Active Cases</a>
+      <a href="stories.html">Success Stories</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Judiye</h4>
+      <a href="register-madadgar.html">Madadgar Bano</a>
+      <a href="register-needy.html">Madad Chahiye</a>
+      <a href="seva-saathi.html">Seva Saathi Bano</a>
+	  <a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="verification-policy.html">Verification Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Seva Connect | Hum sirf connect karte hain — koi financial transaction nahi | Made with ❤️ for India</p>
+  </div>
+</footer>
+
+<script>
+const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerMadadgar';
+const WHATSAPP_NUMBER = '919858105224';
+
+// ===== STEP NAVIGATION =====
+function goToStep(stepNumber) {
+  const currentStep = getCurrentStep();
+  if (stepNumber > currentStep && !validateStep(currentStep)) return;
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + stepNumber).classList.add('active');
+  updateProgress(stepNumber);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (stepNumber === 3) fillSummary();
+}
+
+function getCurrentStep() {
+  for (let i = 1; i <= 3; i++) {
+    const el = document.getElementById('step' + i);
+    if (el && el.classList.contains('active')) return i;
+  }
+  return 1;
+}
+
+function updateProgress(step) {
+  const pct = { 1: 33, 2: 66, 3: 100 };
+  document.getElementById('progressFill').style.width = pct[step] + '%';
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.classList.remove('active', 'done');
+    if (i < step) dot.classList.add('done');
+    if (i === step) dot.classList.add('active');
+  }
+}
+
+// ===== VALIDATION =====
+function validateStep(stepNum) {
+  let valid = true;
+
+  if (stepNum === 1) {
+    const name = document.getElementById('name').value.trim();
+    if (!name || name.length < 2) {
+      showError('nameError', 'Naam daalna zaroori hai (kam se kam 2 characters)');
+      valid = false;
+    } else hideError('nameError');
+
+    const phone = document.getElementById('phone').value.trim();
+    if (!phone || !/^[6-9][0-9]{9}$/.test(phone)) {
+      showError('phoneError', 'Sahi 10 digit Indian mobile number daalo');
+      valid = false;
+    } else hideError('phoneError');
+	
+	const email = document.getElementById('email').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('emailError', 'Sahi email address daalna zaroori hai');
+      valid = false;
+    } else hideError('emailError');
+
+    const city = document.getElementById('city').value.trim();
+    if (!city) {
+      showError('cityError', 'City daalna zaroori hai');
+      valid = false;
+    } else hideError('cityError');
+
+    const state = document.getElementById('state').value;
+    if (!state) {
+      showError('stateError', 'State select karo');
+      valid = false;
+    } else hideError('stateError');
+
+    const pin = document.getElementById('pincode').value.trim();
+    if (!pin || !/^[1-9][0-9]{5}$/.test(pin)) {
+      showError('pinError', 'Sahi 6 digit PIN code daalo');
+      valid = false;
+    } else hideError('pinError');
+  }
+
+  if (stepNum === 2) {
+    const cats = document.querySelectorAll('input[name="categories"]:checked');
+    if (cats.length === 0) {
+      showError('categoryError', 'Kam se kam ek category select karo');
+      valid = false;
+    } else hideError('categoryError');
+
+    const budget = document.getElementById('budget').value;
+    if (!budget) {
+      showError('budgetError', 'Madad capacity select karo');
+      valid = false;
+    } else hideError('budgetError');
+
+    const reach = document.querySelector('input[name="reach"]:checked');
+    if (!reach) {
+      showError('reachError', 'Reach preference select karo');
+      valid = false;
+    } else hideError('reachError');
+  }
+
+  if (stepNum === 3) {
+    if (!document.getElementById('terms1').checked ||
+        !document.getElementById('terms2').checked ||
+        !document.getElementById('terms3').checked) {
+      alert('Teeno terms agree karna zaroori hai 🙏');
+      valid = false;
+    }
+  }
+
+  return valid;
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = msg;
+}
+function hideError(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = '';
+}
+
+// ===== FILL SUMMARY =====
+function fillSummary() {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const city = document.getElementById('city').value;
+  const state = document.getElementById('state').value;
+  const budget = document.getElementById('budget');
+  const budgetText = budget.options[budget.selectedIndex]?.text || '';
+  const reach = document.querySelector('input[name="reach"]:checked');
+  const cats = [...document.querySelectorAll('input[name="categories"]:checked')].map(c => c.value);
+
+  document.getElementById('formSummary').innerHTML = `
+    <div class="summary-item"><span class="summary-label">Naam</span><span class="summary-value">${name}</span></div>
+    <div class="summary-item"><span class="summary-label">Phone</span><span class="summary-value">+91-${phone}</span></div>
+    <div class="summary-item"><span class="summary-label">Location</span><span class="summary-value">${city}, ${state}</span></div>
+    <div class="summary-item"><span class="summary-label">Categories</span><span class="summary-value">${cats.join(', ') || 'N/A'}</span></div>
+    <div class="summary-item"><span class="summary-label">Capacity</span><span class="summary-value">${budgetText}</span></div>
+    <div class="summary-item"><span class="summary-label">Reach</span><span class="summary-value">${reach ? reach.value : 'N/A'}</span></div>
+  `;
+}
+
+// ===== FORM SUBMIT =====
+document.getElementById('madadgarForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!validateStep(3)) return;
+
+  const submitBtn = e.target.querySelector('.btn-submit');
+  if (submitBtn.disabled) return;
+  submitBtn.disabled = true;
+
+  document.getElementById('loadingOverlay').style.display = 'flex';
+
+  const cats = [...document.querySelectorAll('input[name="categories"]:checked')].map(c => c.value);
+  const reach = document.querySelector('input[name="reach"]:checked');
+
+  const formData = {
+    action: 'registerMadadgar',
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    city: document.getElementById('city').value.trim(),
+    state: document.getElementById('state').value,
+    pincode: document.getElementById('pincode').value.trim(),
+    categories: cats,
+    budget: document.getElementById('budget').value,
+    reach: reach ? reach.value : 'global',
+    motivationVideo: document.getElementById('motivationVideo').value.trim(),
+	refCode: getReferralCode(),
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+	  headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    const result = await response.json();
+
+    document.getElementById('loadingOverlay').style.display = 'none';
+
+    if (result.success) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('stepSuccess').classList.add('active');
+      document.getElementById('displayMadadgarId').textContent = result.id || 'M-' + Date.now();
+      window.madadgarId = result.id;
+      window.madadgarName = formData.name;
+      window.madadgarCity = formData.city;
+      document.getElementById('progressFill').style.width = '100%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert('Kuch error hua. Please dobara try karein.');
+      submitBtn.disabled = false;
+    }
+  } catch (error) {
+    document.getElementById('loadingOverlay').style.display = 'none';
+    submitBtn.disabled = false;
+    // Fallback: WhatsApp
+    const waText = `🤝 Madadgar Registration\n\nNaam: ${formData.name}\nPhone: ${formData.phone}\nCity: ${formData.city}, ${formData.state}\nCategories: ${formData.categories.join(', ')}\nCapacity: ₹${formData.budget}\nReach: ${formData.reach}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`);
+    alert('Internet issue! WhatsApp pe redirect kar rahe hain.');
+  }
+});
+
+// ===== COPY ID =====
+function copyCaseId() {
+  const id = document.getElementById('displayMadadgarId').textContent;
+  navigator.clipboard.writeText(id).then(() => alert('Madadgar ID copy ho gaya! 📋'));
+}
+
+// ===== SHARE =====
+function shareRegistration() {
+  const name = (window.madadgarName || '').split(' ')[0];
+  const city = window.madadgarCity || '';
+  const text = `🤝 Maine aaj Seva Connect pe Madadgar ban gaya!\n\nMain ${city} se hun aur verified zarooratmandon ki seedhi madad karna chahta hun.\n\nAap bhi judiye — bilkul free:\nhttps://sevaconnect.in\n\nEk zindagi badlne ka mauka mat chhodna! 🙏\n#SevaConnect #MadadKaHaath`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+// ===== NAVBAR TOGGLE =====
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ===== REFERRAL CODE CAPTURE =====
+  // Agar URL mein ?ref=SS123456 jaisa kuch hai (Seva Saathi ka
+  // referral link click karke aaya hai user), to woh ID yahan se
+  // automatically nikal lega aur form submit ke time bhej dega.
+  function getReferralCode() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('ref') || '';
+  }
+</script>
+
+</body>
+</html>

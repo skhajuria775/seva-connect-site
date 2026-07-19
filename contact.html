@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Seva Connect | Humse Sampark Karo</title>
+<meta name="description" content="Seva Connect se contact karo — WhatsApp, email, ya direct message. Koi sawaal ho to hum yahan hain.">
+<link rel="canonical" href="https://sevaconnect.in/contact.html">
+<meta property="og:title" content="Contact - Seva Connect">
+<meta property="og:description" content="Koi sawaal? Koi problem? Hum hain yahan — WhatsApp, email, ya message bhejo.">
+<meta property="og:url" content="https://sevaconnect.in/contact.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NGO","name":"Seva Connect","url":"https://sevaconnect.in"}
+</script>
+<style>
+.contact-hero {
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  padding: 90px 5% 50px;
+  text-align: center;
+  color: white;
+}
+.contact-hero h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 800; margin-bottom: 8px; }
+.contact-hero p { opacity: 0.85; }
+.contact-body { padding: 50px 5% 60px; background: #f8f9fa; }
+.contact-inner { max-width: 800px; margin: 0 auto; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.contact-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.contact-card:hover { transform: translateY(-5px); }
+.contact-card .c-icon { font-size: 3rem; }
+.contact-card h3 { margin: 10px 0 5px; }
+.contact-card p { color: #888; font-size: 0.9rem; }
+.contact-form-box {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.contact-form-box h2 { margin-bottom: 25px; }
+.cf-group { margin-bottom: 20px; }
+.cf-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+.cf-group input, .cf-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  resize: vertical;
+}
+.cf-group input:focus, .cf-group textarea:focus { border-color: #FF6B35; }
+.btn-contact-submit {
+  background: #FF6B35;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+.faq-section { margin-top: 40px; }
+.faq-section h2 { margin-bottom: 20px; }
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.faq-q { padding: 18px 20px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+.faq-q:hover { background: #f8f9fa; }
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s; color: #666; line-height: 1.6; }
+.faq-a.open { padding: 15px 20px; max-height: 220px; }
+@media (max-width: 600px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="index.html" class="logo">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+<div>
+<span class="logo-text">Seva Connect</span>
+<span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+</div>
+</a>
+<div class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="cases.html">Cases</a>
+<a href="stories.html">Stories</a>
+<a href="about.html">About</a>
+<a href="seva-saathi.html">Seva Saathi</a>
+<a href="contact.html" class="active">Contact</a>
+<a href="register-madadgar.html" class="btn-nav-donor">🤝 Madadgar Bano</a>
+<a href="register-needy.html" class="btn-nav-needy">🙏 Madad Chahiye</a>
+</div>
+<div class="hamburger" onclick="toggleNav()">☰</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <h1>📞 Humse Sampark Karo</h1>
+  <p>Koi sawaal? Koi problem? Hum hain yahan!</p>
+</section>
+
+<!-- BODY -->
+<section class="contact-body">
+  <div class="contact-inner">
+
+    <div class="contact-grid">
+      <a href="https://wa.me/919858105224" target="_blank" class="contact-card">
+        <div class="c-icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>Seedha message karo<br>+91-9858105224</p>
+      </a>
+
+      <a href="mailto:helpsevaconnect@gmail.com" class="contact-card">
+        <div class="c-icon">📧</div>
+        <h3>Email</h3>
+        <p>helpsevaconnect@gmail.com</p>
+      </a>
+
+      <a href="https://facebook.com/officialsevaconnect" target="_blank" class="contact-card">
+        <div class="c-icon">👥</div>
+        <h3>Facebook</h3>
+        <p>@officialsevaconnect</p>
+      </a>
+
+      <a href="https://instagram.com/officialsevaconnect" target="_blank" class="contact-card">
+        <div class="c-icon">📸</div>
+        <h3>Instagram</h3>
+        <p>@officialsevaconnect</p>
+      </a>
+
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank" class="contact-card" style="grid-column: span 2;">
+        <div class="c-icon">📺</div>
+        <h3>YouTube</h3>
+        <p>@officialsevaconnect</p>
+      </a>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-form-box">
+      <h2>✉️ Message Bhejo</h2>
+      <form id="contactForm">
+        <div class="cf-group">
+          <label>Aapka Naam</label>
+          <input type="text" id="cfName" placeholder="Poora naam" required>
+        </div>
+        <div class="cf-group">
+          <label>Phone Number</label>
+          <input type="tel" id="cfPhone" placeholder="10-digit mobile number" maxlength="10" required>
+        </div>
+        <div class="cf-group">
+          <label>Email Address</label>
+          <input type="email" id="cfEmail" placeholder="Aapka email address" required>
+        </div>
+        <div class="cf-group">
+          <label>City</label>
+          <input type="text" id="cfCity" placeholder="Aapki city" required>
+        </div>
+        <div class="cf-group">
+          <label>Message</label>
+          <textarea id="cfMessage" placeholder="Apna sawaal ya message likhiye..." rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-contact-submit">Message Bhejo 📤</button>
+      </form>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2> Aksar Pooche Jaane Wale Sawaal❓</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Kya yeh service bilkul free hai? ▼</div>
+        <div class="faq-a">Haan! Madadgar ke liye bhi free aur Zaruratmand ke liye bhi. Hum kabhi koi charge nahi lete. Hamare kharche future mein ads se nikalne ka plan hai.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Cases verify kaise hote hain? ▼</div>
+        <div class="faq-a">Hamari team har case ko manually review karti hai. Documents check kiye jaate hain. Video verify ki jaati hai. Tabhi "Verified" badge milta hai.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Paise platform ke through jaate hain? ▼</div>
+        <div class="faq-a">Nahi! Hum sirf Madadgar aur Zaruratmand ko connect karte hain. Madad seedha Madadgar se Zaruratmand ko jaati hai. Platform ke through koi transaction nahi hoti.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Kitne time mein match milega? ▼</div>
+        <div class="faq-a">Usually 24-48 ghante mein. Emergency cases mein aur jaldi. Video wale cases ko priority milti hai.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo">🙏 Seva Connect</div>
+<p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+<p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
+<div class="social-links">
+<a href="https://youtube.com/@officialsevaconnect" target="_blank">📺</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank">📸</a>
+<a href="https://facebook.com/officialsevaconnect" target="_blank">👥</a>
+<a href="https://wa.me/919858105224" target="_blank">💬</a>
+</div>
+</div>
+<div class="footer-links-group">
+<h4>Platform</h4>
+<a href="cases.html">Active Cases</a>
+<a href="stories.html">Success Stories</a>
+<a href="about.html">About Us</a>
+<a href="gallery.html">Gallery</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-links-group">
+<h4>Join Us</h4>
+<a href="register-madadgar.html">Madadgar Bano</a>
+<a href="register-needy.html">Help Maango</a>
+<a href="seva-saathi.html">Seva Saathi Bano</a>
+<a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+</div>
+<div class="footer-links-group">
+<h4>Legal</h4>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="verification-policy.html">Verification Policy</a>
+<a href="community-guidelines.html">Community Guidelines</a>
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
+</div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  const answer = element.nextElementSibling;
+  answer.classList.toggle('open');
+}
+
+// NOTE: Form abhi WhatsApp pe redirect karta hai (safe fallback, koi backend dependency nahi).
+// Future mein agar Google Sheet mein bhi save karna ho, Code.gs mein ek 'submitContact'
+// action add karke yahan fetch() call add kiya ja sakta hai (jaisa register-madadgar.html mein hai).
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const submitBtn = e.target.querySelector('.btn-contact-submit');
+  if (submitBtn.disabled) return;
+  submitBtn.disabled = true;
+
+  const name = document.getElementById('cfName').value.trim();
+const phone = document.getElementById('cfPhone').value.trim();
+const email = document.getElementById('cfEmail').value.trim();
+const city = document.getElementById('cfCity').value.trim();
+const message = document.getElementById('cfMessage').value.trim();
+const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/submitContact';
+
+try {
+  const response = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+	headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'submitContact', name: name, phone: phone, email: email, city: city, message: message })
+  });
+  const result = await response.json();
+  if (!result.success) {
+    alert(result.error || 'Kuch error hua.');
+    submitBtn.disabled = false;
+    return;
+  }
+} catch (error) {
+  console.log('Contact save error:', error);
+}
+
+const waText = `Namaste! Mera naam ${name} hai.\nPhone: ${phone}\nEmail: ${email}\nCity: ${city}\n\nMessage: ${message}`;
+window.open(`https://wa.me/919858105224?text=${encodeURIComponent(waText)}`);
+submitBtn.disabled = false;
+});
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('active');
+}
+</script>
+<script src="app.js"></script>
+</body>
+</html>

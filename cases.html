@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Active Cases - Seva Connect | Madad Ki Zarurat Hai</title>
+<meta name="description" content="Verified zarooratmand logon ki list. Aap seedha madad kar sakte hain. Koi middleman nahi, koi fee nahi.">
+<link rel="canonical" href="https://sevaconnect.in/cases.html">
+<meta property="og:title" content="Active Cases - Seva Connect">
+<meta property="og:description" content="Verified zarooratmand logon ki list. Aap seedha madad kar sakte hain.">
+<meta property="og:url" content="https://sevaconnect.in/cases.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+.cases-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  padding: 80px 5% 50px;
+  text-align: center;
+  color: white;
+}
+.cases-hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.cases-hero h1 span { color: #FF6B35; }
+.cases-hero p {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+.cases-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.cases-stat {
+  background: rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.cases-stat strong { display: block; font-size: 1.3rem; color: #FF6B35; }
+.filter-section {
+  background: white;
+  padding: 20px 5%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.filter-btn {
+  padding: 8px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: #FF6B35;
+  color: white;
+  border-color: #FF6B35;
+}
+.cases-section {
+  padding: 40px 5% 60px;
+  background: #f8f9fa;
+  min-height: 60vh;
+}
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.case-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  border-color: rgba(255,107,53,0.2);
+}
+.case-icon {
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 3rem;
+}
+.case-icon.education { background: #e8f5e9; }
+.case-icon.medical { background: #fce4ec; }
+.case-icon.food { background: #fff3e0; }
+.case-icon.shelter { background: #e3f2fd; }
+.case-icon.clothes { background: #f3e5f5; }
+.case-icon.emergency { background: #ffebee; }
+.case-icon.elderly { background: #e8eaf6; }
+.case-icon.skills { background: #e0f2f1; }
+.case-body { padding: 18px; }
+.badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge.verified { background: #d4edda; color: #155724; }
+.badge.category { background: #fff3cd; color: #856404; }
+.badge.emergency-badge { background: #ffcdd2; color: #c62828; }
+.case-body h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.case-body p {
+  color: #6c757d;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.case-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn-help {
+  flex: 1;
+  padding: 10px;
+  background: linear-gradient(135deg, #FF6B35, #ff8c5a);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-help:hover { transform: translateY(-1px); opacity: 0.92; }
+.btn-share-case {
+  padding: 10px 14px;
+  background: transparent;
+  border: 2px solid #e9ecef;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+}
+.btn-share-case:hover { border-color: #25D366; color: #25D366; }
+.no-cases {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  grid-column: 1/-1;
+}
+.cta-box {
+  text-align: center;
+  margin: 50px auto 0;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-width: 600px;
+}
+.cta-box h2 { color: #1a1a2e; margin-bottom: 10px; }
+.cta-box p { color: #888; margin-bottom: 24px; }
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #FF6B35, #ff8c5a);
+  color: white;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); }
+/* Social sticky bar */
+.social-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e9ecef;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 999;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+}
+.social-sticky a {
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.2s;
+}
+.social-sticky a:hover { opacity: 0.85; }
+.s-yt { background: #FF0000; }
+.s-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.s-fb { background: #1877F2; }
+@media (max-width: 768px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .social-sticky { gap: 8px; }
+  .social-sticky a { padding: 7px 10px; font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+      <div>
+        <span class="logo-text">Seva Connect</span>
+        <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="cases.html" class="active">Cases</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+      <a href="seva-saathi.html">Seva Saathi</a>
+      <a href="contact.html">Contact</a>
+      <a href="register-madadgar.html" class="btn-nav-donor">🤝 Madadgar Bano</a>
+      <a href="register-needy.html" class="btn-nav-needy">🙏 Madad Chahiye</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()">☰</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="cases-hero">
+  <h1>🙏 Zarurat Hai <span>Madad Ki</span></h1>
+  <p>Yeh sab verified cases hain. Aap seedha inse connect ho sakte hain — koi beech wala nahi.Yahan aap un logon ki kahaniyan dekh sakte hain jo ilaaj, shiksha, bhojan, rojgaar, ya kisi aapatkaal mein sahayata ki zaroorat mein hain.</p>
+  <div class="cases-stats">
+    <div class="cases-stat"><strong id="activeCasesCount">—</strong>Active Cases</div>
+    <div class="cases-stat"><strong>✅</strong>Sab Verified</div>
+    <div class="cases-stat"><strong>🤝</strong>Direct Connect</div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-section">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCases('all', this)">🤝 Sab</button>
+    <button class="filter-btn" onclick="filterCases('food', this)">🍚 Khaana</button>
+    <button class="filter-btn" onclick="filterCases('education', this)">📚 Padhai</button>
+    <button class="filter-btn" onclick="filterCases('medical', this)">🏥 Ilaaj</button>
+    <button class="filter-btn" onclick="filterCases('shelter', this)">🏠 Ghar</button>
+    <button class="filter-btn" onclick="filterCases('clothes', this)">👕 Kapde</button>
+    <button class="filter-btn" onclick="filterCases('elderly', this)">👴 Buzurg</button>
+    <button class="filter-btn" onclick="filterCases('emergency', this)">🚨 Emergency</button>
+  </div>
+</div>
+
+<!-- CASES GRID -->
+<section class="cases-section">
+  <!-- IMPORTANT: id="activeCases" — yeh app.js ke loadZaruratVideos() function se match karta hai.
+       app.js automatically yahan real verified cases load karega Google Sheets se.
+       Neeche jo 4 sample cards hain, woh sirf fallback hain jab tak API load na ho ya fail ho jaye. -->
+  <div class="cases-grid" id="activeCases">
+    <!-- Sample cards — API se replace honge -->
+    <div class="case-card" data-category="education">
+      <div class="case-icon education">📚</div>
+      <div class="case-body">
+        <div class="badge-row">
+          <span class="badge verified">✅ Verified</span>
+          <span class="badge category">📚 Padhai</span>
+        </div>
+        <h3>Rahul, 14 saal — Delhi</h3>
+        <p>School fees ki zarurat hai. Father ka accident ho gaya hai, ghar chalana mushkil ho gaya hai...</p>
+        <div class="case-actions">
+          <a href="register-madadgar.html" class="btn-help">❤️ Madad Karo</a>
+          <button class="btn-share-case" onclick="shareCase('001','Rahul','Delhi','Padhai')">📤 Share</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="medical">
+      <div class="case-icon medical">🏥</div>
+      <div class="case-body">
+        <div class="badge-row">
+          <span class="badge verified">✅ Verified</span>
+          <span class="badge category">🏥 Ilaaj</span>
+        </div>
+        <h3>Sunita, 45 saal — Mumbai</h3>
+        <p>Dil ki bimari ka ilaaj chahiye. Gareeb pariwar hai, dawai ke paise nahi hain...</p>
+        <div class="case-actions">
+          <a href="register-madadgar.html" class="btn-help">❤️ Madad Karo</a>
+          <button class="btn-share-case" onclick="shareCase('002','Sunita','Mumbai','Ilaaj')">📤 Share</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="food">
+      <div class="case-icon food">🍚</div>
+      <div class="case-body">
+        <div class="badge-row">
+          <span class="badge verified">✅ Verified</span>
+          <span class="badge category">🍚 Khaana</span>
+        </div>
+        <h3>Ram Prasad, 60 saal — UP</h3>
+        <p>Roz ka khana nahi milta. Akele hain, koi sahara nahi. Buzurg hain, kaam nahi kar sakte...</p>
+        <div class="case-actions">
+          <a href="register-madadgar.html" class="btn-help">❤️ Madad Karo</a>
+          <button class="btn-share-case" onclick="shareCase('003','Ram Prasad','UP','Khaana')">📤 Share</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card" data-category="emergency">
+      <div class="case-icon emergency">🚨</div>
+      <div class="case-body">
+        <div class="badge-row">
+          <span class="badge verified">✅ Verified</span>
+          <span class="badge emergency-badge">🚨 Emergency</span>
+        </div>
+        <h3>Meera Devi, 35 saal — Rajasthan</h3>
+        <p>Turant madad chahiye. Ghar mein aag lag gayi, sab kuch khatam ho gaya. Bachche sadak pe hain...</p>
+        <div class="case-actions">
+          <a href="register-madadgar.html" class="btn-help">❤️ Madad Karo</a>
+          <button class="btn-share-case" onclick="shareCase('004','Meera Devi','Rajasthan','Emergency')">📤 Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Aapko Bhi Madad Chahiye?</h2>
+    <p>Register karo — bilkul free. Hum aapko verify karke sahi Madadgar se milayenge.</p>
+    <a href="register-needy.html" class="btn-primary">🙏 Apna Case Register Karo</a>
+	<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+      <p style="color:#888; font-size:0.85rem; margin-bottom:12px;">Ya kisi zarooratmand ki madad karo — is page ko share karo:</p>
+      <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://wa.me/?text=🙏%20Yahan%20genuine%20zarooratmand%20hain%20jinhein%20madad%20chahiye.%20Kya%20aap%20ya%20koi%20jaan%20pehchaan%20madad%20kar%20sakta%20hai%3F%0A%0Ahttps%3A%2F%2Fsevaconnect.in%2Fcases.html%0A%23SevaConnect"
+           target="_blank"
+           style="background:#25D366; color:white; padding:9px 18px; border-radius:50px; text-decoration:none; font-weight:600; font-size:0.82rem;">
+          💬 WhatsApp
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://sevaconnect.in/cases.html"
+           target="_blank"
+           style="background:#1877F2; color:white; padding:9px 18px; border-radius:50px; text-decoration:none; font-weight:600; font-size:0.82rem;">
+          👥 Facebook
+        </a>
+        <button onclick="navigator.clipboard.writeText('https://sevaconnect.in/cases.html').then(()=>alert('Link copy ho gaya!'))"
+           style="background:#FF6B35; color:white; padding:9px 18px; border-radius:50px; border:none; font-weight:600; font-size:0.82rem; cursor:pointer;">
+          📋 Link Copy
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STICKY BAR -->
+<div class="social-sticky">
+  <a href="https://youtube.com/@officialsevaconnect?sub_confirmation=1" target="_blank" class="s-yt">📺 Subscribe</a>
+  <a href="https://instagram.com/officialsevaconnect" target="_blank" class="s-ig">📸 Follow</a>
+  <a href="https://facebook.com/officialsevaconnect" target="_blank" class="s-fb">👥 Like</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">🙏 Seva Connect</div>
+      <p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+      <p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
+      <div class="social-links">
+        <a href="https://youtube.com/@officialsevaconnect" target="_blank">📺</a>
+        <a href="https://instagram.com/officialsevaconnect" target="_blank">📸</a>
+        <a href="https://facebook.com/officialsevaconnect" target="_blank">👥</a>
+        <a href="https://wa.me/919858105224" target="_blank">💬</a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <h4>Platform</h4>
+      <a href="cases.html">Active Cases</a>
+      <a href="stories.html">Success Stories</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Join Us</h4>
+      <a href="register-madadgar.html">Madadgar Bano</a>
+      <a href="register-needy.html">Help Maango</a>
+      <a href="seva-saathi.html">Seva Saathi Bano</a>
+	  <a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="verification-policy.html">Verification Policy</a>
+      <a href="community-guidelines.html">Community Guidelines</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
+  </div>
+</footer>
+
+<script>
+function filterCases(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.case-card').forEach(card => {
+    card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+  });
+}
+
+function shareCase(id, name, city, category) {
+  const text = `🙏 ${name} (${city}) ko madad chahiye!\n\nZarurat: ${category}\nVerified case hai Seva Connect pe.\n\nAap madad kar sakte hain ya kisi ko bata sakte hain:\nsevaconnect.in/cases.html\n\n#SevaConnect #MadadKaHaath`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('active');
+}
+
+// Load active cases count from API
+// NOTE: Code.gs ka getStats() field name 'zaruratmand' return karta hai (NOT 'needy')
+const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
+fetch(APPS_SCRIPT_URL + '/getStats')
+  .then(r => r.json())
+  .then(data => {
+    if (data && data.zaruratmand !== undefined) {
+      document.getElementById('activeCasesCount').textContent = data.zaruratmand;
+    }
+  }).catch(() => {});
+</script>
+<script src="app.js"></script>
+</body>
+</html>

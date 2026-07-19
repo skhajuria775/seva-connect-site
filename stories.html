@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shukriya Stories - Seva Connect | Dil Ko Chhu Lene Wali Kahaniyaan</title>
+<meta name="description" content="Real Shukriya stories — jo logon ne madad ki aur jinhone madad li. Insaniyat ki sachchi misaalein.">
+<link rel="canonical" href="https://sevaconnect.in/stories.html">
+<meta property="og:title" content="Shukriya Stories - Seva Connect">
+<meta property="og:description" content="Real stories, real impact, real emotions. Insaniyat ki sachchi misaalein.">
+<meta property="og:url" content="https://sevaconnect.in/stories.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+.stories-hero {
+  background: linear-gradient(135deg, #004E89 0%, #1a1a2e 100%);
+  padding: 80px 5% 50px;
+  text-align: center;
+  color: white;
+}
+.stories-hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.stories-hero h1 span { color: #FF6B35; }
+.stories-hero p {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.stories-section {
+  padding: 50px 5% 80px;
+  background: #f8f9fa;
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.story-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 2px solid #28a745;
+  transition: all 0.3s;
+}
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(40,167,69,0.15);
+}
+.story-icon {
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+}
+.story-body { padding: 20px; }
+.story-badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.badge-helped {
+  background: #d4edda;
+  color: #155724;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.madadgar-credit {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.madadgar-credit .seva-icon { font-size: 1.3rem; }
+.madadgar-credit .credit-text { font-size: 0.85rem; color: #555; }
+.madadgar-credit .credit-name { font-weight: 700; color: #1a1a2e; }
+.seva-level-badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a2e;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-left: 6px;
+}
+.story-body h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.story-body p {
+  color: #6c757d;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.btn-share-story {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-share-story:hover { opacity: 0.9; transform: translateY(-1px); }
+.inspire-box {
+  background: linear-gradient(135deg, #fff3f0, #fff);
+  border: 2px solid rgba(255,107,53,0.2);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: #666;
+}
+.inspire-box strong { color: #FF6B35; display: block; margin-bottom: 4px; }
+.cta-box {
+  text-align: center;
+  margin: 50px auto 0;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-width: 600px;
+}
+.cta-box h2 { color: #1a1a2e; margin-bottom: 10px; }
+.cta-box p { color: #888; margin-bottom: 24px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #FF6B35, #ff8c5a);
+  color: white;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 28px;
+  background: transparent;
+  color: #004E89;
+  border: 2px solid #004E89;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+/* Subscribe nudge */
+.subscribe-nudge {
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin: 0 5% 40px;
+  border-radius: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.subscribe-nudge h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.subscribe-nudge p { opacity: 0.8; font-size: 0.9rem; margin-bottom: 18px; }
+.sub-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.sub-btn {
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.2s;
+}
+.sub-btn:hover { opacity: 0.85; }
+.s-yt { background: #FF0000; }
+.s-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.s-fb { background: #1877F2; }
+/* Social sticky bar */
+.social-sticky {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: white;
+  border-top: 1px solid #e9ecef;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 999;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+}
+.social-sticky a {
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+}
+@media (max-width: 768px) {
+  .stories-grid { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+      <div>
+        <span class="logo-text">Seva Connect</span>
+        <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="cases.html">Cases</a>
+      <a href="stories.html" class="active">Stories</a>
+      <a href="about.html">About</a>
+      <a href="seva-saathi.html">Seva Saathi</a>
+      <a href="contact.html">Contact</a>
+      <a href="register-madadgar.html" class="btn-nav-donor">🤝 Madadgar Bano</a>
+      <a href="register-needy.html" class="btn-nav-needy">🙏 Madad Chahiye</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()">☰</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="stories-hero">
+  <h1>🌟 <span>Shukriya</span> Stories</h1>
+  <p>Real kahaniyaan, real insaniyat. Unlogon ki jo madadgar bane — aur unlogon ki jo umeed paaye.Insaniyat tab sabse khoobsurat lagti hai jab ek anjaan haath kisi ki zindagi badal deta hai.</p>
+</section>
+
+<!-- STORIES -->
+<section class="stories-section">
+  <!-- IMPORTANT: id="shukriyaStories" — yeh app.js ke loadShukriyaStories() function se match karta hai.
+       app.js automatically yahan real approved Shukriya videos load karega Google Sheets se.
+       Neeche jo 2 sample stories hain, woh sirf fallback hain jab tak API load na ho ya fail ho jaye. -->
+  <div class="stories-grid" id="shukriyaStories">
+
+    <!-- Story 1 -->
+    <div class="story-card">
+      <div class="story-icon">🎉</div>
+      <div class="story-body">
+        <div class="story-badge-row">
+          <span class="badge-helped">❤️ Help Mili!</span>
+        </div>
+        <div class="inspire-box">
+          <strong>✨ Ek Madadgar Ki Wajah Se</strong>
+          Ek phone call ne ek bachche ka future badal diya
+        </div>
+        <h3>Ramesh ne Rahul ki fees bhari</h3>
+        <p>Delhi ke Rahul ki school fees baaki thi aur uska future darkha hua tha. Ramesh ji ne unki story dekhi aur turant madad ki. Rahul ab padhega aur apne sapne poore karega!</p>
+        <div class="madadgar-credit">
+          <span class="seva-icon">🌟</span>
+          <div class="credit-text">
+            Madadgar: <span class="credit-name">Ramesh Sharma, Delhi</span>
+            <span class="seva-level-badge">⭐ Insaniyat Ka Sitara</span>
+          </div>
+        </div>
+        <button class="btn-share-story" onclick="shareStory('Ramesh Sharma','Rahul','padhai')">
+          📤 Is Kahani Ko Share Karo
+        </button>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story-card">
+      <div class="story-icon">🏥</div>
+      <div class="story-body">
+        <div class="story-badge-row">
+          <span class="badge-helped">❤️ Help Mili!</span>
+        </div>
+        <div class="inspire-box">
+          <strong>✨ Ek Madadgar Ki Wajah Se</strong>
+          Ek mazdoor ki zindagi bach gayi
+        </div>
+        <h3>Priya ne Sunita ka ilaaj karwaya</h3>
+        <p>Mumbai ki Sunita ji ka dil ka operation baaki tha. Priya ji ne unka case dekha, seedha contact kiya aur dawa aur doctor fees di. Ab woh bilkul theek hain!</p>
+        <div class="madadgar-credit">
+          <span class="seva-icon">🌿</span>
+          <div class="credit-text">
+            Madadgar: <span class="credit-name">Priya Mehta, Mumbai</span>
+            <span class="seva-level-badge">🌿 Madad Ka Haath</span>
+          </div>
+        </div>
+        <button class="btn-share-story" onclick="shareStory('Priya Mehta','Sunita','ilaaj')">
+          📤 Is Kahani Ko Share Karo
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Subscribe Nudge -->
+  <div class="subscribe-nudge" style="margin-top: 50px;">
+    <h3>🎥 Aur Kahaniyaan Dekhni Hain?</h3>
+    <p>Hamare YouTube channel pe in sab ki video stories hain — subscribe karo aur roz naye sapno aur umeedo ko pura hote dekho</p>
+    <div class="sub-btns">
+      <a href="https://youtube.com/@officialsevaconnect?sub_confirmation=1" target="_blank" class="sub-btn s-yt">📺 YouTube Subscribe</a>
+      <a href="https://instagram.com/officialsevaconnect" target="_blank" class="sub-btn s-ig">📸 Instagram Follow</a>
+      <a href="https://facebook.com/officialsevaconnect" target="_blank" class="sub-btn s-fb">👥 Facebook Like</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Aap Bhi Kisi Ki Kahani Likhiye</h2>
+    <p>Ek madad se ek zindagi badal sakti hai — aur woh kahani hamesha ke liye yaad rahegi</p>
+    <div class="cta-btns">
+      <a href="register-madadgar.html" class="btn-primary">🤝 Madadgar Bano</a>
+      <a href="cases.html" class="btn-secondary">📋 Cases Dekho</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STICKY BAR -->
+<div class="social-sticky">
+  <a href="https://youtube.com/@officialsevaconnect?sub_confirmation=1" target="_blank" class="sub-btn s-yt">📺 Subscribe</a>
+  <a href="https://instagram.com/officialsevaconnect" target="_blank" class="sub-btn s-ig">📸 Follow</a>
+  <a href="https://facebook.com/officialsevaconnect" target="_blank" class="sub-btn s-fb">👥 Like</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">🙏 Seva Connect</div>
+      <p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+      <p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
+      <div class="social-links">
+        <a href="https://youtube.com/@officialsevaconnect" target="_blank">📺</a>
+        <a href="https://instagram.com/officialsevaconnect" target="_blank">📸</a>
+        <a href="https://facebook.com/officialsevaconnect" target="_blank">👥</a>
+        <a href="https://wa.me/919858105224" target="_blank">💬</a>
+      </div>
+    </div>
+    <div class="footer-links-group">
+      <h4>Platform</h4>
+      <a href="cases.html">Active Cases</a>
+      <a href="stories.html">Success Stories</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Join Us</h4>
+      <a href="register-madadgar.html">Madadgar Bano</a>
+      <a href="register-needy.html">Help Maango</a>
+      <a href="seva-saathi.html">Seva Saathi Bano</a>
+	  <a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+    </div>
+    <div class="footer-links-group">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="verification-policy.html">Verification Policy</a>
+      <a href="community-guidelines.html">Community Guidelines</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
+  </div>
+</footer>
+
+<script>
+function shareStory(madadgar, zaruratmand, category) {
+  const text = `❤️ Ek sachchi kahani!\n\n${madadgar} ji ne ${zaruratmand} ki ${category} mein madad ki Seva Connect ke zariye!\n\nAap bhi is platform se judo — kisi ki zindagi badlo:\nhttps://sevaconnect.in\n\n#SevaConnect #MadadKaHaath #Insaniyat`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+}
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('active');
+}
+</script>
+<script src="app.js"></script>
+</body>
+</html>

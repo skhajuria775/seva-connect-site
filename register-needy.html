@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Chahiye - Seva Connect | Madad Maango</title>
+    <meta name="description" content="Seva Connect pe apni zarurat register karo. Verified Madadgar tak seedhe pahuncho. Bilkul free, koi charge nahi.">
+    <link rel="canonical" href="https://sevaconnect.in/register-needy.html">
+    <meta property="og:title" content="Help Chahiye - Seva Connect">
+    <meta property="og:description" content="Aap akele nahi hain. Hazaron Madadgar hain jo help karna chahte hain. Abhi register karo.">
+    <meta property="og:url" content="https://sevaconnect.in/register-needy.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"NGO","name":"Seva Connect","url":"https://sevaconnect.in"}
+    </script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="index.html" class="logo">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+<div>
+<span class="logo-text">Seva Connect</span>
+<span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+</div>
+</a>
+<div class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="cases.html">Cases</a>
+<a href="stories.html">Stories</a>
+<a href="about.html">About</a>
+<a href="seva-saathi.html">Seva Saathi</a>
+<a href="contact.html">Contact</a>
+<a href="register-madadgar.html" class="btn-nav-donor">🤝 Madadgar Bano</a>
+<a href="register-needy.html" class="btn-nav-needy active">🙏 Help Chahiye</a>
+</div>
+<div class="hamburger" onclick="toggleNav()">☰</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="form-hero needy-hero">
+    <div class="form-hero-content">
+        <h1>🙏 Help Chahiye?</h1>
+        <p>Aap akele nahi hain. Seva Connect pe bahut log hain jo help karna chahte hain.<br>
+        Register karo - bilkul free, koi charge nahi.</p>
+        <div class="trust-badges">
+            <span class="trust-badge">✅ Verified Process</span>
+            <span class="trust-badge">🔒 Privacy Safe</span>
+            <span class="trust-badge">💰 Bilkul Free</span>
+            <span class="trust-badge">🤝 Direct Help</span>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="progress-section">
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+    </div>
+    <div class="step-indicators">
+        <div class="step-dot active" id="dot1">1</div>
+        <div class="step-dot" id="dot2">2</div>
+        <div class="step-dot" id="dot3">3</div>
+        <div class="step-dot" id="dot4">4</div>
+    </div>
+    <div class="step-labels">
+        <span>Jaankari</span>
+        <span>Zarurat</span>
+        <span>Video</span>
+        <span>Submit</span>
+    </div>
+</div>
+
+<!-- MAIN FORM -->
+<div class="form-container">
+    <form id="needyForm">
+
+        <!-- ===== STEP 1: PERSONAL INFO ===== -->
+        <div class="form-step active" id="step1">
+            <div class="step-header">
+                <h2>📋 Aapki Jaankari</h2>
+                <p>Yeh jaankari sirf match karne ke liye use hogi</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Poora Naam <span class="required">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="Aapka poora naam"
+                    required>
+                <span class="error-msg" id="nameError"></span>
+            </div>
+			
+			<div class="form-group">
+                <label class="form-label">
+                    Email Address <span class="required">*</span>
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="Aapka email address"
+                    required>
+                <span class="error-msg" id="emailError"></span>
+                <p class="hint-text">
+                    📧 Match updates aur Shukriya reminder isi email par aayenge
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Phone Number <span class="required">*</span>
+                </label>
+                <div class="phone-input-group">
+                    <span class="phone-prefix">+91</span>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input phone-input" 
+                        placeholder="10 digit mobile number"
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        required>
+                </div>
+                <span class="error-msg" id="phoneError"></span>
+                <p class="hint-text">
+                    📱 Yeh number match ke liye use hoga
+                </p>
+            </div>
+			
+
+            <div class="form-group">
+                <label class="form-label">Aapki Umar</label>
+                <input 
+                    type="number" 
+                    id="age" 
+                    name="age" 
+                    class="form-input" 
+                    placeholder="Aapki umar (years mein)"
+                    min="1" 
+                    max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Gender <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="gender" value="male" required>
+                        <span class="radio-custom"></span>
+                        Purush (Male)
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="gender" value="female">
+                        <span class="radio-custom"></span>
+                        Mahila (Female)
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="gender" value="other">
+                        <span class="radio-custom"></span>
+                        Other
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    PIN Code <span class="required">*</span>
+                </label>
+                <input 
+                    type="number" 
+                    id="pincode" 
+                    name="pincode" 
+                    class="form-input" 
+                    placeholder="6 digit PIN code"
+                    maxlength="6"
+                    required>
+                <span class="auto-location" id="autoLocation"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Shahar (City) <span class="required">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    id="city" 
+                    name="city" 
+                    class="form-input" 
+                    placeholder="Aapka shahar"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    State <span class="required">*</span>
+                </label>
+                <select id="state" name="state" class="form-input" required>
+                    <option value="">-- State chuniye --</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                </select>
+            </div>
+
+            <!-- Kya ghar mein bachche hain -->
+            <div class="form-group">
+                <label class="form-label">
+                    Kya aapke ghar mein 18 saal se chote bachche hain?
+                </label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="hasChildren" value="yes">
+                        <span class="radio-custom"></span>
+                        Haan
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="hasChildren" value="no" checked>
+                        <span class="radio-custom"></span>
+                        Nahi
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="btn-next-step" onclick="goToStep(2)">
+                Aage Badho →
+            </button>
+        </div>
+
+        <!-- ===== STEP 2: ZARURAT KI JAANKARI ===== -->
+        <div class="form-step" id="step2">
+            <div class="step-header">
+                <h2>🤲 Aapki Zarurat</h2>
+                <p>Sachchi baat batao - yahi aapki madad karega</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Kis Cheez Ki Zarurat Hai? <span class="required">*</span>
+                </label>
+                <div class="category-select-grid">
+                    <label class="category-select-item" onclick="selectCategory(this, 'food')">
+                        <input type="radio" name="category" value="food" required>
+                        <div class="category-icon">🍚</div>
+                        <div class="category-name">Khaana</div>
+                        <div class="category-desc">Roz ka khana</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'education')">
+                        <input type="radio" name="category" value="education">
+                        <div class="category-icon">📚</div>
+                        <div class="category-name">Padhai</div>
+                        <div class="category-desc">School/College fees</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'medical')">
+                        <input type="radio" name="category" value="medical">
+                        <div class="category-icon">🏥</div>
+                        <div class="category-name">Ilaaj</div>
+                        <div class="category-desc">Medical help</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'shelter')">
+                        <input type="radio" name="category" value="shelter">
+                        <div class="category-icon">🏠</div>
+                        <div class="category-name">Ghar</div>
+                        <div class="category-desc">Rehne ki jagah</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'clothes')">
+                        <input type="radio" name="category" value="clothes">
+                        <div class="category-icon">👕</div>
+                        <div class="category-name">Kapde</div>
+                        <div class="category-desc">Pehenne ke kapde</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'job')">
+                        <input type="radio" name="category" value="job">
+                        <div class="category-icon">💼</div>
+                        <div class="category-name">Kaam/Naukri</div>
+                        <div class="category-desc">Rozgaar chahiye</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'elderly')">
+                        <input type="radio" name="category" value="elderly">
+                        <div class="category-icon">👴</div>
+                        <div class="category-name">Budhape ki Madad</div>
+                        <div class="category-desc">Buzurg ki help</div>
+                    </label>
+                    <label class="category-select-item" onclick="selectCategory(this, 'emergency')">
+                        <input type="radio" name="category" value="emergency">
+                        <div class="category-icon">🚨</div>
+                        <div class="category-name">Emergency</div>
+                        <div class="category-desc">Turant madad chahiye</div>
+                    </label>
+                </div>
+                <span class="error-msg" id="categoryError"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Aapki Kahani <span class="required">*</span>
+                </label>
+                <textarea 
+                    id="story" 
+                    name="story" 
+                    class="form-input form-textarea" 
+                    placeholder="Apni kahani apne shabdon mein likhiye...
+
+Jaise:
+- Aap kaun hain?
+- Kya mushkil aa gayi?
+- Kab se yeh problem hai?
+- Pehle kaise guzara hota tha?
+- Abhi kya hua?
+- Kaise help milegi to kya hoga?
+
+Sachchi baat likhiye - zyada se zyada 100 words"
+                    rows="8"
+                    minlength="100"
+                    required></textarea>
+                <div class="word-count">
+                    <span id="wordCount">0</span>/100 words minimum
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Kitne Ki Zarurat Hai? <span class="required">*</span>
+                </label>
+                <div class="amount-options">
+                    <label class="amount-option" onclick="selectAmount(this, '500')">
+                        <input type="radio" name="amountRange" value="500">
+                        ₹500 tak
+                    </label>
+                    <label class="amount-option" onclick="selectAmount(this, '1000')">
+                        <input type="radio" name="amountRange" value="1000">
+                        ₹1,000 tak
+                    </label>
+                    <label class="amount-option" onclick="selectAmount(this, '2500')">
+                        <input type="radio" name="amountRange" value="2500">
+                        ₹2,500 tak
+                    </label>
+                    <label class="amount-option" onclick="selectAmount(this, '5000')">
+                        <input type="radio" name="amountRange" value="5000">
+                        ₹5,000 tak
+                    </label>
+                    <label class="amount-option" onclick="selectAmount(this, '10000')">
+                        <input type="radio" name="amountRange" value="10000">
+                        ₹10,000 tak
+                    </label>
+                    <label class="amount-option" onclick="selectAmount(this, 'other')">
+                        <input type="radio" name="amountRange" value="other">
+                        Isse zyada
+                    </label>
+                </div>
+
+                <!-- Custom amount for "other" -->
+                <div id="customAmountDiv" style="display:none; margin-top:15px;">
+                    <input 
+                        type="number" 
+                        id="customAmount" 
+                        name="customAmount" 
+                        class="form-input" 
+                        placeholder="Exact amount likhiye (₹)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Yeh Zarurat Kitni Zaruri Hai?
+                </label>
+                <div class="urgency-scale">
+                    <input 
+                        type="range" 
+                        id="urgency" 
+                        name="urgency" 
+                        min="1" max="5" 
+                        value="3"
+                        oninput="updateUrgency(this.value)">
+                    <div class="urgency-labels">
+                        <span>Kuch Waqt Hai</span>
+                        <span id="urgencyLabel">🟡 Moderate</span>
+                        <span>Bahut Urgent</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Kya Aapne Kahin Aur Se Bhi Help Maangi Hai?
+                </label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="otherHelpSought" value="yes">
+                        <span class="radio-custom"></span>
+                        Haan, maangi hai par nahi mili
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="otherHelpSought" value="no" checked>
+                        <span class="radio-custom"></span>
+                        Nahi, pehli baar
+                    </label>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn-back-step" onclick="goToStep(1)">
+                    ← Wapas
+                </button>
+                <button type="button" class="btn-next-step" onclick="goToStep(3)">
+                    Aage →
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== STEP 3: VIDEO UPLOAD ===== -->
+        <div class="form-step" id="step3">
+            <div class="step-header">
+                <h2>🎥 Apni Video Banao</h2>
+                <p>Video se Madadgar aapko better samajhte hain - 
+                   help jaldi milti hai!</p>
+            </div>
+
+            <!-- VIDEO INSTRUCTIONS -->
+            <div class="video-instructions">
+                <h3>📱 Video Kaise Banayein?</h3>
+                <div class="instruction-steps">
+                    <div class="instruction-step">
+                        <div class="inst-number">1</div>
+                        <div class="inst-text">
+                            <strong>Phone uthao</strong><br>
+                            Front camera on karo. Natural roshni mein baitho.
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="inst-number">2</div>
+                        <div class="inst-text">
+                            <strong>Yeh bolo (30-60 seconds):</strong><br>
+                            "Mera naam [X] hai, main [City] se hun.<br>
+                            Mujhe [zarurat] hai kyunki [reason].<br>
+                            Kya aap meri help kar sakte hain? Shukriya 🙏"
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="inst-number">3</div>
+                        <div class="inst-text">
+                            <strong>Upload karo</strong><br>
+                            YouTube pe upload karo ya WhatsApp karo
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO OPTIONS -->
+            <div class="video-options">
+                
+                <!-- OPTION 1: YouTube Link -->
+                <div class="video-option-card active" id="optionYoutube">
+                    <div class="option-header" onclick="selectVideoOption('youtube')">
+                        <div class="option-icon">📺</div>
+                        <div class="option-info">
+                            <h4>YouTube Link Do (Best Option)</h4>
+                            <p>YouTube pe upload karo, link yahan paste karo</p>
+                        </div>
+                        <div class="option-select-btn" id="ytBtn">✅ Selected</div>
+                    </div>
+                    <div class="option-body" id="youtubeBody">
+                        <div class="youtube-steps">
+                            <p><strong>YouTube pe kaise upload karein:</strong></p>
+                            <ol>
+                                <li>YouTube app kholo (ya youtube.com)</li>
+                                <li>"+" button dabao</li>
+                                <li>"Upload a video" select karo</li>
+                                <li>Apni video chuniye</li>
+                                <li>Title: "Help Chahiye - Seva Connect"</li>
+                                <li>Privacy: <strong>"Public"</strong> rakho</li>
+                                <li>Upload karo</li>
+                                <li>Video ka link copy karo</li>
+                            </ol>
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label class="form-label">YouTube Video Link</label>
+                            <input 
+                                type="url" 
+                                id="youtubeLink" 
+                                name="youtubeLink" 
+                                class="form-input" 
+                                placeholder="https://www.youtube.com/watch?v=...">
+                            <div id="videoPreview" style="margin-top:10px; display:none;">
+                                <iframe id="previewFrame" width="100%" height="200" 
+                                        frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OPTION 2: WhatsApp Submit -->
+                <div class="video-option-card" id="optionWhatsapp">
+                    <div class="option-header" onclick="selectVideoOption('whatsapp')">
+                        <div class="option-icon">💬</div>
+                        <div class="option-info">
+                            <h4>WhatsApp Pe Bhejo</h4>
+                            <p>Video directly WhatsApp karo hamein</p>
+                        </div>
+                        <div class="option-select-btn" id="waBtn">Select</div>
+                    </div>
+                    <div class="option-body" id="whatsappBody" style="display:none;">
+                        <div class="whatsapp-info">
+                            <p>Video is number pe bhejo:</p>
+                            <a href="https://wa.me/919858105224" 
+                               class="wa-number" target="_blank">
+                                💬 +91-9858105224
+                            </a>
+                            <p class="hint-text">
+                                Message mein likhna: "Mera naam [X] hai, 
+                                Case ID ke liye registration submit kar raha/rahi hun"
+                            </p>
+                            <p class="hint-text">
+                                ⏱️ Hum 2-4 ghante mein upload kar denge
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OPTION 3: Skip for Now -->
+                <div class="video-option-card" id="optionSkip">
+                    <div class="option-header" onclick="selectVideoOption('skip')">
+                        <div class="option-icon">⏭️</div>
+                        <div class="option-info">
+                            <h4>Baad Mein Bhejunga/Bhejungi</h4>
+                            <p>Abhi skip karo, baad mein add karo</p>
+                        </div>
+                        <div class="option-select-btn" id="skipBtn">Select</div>
+                    </div>
+                    <div class="option-body" id="skipBody" style="display:none;">
+                        <div class="skip-warning">
+                            ⚠️ Video wale cases ko pehle preference milti hai.
+                            Video bhejne se help jaldi milti hai!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn-back-step" onclick="goToStep(2)">
+                    ← Wapas
+                </button>
+                <button type="button" class="btn-next-step" onclick="goToStep(4)">
+                    Aage →
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== STEP 4: DOCUMENTS + SUBMIT ===== -->
+        <div class="form-step" id="step4">
+            <div class="step-header">
+                <h2>✅ Last Step - Confirm Karo</h2>
+                <p>Document optional hai par verified cases ko pehle match milta hai</p>
+            </div>
+
+            <!-- DOCUMENT UPLOAD -->
+            <div class="form-group">
+                <label class="form-label">
+                     Document Upload Karo (Optional par Recommended)
+                </label>
+                <div class="doc-options">
+                    <p class="hint-text">
+                        Koi bhi ek document jo apki zarurat ko verify kar sake: Aadhaar, Ration Card, 
+                        Hospital slip, School ID, etc. jisse apki zarurat genuine lage.
+                    </p>
+                    <div class="doc-choice">
+                        <label class="radio-item">
+                            <input type="radio" name="docChoice" 
+                                   value="google-drive" checked
+                                   onchange="showDocOption('drive')">
+                            <span class="radio-custom"></span>
+                            Google Drive link dena chahta/chahti hun
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="docChoice" 
+                                   value="whatsapp"
+                                   onchange="showDocOption('whatsapp')">
+                            <span class="radio-custom"></span>
+                            WhatsApp pe bhej dunga/dungi
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="docChoice" 
+                                   value="skip"
+                                   onchange="showDocOption('skip')">
+                            <span class="radio-custom"></span>
+                            Abhi nahi - baad mein
+                        </label>
+                    </div>
+
+                    <!-- Google Drive option -->
+                    <div id="driveOption" style="margin-top:15px;">
+                        <div class="drive-instructions">
+                            <strong>Google Drive pe kaise share karein:</strong>
+                            <ol>
+                                <li>Document ki photo lo phone se</li>
+                                <li>Google Drive app mein upload karo</li>
+                                <li>File pe long press karo</li>
+                                <li>"Share" → "Copy link" karo</li>
+                                <li>Neeche paste karo</li>
+                            </ol>
+                        </div>
+                        <input 
+                            type="url" 
+                            id="documentLink" 
+                            name="documentLink" 
+                            class="form-input" 
+                            style="margin-top:10px;"
+                            placeholder="Google Drive link paste karo">
+                    </div>
+
+                    <!-- WhatsApp option -->
+                    <div id="whatsappDocOption" style="display:none; margin-top:15px;">
+                        <div class="whatsapp-info">
+                            <p>Document is number pe WhatsApp karo:</p>
+                            <a href="https://wa.me/919858105224" 
+                               class="wa-number" target="_blank">
+                                💬 +91-9858105224
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM SUMMARY -->
+            <div class="form-summary" id="formSummary">
+                <h3>📋 Aapki Information Summary</h3>
+                <div class="summary-grid" id="summaryContent">
+                    <!-- JS se fill hoga -->
+                </div>
+            </div>
+
+            <!-- TERMS -->
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="terms1" required>
+                    <span class="checkbox-custom"></span>
+                    <span>Main confirm karta/karti hun ki meri di gayi 
+                    information bilkul sach hai. Agar galat information 
+                    payi gayi to case reject ho sakta hai.</span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="terms2" required>
+                    <span class="checkbox-custom"></span>
+                    <span>Main agree karta/karti hun ki Seva Connect sirf 
+                    connect karta hai - koi guarantee nahi. Help directly 
+                    Madadgar se milegi.</span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="terms3" required>
+                    <span class="checkbox-custom"></span>
+                    <span>Agar help milti hai to main ek Shukriya video 
+                    banaunga/banaungi Madadgar ke liye. (Yeh promise hai 🙏)</span>
+                </label>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn-back-step" onclick="goToStep(3)">
+                    ← Wapas
+                </button>
+                <button type="submit" class="btn-submit-final" id="submitBtn">
+                    🙏 Register Karo - Help Mangao
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== SUCCESS SCREEN ===== -->
+        <div class="form-step" id="stepSuccess">
+            <div class="success-screen">
+                <div class="success-animation">
+                    <div class="success-circle">✅</div>
+                </div>
+                <h2>Aapki Request Mil Gayi! 🎉</h2>
+                <p>Shukriya hum par trust karne ke liye</p>
+                
+                <div class="case-id-box">
+                    <p>Aapka Case ID:</p>
+                    <div class="case-id" id="displayCaseId">SC-LOADING...</div>
+                    <button onclick="copyCaseId()" class="copy-btn">📋 Copy Karo</button>
+					<p style="color:#dc3545; font-size:0.85rem; margin-top:8px;">⚠️ Yeh ID sirf abhi ek baar hi dikhayi ja rahi hai — screenshot lekar ya likh kar zaroor save kar lein. Baad mein yeh dobara nahi milegi.</p>
+                </div>
+
+                <div class="what-next">
+                    <h3>Ab Kya Hoga?</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="tl-icon">📋</div>
+                            <div class="tl-text">
+                                <strong>24 Ghante Mein:</strong>
+                                Hamari team review karegi
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="tl-icon">✅</div>
+                            <div class="tl-text">
+                                <strong>Verification:</strong>
+                                Case verify hoga
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="tl-icon">🤝</div>
+                            <div class="tl-text">
+                                <strong>Match:</strong>
+                                Nearest Madadgar dhundha jayega
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="tl-icon">📱</div>
+                            <div class="tl-text">
+                                <strong>Notification:</strong>
+                                WhatsApp pe bataya jayega
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="share-prompt-box">
+                    <p>
+                        🌟 Apni story share karo - 
+                        jitne zyada log dekhenge, 
+                        utna jaldi help milegi!
+                    </p>
+                    <button onclick="shareMyCase()" class="btn-share-case">
+                        📤 Apni Story Share Karo
+                    </button>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 14px; padding: 20px; margin: 16px 0; text-align: left;">
+                    <h3 style="color: #2e7d32; margin-bottom: 10px; font-size: 1rem;">🎥 Jab Help Mil Jaaye — Shukriya Video Bhejo</h3>
+                    <p style="font-size: 0.86rem; color: #444; margin-bottom: 10px;">Aapka Shukriya video Madadgar ke liye sabse bada tohfa hoga. Yeh website par bhi dikhega aur doosron ko inspire karega!</p>
+                    <ol style="padding-left: 18px; font-size: 0.86rem; color: #444; line-height: 2.1;">
+                        <li>Phone se <strong>30-60 second ka chhota video</strong> banao<br>
+                            <span style="color: #888; font-size: 0.82rem;">Bolo: "Mujhe [___] mein madad mili, bahut shukriya! 🙏"</span>
+                        </li>
+                        <li>YouTube app kholo → <strong>"+" → Upload → Privacy "Public"</strong> → Upload karo</li>
+                        <li>Video ka link copy karo</li>
+                        <li>Neeche button click karke link submit karo</li>
+                    </ol>
+                    <a href="submit-shukriya.html" style="display: block; background: #28a745; color: white; text-align: center; padding: 13px; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; margin-top: 14px;">
+                        🙏 Shukriya Video Submit Karo
+                    </a>
+                    <p style="font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 8px;">Aapka Case ID upar dikhaya gaya hai — woh ID saath rakhna</p>
+                </div>
+
+                <a href="index.html" class="btn-home">
+                    🏠 Home Pe Jaao
+                </a>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loadingOverlay" style="display:none;">
+    <div class="loading-box">
+        <div class="loader"></div>
+        <p>Aapki request save ho rahi hai...</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo">🙏 Seva Connect</div>
+<p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+<p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
+<div class="social-links">
+<a href="https://youtube.com/@officialsevaconnect" target="_blank" title="YouTube">📺</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank" title="Instagram">📸</a>
+<a href="https://facebook.com/officialsevaconnect" target="_blank" title="Facebook">👥</a>
+<a href="https://wa.me/919858105224" target="_blank" title="WhatsApp">💬</a>
+</div>
+</div>
+<div class="footer-links-group">
+<h4>Platform</h4>
+<a href="cases.html">Active Cases</a>
+<a href="stories.html">Success Stories</a>
+<a href="about.html">About Us</a>
+<a href="gallery.html">Gallery</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-links-group">
+<h4>Join Us</h4>
+<a href="register-madadgar.html">Madadgar Bano</a>
+<a href="register-needy.html">Help Maango</a>
+<a href="seva-saathi.html">Seva Saathi Bano</a>
+<a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+</div>
+<div class="footer-links-group">
+<h4>Legal</h4>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="verification-policy.html">Verification Policy</a>
+<a href="community-guidelines.html">Community Guidelines</a>
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
+</div>
+</footer>
+
+<script src="needy-form.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
