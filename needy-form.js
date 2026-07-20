@@ -238,7 +238,13 @@ function selectVideoOption(option) {
     }
 }
 
-// YouTube link preview
+// Video link preview — YouTube aur Google Drive dono support karta hai
+function extractDriveFileId(url) {
+    if (!url) return null;
+    const match = url.match(/[-\w]{25,}/);
+    return match ? match[0] : null;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const ytInput = document.getElementById('youtubeLink');
     if (ytInput) {
@@ -252,7 +258,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 frame.src = `https://www.youtube.com/embed/${videoId}`;
                 preview.style.display = 'block';
             } else {
-                preview.style.display = 'none';
+                const driveFileId = extractDriveFileId(url);
+                if (driveFileId) {
+                    frame.src = `https://drive.google.com/file/d/${driveFileId}/preview`;
+                    preview.style.display = 'block';
+                } else {
+                    preview.style.display = 'none';
+                }
             }
         });
     }

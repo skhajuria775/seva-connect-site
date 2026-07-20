@@ -492,35 +492,33 @@ Sachchi baat likhiye - zyada se zyada 100 words"
                 <!-- OPTION 1: YouTube Link -->
                 <div class="video-option-card active" id="optionYoutube">
                     <div class="option-header" onclick="selectVideoOption('youtube')">
-                        <div class="option-icon">📺</div>
-                        <div class="option-info">
-                            <h4>YouTube Link Do (Best Option)</h4>
-                            <p>YouTube pe upload karo, link yahan paste karo</p>
-                        </div>
-                        <div class="option-select-btn" id="ytBtn">✅ Selected</div>
-                    </div>
-                    <div class="option-body" id="youtubeBody">
-                        <div class="youtube-steps">
-                            <p><strong>YouTube pe kaise upload karein:</strong></p>
-                            <ol>
-                                <li>YouTube app kholo (ya youtube.com)</li>
-                                <li>"+" button dabao</li>
-                                <li>"Upload a video" select karo</li>
-                                <li>Apni video chuniye</li>
-                                <li>Title: "Help Chahiye - Seva Connect"</li>
-                                <li>Privacy: <strong>"Public"</strong> rakho</li>
-                                <li>Upload karo</li>
-                                <li>Video ka link copy karo</li>
-                            </ol>
-                        </div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label class="form-label">YouTube Video Link</label>
-                            <input 
-                                type="url" 
-                                id="youtubeLink" 
-                                name="youtubeLink" 
-                                class="form-input" 
-                                placeholder="https://www.youtube.com/watch?v=...">
+			<div class="option-icon">📁</div>
+			<div class="option-info">
+				<h4>Google Drive Link Do (Best Option)</h4>
+					<p>Drive pe upload karo, link yahan paste karo</p>
+			</div>
+				<div class="option-select-btn" id="ytBtn">✅ Selected</div>
+			</div>
+			<div class="option-body" id="youtubeBody">
+			<div class="youtube-steps">
+				<p><strong>Google Drive pe kaise upload karein:</strong></p>
+			<ol>
+			<li>Phone se 30-60 second ka video banao</li>
+				<li>Google Drive app kholo → "+" → Upload</li>
+				<li>Apni video chuniye, upload hone do</li>
+				<li>File pe long-press karo → Share</li>
+				<li>"Anyone with the link" access <strong>ON</strong> karo</li>
+				<li>Copy link karo</li>
+			</ol>
+			</div>
+			<div class="form-group" style="margin-top:15px;">
+			<label class="form-label">Google Drive Video Link</label>
+				<input 
+				type="url" 
+				id="youtubeLink" 
+				name="youtubeLink" 
+				class="form-input" 
+				placeholder="https://drive.google.com/file/d/...">
                             <div id="videoPreview" style="margin-top:10px; display:none;">
                                 <iframe id="previewFrame" width="100%" height="200" 
                                         frameborder="0" allowfullscreen></iframe>

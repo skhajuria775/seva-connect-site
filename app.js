@@ -151,13 +151,28 @@ async function loadShukriyaStories() {
 // videoId, caseId, zaruratmandName, city, category, youtubeLink, youtubeVideoId, approvedDate
 // Madadgar ka naam/badge yahan available NAHI hai (Code.gs Videos sheet se padhta hai,
 // jisme MadadgarID hai par naam/badge lookup abhi implement nahi hai).
+function extractDriveFileId(url) {
+  if (!url) return null;
+  const match = url.match(/[-\w]{25,}/);
+  return match ? match[0] : null;
+}
+
 function createStoryCard(data) {
   const card = document.createElement('div');
   card.className = 'story-card';
   const videoId = data.youtubeVideoId || extractYouTubeId(data.youtubeLink);
+  let videoEmbedHtml = '';
+  if (videoId) {
+    videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+  } else {
+    const driveFileId = extractDriveFileId(data.youtubeLink);
+    if (driveFileId) {
+      videoEmbedHtml = `<iframe src="https://drive.google.com/file/d/${driveFileId}/preview" allowfullscreen loading="lazy"></iframe>`;
+    }
+  }
   card.innerHTML = `
     <div class="story-video">
-      ${videoId ? `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>` : ''}
+      ${videoEmbedHtml}
     </div>
     <div class="story-info">
       <div class="story-impact">🎉 Help Mili!</div>
@@ -193,6 +208,50 @@ async function loadMadadgarWall() {
   } catch (error) {
     console.log('Madadgar wall error:', error);
   }
+}
+
+// ===== LOAD MADADGAR MOTIVATION VIDEOS =====
+async function loadMadadgarVideos() {
+  try {
+    const response = await fetch(CONFIG.CACHED_API_BASE + '/getMadadgarVideos');
+    const result = await response.json();
+    const madadgars = result && result.madadgars ? result.madadgars : [];
+    const container = document.getElementById('madadgarVideos');
+    if (!container || !madadgars.length) return;
+    container.innerHTML = '';
+    madadgars.forEach(m => {
+      const card = createMadadgarVideoCard(m);
+      container.appendChild(card);
+      revealObserver.observe(card);
+    });
+  } catch (error) {
+    console.log('Madadgar videos load error:', error);
+  }
+}
+
+function createMadadgarVideoCard(data) {
+  const card = document.createElement('div');
+  card.className = 'story-card';
+  const url = data.motivationVideo || '';
+  const videoId = extractYouTubeId(url);
+  let embedHtml = '';
+  if (videoId) {
+    embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+  } else {
+    const driveFileId = extractDriveFileId(url);
+    if (driveFileId) {
+      embedHtml = `<iframe src="https://drive.google.com/file/d/${driveFileId}/preview" allowfullscreen loading="lazy"></iframe>`;
+    }
+  }
+  card.innerHTML = `
+    <div class="story-video">${embedHtml}</div>
+    <div class="story-info">
+      <div class="story-impact">🤝 Madadgar Ki Awaaz</div>
+      <h3>${data.name} — ${data.city || ''}</h3>
+      <p>${data.badge || ''}</p>
+    </div>
+  `;
+  return card;
 }
 
 // ===== SHARE FUNCTIONS =====
@@ -309,5 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
   loadZaruratVideos();
   loadShukriyaStories();
   loadMadadgarWall();
+  loadMadadgarVideos();
   initScrollReveal();
 });

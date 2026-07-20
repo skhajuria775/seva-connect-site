@@ -290,29 +290,45 @@ async function loadGalleryFromShukriyaVideos() {
     const grid = document.getElementById('galleryGrid');
     if (!grid) return;
 
-    grid.innerHTML = ''; // Sirf real data mile to hi purane placeholder hatao
+    // Pehle items ek fragment mein banao — grid ko tabhi replace karo
+    // jab kam se kam ek item bana ho, warna placeholders safe rehte hain
+    const fragment = document.createDocumentFragment();
 
     videos.forEach(function (video) {
-      if (!video.youtubeVideoId) return;
-
+      const caption = (video.zaruratmandName || 'Ek zarooratmand') + ' — ' + (video.city || '');
       const item = document.createElement('div');
       item.className = 'g-item';
       item.dataset.category = video.category || 'events';
 
-      const thumbUrl = 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.webp';
-      const caption = (video.zaruratmandName || 'Ek zarooratmand') + ' — ' + (video.city || '');
-
-      item.innerHTML =
-        '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
-        '<div class="g-play-badge">▶️ Video</div>' +
-        '<div class="g-overlay"><span>' + caption + '</span></div>';
-
-      item.addEventListener('click', function () {
-        window.open('https://youtube.com/watch?v=' + video.youtubeVideoId, '_blank');
-      });
-
-      grid.appendChild(item);
+      if (video.youtubeVideoId) {
+        const thumbUrl = 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.webp';
+        item.innerHTML =
+          '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
+          '<div class="g-play-badge">▶️ Video</div>' +
+          '<div class="g-overlay"><span>' + caption + '</span></div>';
+        item.addEventListener('click', function () {
+          window.open('https://youtube.com/watch?v=' + video.youtubeVideoId, '_blank');
+        });
+        fragment.appendChild(item);
+      } else {
+        const driveFileId = extractDriveFileId(video.youtubeLink);
+        if (!driveFileId) return; // na YouTube ID na Drive ID mila, is video ko skip karo
+        const thumbUrl = 'https://drive.google.com/thumbnail?id=' + driveFileId + '&sz=w400';
+        item.innerHTML =
+          '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
+          '<div class="g-play-badge">▶️ Video</div>' +
+          '<div class="g-overlay"><span>' + caption + '</span></div>';
+        item.addEventListener('click', function () {
+          window.open('https://drive.google.com/file/d/' + driveFileId + '/preview', '_blank');
+        });
+        fragment.appendChild(item);
+      }
     });
+
+    if (fragment.children.length === 0) return; // kuch render-layak nahi mila, placeholders rehne do
+
+    grid.innerHTML = '';
+    grid.appendChild(fragment);
   } catch (error) {
     // Fetch fail ho to bhi kuch nahi karna — fallback placeholder
     // cards apni jagah rahenge, page kabhi khaali nahi dikhega.

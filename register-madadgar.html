@@ -690,12 +690,12 @@
       </div>
 
       <div class="form-group">
-        <label>Aap Madad Kyun Karna Chahte Hain? (Optional Video)</label>
-        <div class="motivation-hint">
-          <p>📹 Apni dil ki baat share karo! Ek short video banao aur YouTube pe upload karke link daalo. Log aapse inspire honge. Ya baad mein bhi de sakte ho.</p>
-        </div>
-        <input type="url" id="motivationVideo" placeholder="YouTube video link (optional)">
-      </div>
+		<label>Aap Madad Kyun Karna Chahte Hain? (Optional Video)</label>
+		<div class="motivation-hint">
+		<p>📹 Apni dil ki baat share karo! Phone se ek short video banao, Google Drive mein upload karo, phir "Share" → <strong>"Anyone with the link" access ON karo</strong> → link copy karke neeche paste karo. Log aapse inspire honge. Ya baad mein bhi de sakte ho.</p>
+	  </div>
+		<input type="url" id="motivationVideo" placeholder="Google Drive video link (optional)">
+	  </div>
 
       <div class="btn-group">
         <button type="button" onclick="goToStep(1)" class="btn-back">← Wapas</button>
@@ -1012,7 +1012,7 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
       document.getElementById('progressFill').style.width = '100%';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      alert('Kuch error hua. Please dobara try karein.');
+      alert(result.error || 'Kuch error aaya hai. Please sabi fields ko check kare aur dobara try karein.');
       submitBtn.disabled = false;
     }
   } catch (error) {
