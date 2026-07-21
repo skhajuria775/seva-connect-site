@@ -131,6 +131,21 @@ function validateStep(stepNum) {
     }
 
     if (stepNum === 4) {
+        // Video ya Document mein se kam se kam ek zaroori hai
+        const youtubeBodyVisible = document.getElementById('youtubeBody')?.style.display === 'block';
+        const whatsappBodyVisible = document.getElementById('whatsappBody')?.style.display === 'block';
+        const youtubeLink = document.getElementById('youtubeLink')?.value.trim();
+        const docChoice = document.querySelector('input[name="docChoice"]:checked')?.value;
+        const documentLink = document.getElementById('documentLink')?.value.trim();
+
+        const hasVideo = (youtubeBodyVisible && youtubeLink) || whatsappBodyVisible;
+        const hasDocument = (docChoice === 'google-drive' && documentLink) || docChoice === 'whatsapp';
+
+        if (!hasVideo && !hasDocument) {
+            valid = false;
+            alert('Verification ke liye video ya document mein se kam se kam ek dena zaroori hai — dono skip nahi kar sakte.');
+        }
+
         // Terms
         if (!document.getElementById('terms1').checked ||
             !document.getElementById('terms2').checked ||

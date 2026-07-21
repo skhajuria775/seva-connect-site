@@ -652,18 +652,35 @@
       </div>
 
       <div class="form-group">
-        <label>Monthly Madad Capacity *</label>
-        <select id="budget">
-          <option value="">Approximate amount select karo</option>
-          <option value="500">₹500 tak</option>
-          <option value="1000">₹1,000 tak</option>
-          <option value="2000">₹2,000 tak</option>
-          <option value="5000">₹5,000 tak</option>
-          <option value="10000">₹10,000 tak</option>
-          <option value="99999">₹10,000 se zyada</option>
-        </select>
-        <span class="error-msg" id="budgetError"></span>
-        <span class="hint">💡 Yeh sirf estimate hai — koi binding nahi</span>
+		<label>Monthly Madad Capacity *</label>
+		<select id="budget" onchange="document.getElementById('customBudgetDiv').style.display = (this.value === 'other') ? 'block' : 'none';">
+		<option value="">Approximate amount select karo</option>
+		<option value="500">₹500 tak</option>
+		<option value="1000">₹1,000 tak</option>
+		<option value="2000">₹2,000 tak</option>
+		<option value="5000">₹5,000 tak</option>
+		<option value="10000">₹10,000 tak</option>
+		<option value="other">₹10,000 se zyada</option>
+		</select>
+		<div id="customBudgetDiv" style="display:none; margin-top:12px;">
+		<input type="number" id="customBudget" placeholder="Exact amount likhiye (₹)" min="10001">
+		</div>
+		<span class="error-msg" id="budgetError"></span>
+		<span class="hint">💡 Yeh sirf estimate hai — koi binding nahi</span>
+		</div>
+
+      <div class="form-group">
+        <label>Yeh Madad Kaisi Hai? *</label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="helpFrequency" value="monthly" checked>
+            <span>🔁 Har mahine itni madad kar sakta/sakti hun</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="helpFrequency" value="once">
+            <span>1️⃣ Sirf ek baar (is help ke baad ID inactive ho jayegi)</span>
+          </label>
+        </div>
       </div>
 
       <div class="form-group">
@@ -717,6 +734,11 @@
       <label class="terms-item">
         <input type="checkbox" id="terms1">
         <span>Main samajhta/samajhti hun ki Seva Connect sirf connect karta hai — platform koi paisa nahi leta. Mujhe seedha zarooratmand se deal karni hogi.</span>
+      </label>
+
+      <label class="terms-item">
+        <input type="checkbox" id="terms4" required>
+        <span>Main samajhta/samajhti hun ki agar main lagatar 2 baar match hone ke baad response nahi deta/deti, toh meri ID temporarily inactive ho jayegi — main jab bhi phir se help karna chahun, dobara registration kar sakta/sakti hun.</span>
       </label>
 
       <label class="terms-item">
@@ -911,6 +933,9 @@ function validateStep(stepNum) {
     if (!budget) {
       showError('budgetError', 'Madad capacity select karo');
       valid = false;
+    } else if (budget === 'other' && !document.getElementById('customBudget').value) {
+      showError('budgetError', 'Exact amount likho');
+      valid = false;
     } else hideError('budgetError');
 
     const reach = document.querySelector('input[name="reach"]:checked');
@@ -923,8 +948,9 @@ function validateStep(stepNum) {
   if (stepNum === 3) {
     if (!document.getElementById('terms1').checked ||
         !document.getElementById('terms2').checked ||
-        !document.getElementById('terms3').checked) {
-      alert('Teeno terms agree karna zaroori hai 🙏');
+        !document.getElementById('terms3').checked ||
+        !document.getElementById('terms4').checked) {
+      alert('Sabhi terms agree karna zaroori hai 🙏');
       valid = false;
     }
   }
@@ -976,6 +1002,11 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
   const cats = [...document.querySelectorAll('input[name="categories"]:checked')].map(c => c.value);
   const reach = document.querySelector('input[name="reach"]:checked');
 
+  const budgetValue = document.getElementById('budget').value;
+  const finalBudget = budgetValue === 'other'
+    ? (document.getElementById('customBudget').value || '10001')
+    : budgetValue;
+
   const formData = {
     action: 'registerMadadgar',
     name: document.getElementById('name').value.trim(),
@@ -985,8 +1016,9 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
     state: document.getElementById('state').value,
     pincode: document.getElementById('pincode').value.trim(),
     categories: cats,
-    budget: document.getElementById('budget').value,
+    budget: finalBudget,
     reach: reach ? reach.value : 'global',
+	helpFrequency: document.querySelector('input[name="helpFrequency"]:checked')?.value || 'monthly',
     motivationVideo: document.getElementById('motivationVideo').value.trim(),
 	refCode: getReferralCode(),
     timestamp: new Date().toISOString()
