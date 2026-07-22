@@ -56,63 +56,17 @@ function validateStep(stepNum) {
     let valid = true;
 
     if (stepNum === 1) {
-        // Name
-        const name = document.getElementById('name').value.trim();
-        if (!name || name.length < 2) {
-            showError('nameError', 'Naam daalna zaroori hai');
-            valid = false;
-        } else {
-            hideError('nameError');
-        }
-
-        // Phone
-        const phone = document.getElementById('phone').value.trim();
-        if (!phone || phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
-            showError('phoneError', 'Sahi 10 digit phone number daalo');
-            valid = false;
-        } else {
-            hideError('phoneError');
-        }
-		
-		const email = document.getElementById('email').value.trim();
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            showError('emailError', 'Sahi email address daalna zaroori hai');
-            valid = false;
-        } else {
-            hideError('emailError');
-        }
-
-        // City
-        const city = document.getElementById('city').value.trim();
-        if (!city) {
-            valid = false;
-            alert('Sheher (City) daalna zaroori hai');
-        }
-
-        // State
-        const state = document.getElementById('state').value;
-        if (!state) {
-            valid = false;
-            alert('State select karna zaroori hai');
-        }
-
-        // Pincode
-        const pin = document.getElementById('pincode').value.trim();
-        if (!pin || pin.length !== 6) {
-            valid = false;
-            alert('Sahi 6 digit PIN code daalo');
-        }
+        if (!validateNameField()) valid = false;
+        if (!validatePhoneField()) valid = false;
+        if (!validateEmailField()) valid = false;
+        if (!validateCityField()) valid = false;
+        if (!validateStateField()) valid = false;
+        if (!validatePincodeField()) valid = false;
     }
 
     if (stepNum === 2) {
         // Category
-        const category = document.querySelector('input[name="category"]:checked');
-        if (!category) {
-            showError('categoryError', 'Zarurat ki category select karo');
-            valid = false;
-        } else {
-            hideError('categoryError');
-        }
+        if (!validateCategoryField()) valid = false;
 
         // Story
         const story = document.getElementById('story').value.trim();
@@ -167,6 +121,103 @@ function hideError(elementId) {
     const el = document.getElementById(elementId);
     if (el) el.textContent = '';
 }
+
+// ===== PER-FIELD VALIDATORS (validateStep AND real-time blur/change dono use karte hain) =====
+async function checkPhoneDuplicate(phone, formType, errorElId) {
+    try {
+        const res = await fetch(`https://us-central1-seva-connect-backend.cloudfunctions.net/checkDuplicatePhone?phone=${encodeURIComponent(phone)}&formType=${formType}`);
+        const result = await res.json();
+        if (result.duplicate) {
+            showError(errorElId, result.error);
+        }
+    } catch (err) {
+        // Silent fail — backend down hone par bhi user block nahi hona chahiye
+    }
+}
+
+function validateNameField() {
+    const name = document.getElementById('name').value.trim();
+    if (!name || name.length < 2) {
+        showError('nameError', 'Naam daalna zaroori hai');
+        return false;
+    }
+    hideError('nameError');
+    return true;
+}
+
+function validatePhoneField() {
+    const phone = document.getElementById('phone').value.trim();
+    if (!phone || phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+        showError('phoneError', 'Sahi 10 digit phone number daalo');
+        return false;
+    }
+    hideError('phoneError');
+    checkPhoneDuplicate(phone, 'needy', 'phoneError');
+    return true;
+}
+
+function validateEmailField() {
+    const email = document.getElementById('email').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('emailError', 'Sahi email address daalna zaroori hai');
+        return false;
+    }
+    hideError('emailError');
+    return true;
+}
+
+function validateCityField() {
+    const city = document.getElementById('city').value.trim();
+    if (!city) {
+        showError('cityError', 'Sheher (City) daalna zaroori hai');
+        return false;
+    }
+    hideError('cityError');
+    return true;
+}
+
+function validateStateField() {
+    const state = document.getElementById('state').value;
+    if (!state) {
+        showError('stateError', 'State select karna zaroori hai');
+        return false;
+    }
+    hideError('stateError');
+    return true;
+}
+
+function validatePincodeField() {
+    const pin = document.getElementById('pincode').value.trim();
+    if (!pin || pin.length !== 6 || !/^[0-9]{6}$/.test(pin)) {
+        showError('pinError', 'Sahi 6 digit PIN code daalo');
+        return false;
+    }
+    hideError('pinError');
+    return true;
+}
+
+function validateCategoryField() {
+    const category = document.querySelector('input[name="category"]:checked');
+    if (!category) {
+        showError('categoryError', 'Zarurat ki category select karo');
+        return false;
+    }
+    hideError('categoryError');
+    return true;
+}
+
+// ===== REAL-TIME VALIDATION LISTENERS =====
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('name').addEventListener('blur', validateNameField);
+    document.getElementById('phone').addEventListener('blur', validatePhoneField);
+    document.getElementById('email').addEventListener('blur', validateEmailField);
+    document.getElementById('city').addEventListener('blur', validateCityField);
+    document.getElementById('state').addEventListener('change', validateStateField);
+    document.getElementById('pincode').addEventListener('blur', validatePincodeField);
+    document.querySelectorAll('input[name="category"]').forEach(function (el) {
+        el.addEventListener('change', validateCategoryField);
+    });
+});
 
 // ===== CATEGORY SELECTION =====
 function selectCategory(element, value) {

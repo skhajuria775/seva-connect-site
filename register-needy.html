@@ -23,7 +23,7 @@
 <nav class="navbar" id="navbar">
 <div class="nav-inner">
 <a href="index.html" class="logo">
-<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:50px;height:50px;object-fit:contain;border-radius:50%;">
 <div>
 <span class="logo-text">Seva Connect</span>
 <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
@@ -189,6 +189,7 @@
                     placeholder="6 digit PIN code"
                     maxlength="6"
                     required>
+                <span class="error-msg" id="pinError"></span>
                 <span class="auto-location" id="autoLocation"></span>
             </div>
 
@@ -203,6 +204,7 @@
                     class="form-input" 
                     placeholder="Aapka shahar"
                     required>
+                <span class="error-msg" id="cityError"></span>
             </div>
 
             <div class="form-group">
@@ -241,6 +243,7 @@
                     <option value="West Bengal">West Bengal</option>
                     <option value="Jammu & Kashmir">Jammu & Kashmir</option>
                 </select>
+                <span class="error-msg" id="stateError"></span>
             </div>
 
             <!-- Kya ghar mein bachche hain -->
@@ -250,16 +253,15 @@
                 </label>
                 <div class="radio-group">
                     <label class="radio-item">
-                        <input type="radio" name="hasChildren" value="yes">
-                        <span class="radio-custom"></span>
-                        Haan
-                    </label>
-                    <label class="radio-item">
                         <input type="radio" name="hasChildren" value="no" checked>
                         <span class="radio-custom"></span>
                         Nahi
                     </label>
                 </div>
+            </div>
+
+            <div class="info-note" style="background:#FFF3CD; border:1px solid #FFC107; border-radius:8px; padding:12px; margin-bottom:15px; font-size:0.9rem;">
+                ⚠️ <strong>Zaroori baat:</strong> Agar aapko help milti hai to help ke baad ek Shukriya video dena zaroori hai. Jab tak pichhli madad ka Shukriya video na diya jaaye, tab tak naya case register nahi ho sakta.
             </div>
 
             <button type="button" class="btn-next-step" onclick="goToStep(2)">
@@ -694,7 +696,10 @@ Sachchi baat likhiye - zyada se zyada 100 words"
                     <input type="checkbox" id="terms3" required>
                     <span class="checkbox-custom"></span>
                     <span>Agar help milti hai to main ek Shukriya video 
-                    banaunga/banaungi Madadgar ke liye. (Yeh promise hai 🙏)</span>
+                    banaunga/banaungi Madadgar ke liye. (Yeh promise hai 🙏) 
+                    Main samajhta/samajhti hun ki jab tak yeh Shukriya video 
+                    nahi diya jaata, tab tak main naya case register nahi kar 
+                    sakta/sakti.</span>
                 </label>
             </div>
 
@@ -831,7 +836,7 @@ Sachchi baat likhiye - zyada se zyada 100 words"
 <a href="register-madadgar.html">Madadgar Bano</a>
 <a href="register-needy.html">Help Maango</a>
 <a href="seva-saathi.html">Seva Saathi Bano</a>
-<a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+<a href="submit-shukriya.html">Shukriya Video Bhejo</a>
 </div>
 <div class="footer-links-group">
 <h4>Legal</h4>

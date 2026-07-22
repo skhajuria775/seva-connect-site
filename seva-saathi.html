@@ -106,7 +106,7 @@
 <nav class="navbar" id="navbar">
 <div class="nav-inner">
 <a href="index.html" class="logo">
-<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:38px;height:38px;object-fit:contain;border-radius:50%;">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:50px;height:50px;object-fit:contain;border-radius:50%;">
 <div>
 <span class="logo-text">Seva Connect</span>
 <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
@@ -165,7 +165,7 @@ Seva Saathi woh log hain jo samaj mein sakaratmak parivartan lane ke liye apna s
 <section class="promoter-process">
 <div class="section-header">
 <h2>Seva Saathi Ka Role</h2>
-<p>Teen simple kaam — koi investment nahi, koi target pressure nahi, sirf dil se mission ko aage badhana.Ek insaan sab kuchh nahi badal sakta, lekin ek insaan kisi ek ki poori duniya zaroor badal sakta hai.Aaiye, Seva Saathi baniye aur insaniyat ki is yatra ka hissa baniye.</p>
+<p>Dil se mission ko aage badhana.Ek insaan sab kuch nahi badal sakta, lekin ek insaan kisi ek ki poori duniya zaroor badal sakta hai.Aaiye, Seva Saathi baniye aur insaniyat ki is yatra ka hissa baniye in 3 simple steps ke sath.</p>
 </div>
 <div class="process-steps">
 <div class="process-step">
@@ -289,19 +289,23 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 <form id="sevaSaathiForm" class="seva-form">
 <div class="form-group">
 <label>Poora Naam *</label>
-<input type="text" name="name" class="form-input" required placeholder="Aapka naam">
+<input type="text" id="ssName" name="name" class="form-input" required placeholder="Aapka naam">
+<span class="error-msg" id="ssNameError"></span>
 </div>
 <div class="form-group">
 <label>Phone Number *</label>
-<input type="tel" name="phone" class="form-input" required placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+<input type="tel" id="ssPhone" name="phone" class="form-input" required placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+<span class="error-msg" id="ssPhoneError"></span>
 </div>
 <div class="form-group">
 <label>Email *</label>
-<input type="email" name="email" class="form-input" required placeholder="Updates aur certificate ke liye">
+<input type="email" id="ssEmail" name="email" class="form-input" required placeholder="Updates aur certificate ke liye">
+<span class="error-msg" id="ssEmailError"></span>
 </div>
 <div class="form-group">
 <label>City *</label>
-<input type="text" name="city" class="form-input" required placeholder="Aapki city">
+<input type="text" id="ssCity" name="city" class="form-input" required placeholder="Aapki city">
+<span class="error-msg" id="ssCityError"></span>
 </div>
 <div class="form-group">
 <label>Instagram / Facebook Handle (Optional)</label>
@@ -361,7 +365,7 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 <a href="register-madadgar.html">Madadgar Bano</a>
 <a href="register-needy.html">Help Maango</a>
 <a href="seva-saathi.html">Seva Saathi Bano</a>
-<a href="submit-shukriya.html">🙏 Shukriya Video Bhejo</a>
+<a href="submit-shukriya.html">Shukriya Video Bhejo</a>
 </div>
 <div class="footer-links-group">
 <h4>Legal</h4>
@@ -383,6 +387,71 @@ const CONFIG_SS = {
   STATS_API: 'https://us-central1-seva-connect-backend.cloudfunctions.net'
 };
 
+// ===== PER-FIELD VALIDATORS (submit AND real-time blur dono use karte hain) =====
+function showSSError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = msg;
+}
+function hideSSError(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = '';
+}
+async function checkPhoneDuplicate(phone, formType, errorElId) {
+  try {
+    const res = await fetch(`https://us-central1-seva-connect-backend.cloudfunctions.net/checkDuplicatePhone?phone=${encodeURIComponent(phone)}&formType=${formType}`);
+    const result = await res.json();
+    if (result.duplicate) {
+      showSSError(errorElId, result.error);
+    }
+  } catch (err) {
+    // Silent fail — backend down hone par bhi user block nahi hona chahiye
+  }
+}
+function validateSSNameField() {
+  const name = document.getElementById('ssName').value.trim();
+  if (!name || name.length < 2) {
+    showSSError('ssNameError', 'Naam daalna zaroori hai');
+    return false;
+  }
+  hideSSError('ssNameError');
+  return true;
+}
+function validateSSPhoneField() {
+  const phone = document.getElementById('ssPhone').value.trim();
+  if (!phone || !/^[0-9]{10}$/.test(phone)) {
+    showSSError('ssPhoneError', 'Phone number 10 digit ka hona chahiye');
+    return false;
+  }
+  hideSSError('ssPhoneError');
+  checkPhoneDuplicate(phone, 'sevaSaathi', 'ssPhoneError');
+  return true;
+}
+function validateSSEmailField() {
+  const email = document.getElementById('ssEmail').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showSSError('ssEmailError', 'Sahi email address daalna zaroori hai');
+    return false;
+  }
+  hideSSError('ssEmailError');
+  return true;
+}
+function validateSSCityField() {
+  const city = document.getElementById('ssCity').value.trim();
+  if (!city) {
+    showSSError('ssCityError', 'City daalna zaroori hai');
+    return false;
+  }
+  hideSSError('ssCityError');
+  return true;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('ssName').addEventListener('blur', validateSSNameField);
+  document.getElementById('ssPhone').addEventListener('blur', validateSSPhoneField);
+  document.getElementById('ssEmail').addEventListener('blur', validateSSEmailField);
+  document.getElementById('ssCity').addEventListener('blur', validateSSCityField);
+});
+
 document.getElementById('sevaSaathiForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
@@ -398,13 +467,12 @@ document.getElementById('sevaSaathiForm').addEventListener('submit', async funct
     social: form.socialHandle.value.trim()
   };
 
-  if (!formData.name || !formData.phone || !formData.email || !formData.city) {
-    msg.textContent = 'Sabhi required fields bharo.';
-    msg.className = 'ss-form-msg show error';
-    return;
-  }
-  if (!/^[0-9]{10}$/.test(formData.phone)) {
-    msg.textContent = 'Phone number 10 digit ka hona chahiye.';
+  const ssNameOk = validateSSNameField();
+  const ssPhoneOk = validateSSPhoneField();
+  const ssEmailOk = validateSSEmailField();
+  const ssCityOk = validateSSCityField();
+  if (!ssNameOk || !ssPhoneOk || !ssEmailOk || !ssCityOk) {
+    msg.textContent = 'Sabhi fields sahi se bharo (upar errors dekhein).';
     msg.className = 'ss-form-msg show error';
     return;
   }
