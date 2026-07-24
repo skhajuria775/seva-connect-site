@@ -93,9 +93,18 @@ function createCaseCard(data) {
   const emoji = categoryEmoji[data.category] || '🤝';
   // Code.gs ka getActiveCases() 'youtubeLink' field deta hai (full URL), 'youtubeId' nahi
   const videoId = extractYouTubeId(data.youtubeLink);
+  let caseVideoHtml = '';
+  if (videoId) {
+    caseVideoHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+  } else {
+    const driveFileId = extractDriveFileId(data.youtubeLink);
+    if (driveFileId) {
+      caseVideoHtml = `<iframe src="https://drive.google.com/file/d/${driveFileId}/preview" allowfullscreen loading="lazy"></iframe>`;
+    }
+  }
   card.innerHTML = `
     <div class="case-video">
-      ${videoId ? `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>` : ''}
+      ${caseVideoHtml}
     </div>
     <div class="case-info">
       <div class="case-badges">

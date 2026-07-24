@@ -427,6 +427,7 @@ document.getElementById('needyForm').addEventListener('submit', async function (
         noOtherHelp: (document.querySelector('input[name="otherHelpSought"]:checked')?.value || 'no') === 'no' ? 'yes' : 'no',
         zaruratVideoLink: document.getElementById('youtubeLink')?.value || '',
         documentUrl: document.getElementById('documentLink')?.value || '',
+        videoConsent: document.getElementById('videoConsent')?.checked || false,
         timestamp: new Date().toISOString()
     };
 
