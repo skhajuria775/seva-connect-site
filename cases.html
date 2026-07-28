@@ -461,16 +461,9 @@ function toggleNav() {
   document.getElementById('navLinks').classList.toggle('active');
 }
 
-// Load active cases count from API
-// NOTE: Code.gs ka getStats() field name 'zaruratmand' return karta hai (NOT 'needy')
-const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
-fetch(APPS_SCRIPT_URL + '/getStats')
-  .then(r => r.json())
-  .then(data => {
-    if (data && data.zaruratmand !== undefined) {
-      document.getElementById('activeCasesCount').textContent = data.zaruratmand;
-    }
-  }).catch(() => {});
+// "Active Cases" counter ab app.js ke loadZaruratVideos() function se automatically
+// update hota hai (getActiveCases API se live count), isliye yahan alag se getStats
+// call karne ki zarurat nahi rahi.
 </script>
 <script src="app.js"></script>
 </body>

@@ -62,6 +62,15 @@ async function loadZaruratVideos() {
     const result = await response.json();
     // Code.gs ka getActiveCases() { cases: [...] } shape mein wrap karke bhejta hai
     const cases = result && result.cases ? result.cases : [];
+
+    // "Active Cases" counter — live count hai (verifiedCases collection ka asli size),
+    // completed cases khud-ba-khud is number se hat jaate hain. Pehle ye galti se
+    // lifetime-total (getStats) se bharta tha, jo completed cases ke baad bhi kam nahi hota tha.
+    const countEl = document.getElementById('activeCasesCount');
+    if (countEl && result && result.activeCount !== undefined) {
+      countEl.textContent = result.activeCount;
+    }
+
     const container = document.getElementById('activeCases');
     if (!container || !cases.length) return;
     container.innerHTML = '';
@@ -105,6 +114,11 @@ function createCaseCard(data) {
   card.innerHTML = `
     <div class="case-video">
       ${caseVideoHtml}
+    </div>
+    <div class="video-social-note">
+      🎬 Poori kahani aur aisi hi aur cases dekhne ke liye humare
+      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a> ya
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> channel par jaayein
     </div>
     <div class="case-info">
       <div class="case-badges">
@@ -182,6 +196,11 @@ function createStoryCard(data) {
   card.innerHTML = `
     <div class="story-video">
       ${videoEmbedHtml}
+    </div>
+    <div class="video-social-note">
+      🎬 Poori kahani aur aisi hi aur inspiring stories dekhne ke liye humare
+      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a> ya
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> channel par jaayein
     </div>
     <div class="story-info">
       <div class="story-impact">🎉 Help Mili!</div>

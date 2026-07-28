@@ -696,7 +696,7 @@
           </label>
           <label class="radio-item">
             <input type="radio" name="reach" value="india">
-            <span>🇮🇳 Pure India mein</span>
+            <span> Poore India mein</span>
           </label>
           <label class="radio-item">
             <input type="radio" name="reach" value="global" checked>
@@ -709,9 +709,17 @@
       <div class="form-group">
 		<label>Aap Madad Kyun Karna Chahte Hain? (Optional Video)</label>
 		<div class="motivation-hint">
-		<p>📹 Apni dil ki baat share karo! Phone se ek short video banao, Google Drive mein upload karo, phir "Share" → <strong>"Anyone with the link" access ON karo</strong> → link copy karke neeche paste karo. Log aapse inspire honge. Ya baad mein bhi de sakte ho.</p>
+		<p>📹 Apni dil ki baat share karo! Phone se ek short video banao, Google Drive mein upload karo, phir "Share" → <strong>"Anyone with the link" access ON karo</strong> → link copy karke neeche paste karo. Log aapse inspire honge.</p>
 	  </div>
 		<input type="url" id="motivationVideo" placeholder="Google Drive video link (optional)">
+	  </div>
+
+      <div class="form-group">
+		<label>Apni Photo Dena Chahte Hain? (Optional)</label>
+		<div class="motivation-hint">
+		<p>📸 Wall of Fame par apni photo dikhana chahte hain to apni photo Google Drive par upload karke uska link do (same "Anyone with the link" access ON karke). Agar nahi dena chahte to ignore karo.</p>
+	  </div>
+		<input type="url" id="profilePhoto" placeholder="Google Drive photo link (optional)">
 	  </div>
 
       <div class="btn-group">
@@ -777,7 +785,7 @@
             <li>📧 Email mein zarooratmand ka poora case aur phone number milega</li>
             <li>📞 Aap seedha unse contact karo — help directly karo</li>
             <li>🤝 Koi beech wala nahi — aap aur woh seedha baat karenge</li>
-            <li>🌟 Help ke baad zarooratmand khud aapke liye Shukriya video banayega — hum email karenge</li>
+            <li>🌟 Help ke baad agar zarooratmand ne aapke liye Shukriya video banayega — hum email karenge</li>
           </ul>
         </div>
 
@@ -1100,6 +1108,7 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
     reach: reach ? reach.value : 'global',
 	helpFrequency: document.querySelector('input[name="helpFrequency"]:checked')?.value || 'monthly',
     motivationVideo: document.getElementById('motivationVideo').value.trim(),
+    profilePhoto: document.getElementById('profilePhoto').value.trim(),
 	refCode: getReferralCode(),
     timestamp: new Date().toISOString()
   };
