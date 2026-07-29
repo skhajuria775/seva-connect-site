@@ -220,7 +220,7 @@
 <!-- CTA -->
 <section class="gallery-cta">
 <p>Aapke paas bhi koi seva moment hai jo share karna chahte ho?</p>
-<a href="submit-shukriya.html" class="btn-cta-main">📤 Photo Share Karo</a>
+<a href="share-moment.html" class="btn-cta-main">📤 Photo Share Karo</a>
 </section>
 
 <!-- FOOTER -->
@@ -281,27 +281,46 @@ const GALLERY_APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudf
 // NAHI LAGATE — woh jaise hain waise hi reh jaate hain (showpiece).
 async function loadGalleryFromPhotos() {
   try {
-    const response = await fetch(GALLERY_APPS_SCRIPT_URL + '/getShukriyaVideos');
-    const result = await response.json();
-    const videos = result && result.videos ? result.videos : [];
+    const [shukriyaRes, momentsRes] = await Promise.all([
+      fetch(GALLERY_APPS_SCRIPT_URL + '/getShukriyaVideos').then(r => r.json()).catch(() => ({videos: []})),
+      fetch(GALLERY_APPS_SCRIPT_URL + '/getGalleryPhotos').then(r => r.json()).catch(() => ({photos: []}))
+    ]);
 
-    const withPhotos = videos.filter(function (v) { return v.photoLink; });
-    if (!withPhotos.length) return; // Fallback placeholders jaise hain waise rahenge
+    const shukriyaPhotos = (shukriyaRes.videos || []).filter(function (v) { return v.photoLink; });
+    const momentPhotos = momentsRes.photos || [];
+
+    const allPhotos = shukriyaPhotos.map(function (v) {
+      return {
+        photoLink: v.photoLink,
+        name: v.zaruratmandName || 'Ek zarooratmand',
+        city: v.city,
+        category: v.category
+      };
+    }).concat(momentPhotos.map(function (p) {
+      return {
+        photoLink: p.photoLink,
+        name: p.name || 'Ek Seva Connect member',
+        city: p.city,
+        category: p.category
+      };
+    }));
+
+    if (!allPhotos.length) return; // Fallback placeholders jaise hain waise rahenge
 
     const grid = document.getElementById('galleryGrid');
     if (!grid) return;
 
     const fragment = document.createDocumentFragment();
 
-    withPhotos.forEach(function (video) {
-      const driveFileId = extractDriveFileId(video.photoLink);
-      if (!driveFileId) return; // valid Drive ID nahi mila, is entry ko skip karo
+    allPhotos.forEach(function (photo) {
+      const driveFileId = extractDriveFileId(photo.photoLink);
+      if (!driveFileId) return;
 
-      const caption = (video.zaruratmandName || 'Ek zarooratmand') + ' — ' + (video.city || '');
+      const caption = photo.name + ' — ' + (photo.city || '');
       const thumbUrl = 'https://drive.google.com/thumbnail?id=' + driveFileId + '&sz=w400';
       const item = document.createElement('div');
       item.className = 'g-item';
-      item.dataset.category = video.category || 'events';
+      item.dataset.category = photo.category || 'events';
       item.innerHTML =
         '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
         '<div class="g-overlay"><span>' + caption + '</span></div>';
@@ -311,7 +330,7 @@ async function loadGalleryFromPhotos() {
       fragment.appendChild(item);
     });
 
-    if (fragment.children.length === 0) return; // kuch render-layak nahi mila, placeholders rehne do
+    if (fragment.children.length === 0) return;
 
     grid.innerHTML = '';
     grid.appendChild(fragment);
