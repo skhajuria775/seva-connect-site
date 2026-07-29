@@ -273,56 +273,42 @@
 // hi dikhega, jo dekhne mein normal lagega par galat reason se).
 const GALLERY_APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
 
-// ===== REAL SHUKRIYA VIDEOS SE GALLERY BHARO =====
-// Same API jo stories.html use karta hai (getShukriyaVideos).
-// Agar real approved videos milte hain, placeholder cards ko
-// replace kar dete hain real thumbnails se. Agar kuch nahi milta
-// (0 videos, ya fetch fail), placeholder cards ko HAATH NAHI
-// LAGATE — woh jaise hain waise hi reh jaate hain (showpiece).
-async function loadGalleryFromShukriyaVideos() {
+// ===== REAL PHOTOS SE GALLERY BHARO (VIDEOS NAHI — yeh photo gallery hai) =====
+// Same API jo Stories page use karta hai (getShukriyaVideos), lekin
+// yahan sirf woh entries filter karte hain jinke paas photoLink hai —
+// video kabhi is gallery mein nahi dikhni chahiye. Agar real photo
+// nahi milti (0 photos, ya fetch fail), placeholder cards ko HAATH
+// NAHI LAGATE — woh jaise hain waise hi reh jaate hain (showpiece).
+async function loadGalleryFromPhotos() {
   try {
     const response = await fetch(GALLERY_APPS_SCRIPT_URL + '/getShukriyaVideos');
     const result = await response.json();
     const videos = result && result.videos ? result.videos : [];
 
-    if (!videos.length) return; // Fallback placeholders jaise hain waise rahenge
+    const withPhotos = videos.filter(function (v) { return v.photoLink; });
+    if (!withPhotos.length) return; // Fallback placeholders jaise hain waise rahenge
 
     const grid = document.getElementById('galleryGrid');
     if (!grid) return;
 
-    // Pehle items ek fragment mein banao — grid ko tabhi replace karo
-    // jab kam se kam ek item bana ho, warna placeholders safe rehte hain
     const fragment = document.createDocumentFragment();
 
-    videos.forEach(function (video) {
+    withPhotos.forEach(function (video) {
+      const driveFileId = extractDriveFileId(video.photoLink);
+      if (!driveFileId) return; // valid Drive ID nahi mila, is entry ko skip karo
+
       const caption = (video.zaruratmandName || 'Ek zarooratmand') + ' — ' + (video.city || '');
+      const thumbUrl = 'https://drive.google.com/thumbnail?id=' + driveFileId + '&sz=w400';
       const item = document.createElement('div');
       item.className = 'g-item';
       item.dataset.category = video.category || 'events';
-
-      if (video.youtubeVideoId) {
-        const thumbUrl = 'https://img.youtube.com/vi/' + video.youtubeVideoId + '/hqdefault.webp';
-        item.innerHTML =
-          '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
-          '<div class="g-play-badge">▶️ Video</div>' +
-          '<div class="g-overlay"><span>' + caption + '</span></div>';
-        item.addEventListener('click', function () {
-          window.open('https://youtube.com/watch?v=' + video.youtubeVideoId, '_blank');
-        });
-        fragment.appendChild(item);
-      } else {
-        const driveFileId = extractDriveFileId(video.youtubeLink);
-        if (!driveFileId) return; // na YouTube ID na Drive ID mila, is video ko skip karo
-        const thumbUrl = 'https://drive.google.com/thumbnail?id=' + driveFileId + '&sz=w400';
-        item.innerHTML =
-          '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
-          '<div class="g-play-badge">▶️ Video</div>' +
-          '<div class="g-overlay"><span>' + caption + '</span></div>';
-        item.addEventListener('click', function () {
-          window.open('https://drive.google.com/file/d/' + driveFileId + '/preview', '_blank');
-        });
-        fragment.appendChild(item);
-      }
+      item.innerHTML =
+        '<img src="' + thumbUrl + '" alt="' + caption + '" loading="lazy">' +
+        '<div class="g-overlay"><span>' + caption + '</span></div>';
+      item.addEventListener('click', function () {
+        openLightbox(thumbUrl, caption);
+      });
+      fragment.appendChild(item);
     });
 
     if (fragment.children.length === 0) return; // kuch render-layak nahi mila, placeholders rehne do
@@ -330,12 +316,10 @@ async function loadGalleryFromShukriyaVideos() {
     grid.innerHTML = '';
     grid.appendChild(fragment);
   } catch (error) {
-    // Fetch fail ho to bhi kuch nahi karna — fallback placeholder
-    // cards apni jagah rahenge, page kabhi khaali nahi dikhega.
     console.log('Gallery load error (fallback showpiece rahega):', error);
   }
 }
-document.addEventListener('DOMContentLoaded', loadGalleryFromShukriyaVideos);
+document.addEventListener('DOMContentLoaded', loadGalleryFromPhotos);
 
 // ===== GALLERY FILTER =====
 // Yeh function real thumbnails aur fallback placeholders, dono

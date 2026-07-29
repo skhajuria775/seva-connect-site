@@ -199,8 +199,9 @@ function createStoryCard(data) {
     </div>
     <div class="video-social-note">
       🎬 Poori kahani aur aisi hi aur inspiring stories dekhne ke liye humare
-      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a> ya
-      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> channel par jaayein
+      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a>,
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
+      <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
     </div>
     <div class="story-info">
       <div class="story-impact">🎉 Help Mili!</div>
@@ -225,8 +226,12 @@ async function loadMadadgarWall() {
     madadgars.slice(0, 8).forEach(madadgar => {
       const card = document.createElement('div');
       card.className = 'donor-wall-card';
+      const photoId = extractDriveFileId(madadgar.profilePhoto);
+      const avatarHtml = photoId
+        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
+        : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
-        <div class="donor-avatar">👤</div>
+        ${avatarHtml}
         <div class="donor-name">${madadgar.name}</div>
         <div class="donor-badge">${madadgar.badge}</div>
         <div class="donor-city">📍 ${madadgar.city}</div>
@@ -273,8 +278,14 @@ function createMadadgarVideoCard(data) {
   }
   card.innerHTML = `
     <div class="story-video">${embedHtml}</div>
+    <div class="video-social-note">
+      🎬 Aisi hi aur inspiring baatein sunne ke liye humare
+      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a>,
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
+      <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
+    </div>
     <div class="story-info">
-      <div class="story-impact">🤝 Madadgar Ki Awaaz</div>
+      <div class="story-impact">🤝 Madadgar Ki Soch</div>
       <h3>${data.name} — ${data.city || ''}</h3>
       <p>${data.badge || ''}</p>
     </div>

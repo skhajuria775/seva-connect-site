@@ -188,6 +188,12 @@
 <p class="hint-text">📁 Drive mein video upload karke "Anyone with the link" access do, phir link yahan paste karo.</p>
 </div>
 
+<div class="form-group">
+<label class="form-label">Is Seva Moment Ki Photo (Optional)</label>
+<input type="url" id="skPhotoLink" class="form-input" placeholder="https://drive.google.com/file/d/... (photo link, optional)">
+<p class="hint-text">📸 Agar is madad ki koi photo hai (same "Anyone with the link" access ON karke), to yahan uska Drive link do — yeh humari Photo Gallery par dikhayi jaayegi. Optional hai, chhod bhi sakte ho.</p>
+</div>
+
 <div style="margin-bottom: 16px;">
   <label style="display:flex; gap:12px; align-items:flex-start;
     background:#f0f9f0; border:1px solid #c8e6c9; padding:14px;
@@ -323,6 +329,7 @@ document.getElementById('shukriyaForm').addEventListener('submit', async functio
   const caseId = document.getElementById('caseId').value.trim();
   const name = document.getElementById('skName').value.trim();
   const driveLink = document.getElementById('skDriveLink').value.trim();
+  const photoLink = document.getElementById('skPhotoLink').value.trim();
 
   if (!caseId || !name || !driveLink) {
     msg.textContent = 'Sabhi fields bharo.';
@@ -355,6 +362,7 @@ document.getElementById('shukriyaForm').addEventListener('submit', async functio
     zaruratmandName: name,
     videoType: 'SHUKRIYA',
     driveLink: driveLink,
+    photoLink: photoLink,
     selectedMadadgarIds: selectedMadadgarIds,
     publicConsent: document.getElementById('videoConsent').checked
   };

@@ -783,6 +783,14 @@ transform: translateY(-4px);
 font-size: 2.5rem;
 margin-bottom: 10px;
 }
+.donor-avatar-img {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 10px;
+border: 2px solid rgba(255,255,255,0.3);
+}
 .donor-name {
 font-weight: 700;
 font-size: 0.95rem;

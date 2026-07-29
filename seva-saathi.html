@@ -312,6 +312,11 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 <input type="text" name="socialHandle" class="form-input" placeholder="@yourusername">
 </div>
 <div class="form-group">
+<label>Apni Photo Dena Chahte Hain? (Optional)</label>
+<p style="font-size:0.82rem;color:#666;margin-bottom:8px;">📸 Wall of Fame par apni photo dikhana chahte hain to apni photo Google Drive par upload karke uska link do (same "Anyone with the link" access ON karke). Agar nahi dena chahte to ignore karo.</p>
+<input type="url" name="profilePhoto" class="form-input" placeholder="Google Drive photo link (optional)">
+</div>
+<div class="form-group">
 <label class="checkbox-label">
 <input type="checkbox" name="terms" required id="ssTerms">
 <span>Main samajhta/samajhti hoon ki Seva Saathi role mein koi guaranteed income nahi hai, aur appreciation share sirf platform ki ad revenue available hone par hi possible hai.</span>
@@ -464,7 +469,8 @@ document.getElementById('sevaSaathiForm').addEventListener('submit', async funct
     phone: form.phone.value.trim(),
     email: form.email.value.trim(),
     city: form.city.value.trim(),
-    social: form.socialHandle.value.trim()
+    social: form.socialHandle.value.trim(),
+    profilePhoto: form.profilePhoto.value.trim()
   };
 
   const ssNameOk = validateSSNameField();
@@ -529,8 +535,12 @@ async function loadSevaSaathiWall() {
     sevaSaathis.slice(0, 8).forEach(ss => {
       const card = document.createElement('div');
       card.className = 'donor-wall-card';
+      const photoId = extractDriveFileId(ss.profilePhoto);
+      const avatarHtml = photoId
+        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
+        : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
-        <div class="donor-avatar">👤</div>
+        ${avatarHtml}
         <div class="donor-name">${ss.name}</div>
         <div class="donor-badge">${ss.levelEmoji} ${ss.levelName}</div>
         <div class="donor-city">📍 ${ss.city}</div>
