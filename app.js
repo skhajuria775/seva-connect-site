@@ -193,6 +193,23 @@ function createStoryCard(data) {
       videoEmbedHtml = `<iframe src="https://drive.google.com/file/d/${driveFileId}/preview" allowfullscreen loading="lazy"></iframe>`;
     }
   }
+
+  // Lambi story ko chhota kar do — page perfectly dikhe, bahut lamba text na ho
+  let storyText = data.story || '';
+  if (storyText.length > 220) {
+    storyText = storyText.slice(0, 220).trim() + '…';
+  }
+
+  const madadgarCreditHtml = data.madadgarName ? `
+    <div class="madadgar-credit">
+      <span class="seva-icon">🌟</span>
+      <div class="credit-text">
+        Madadgar: <span class="credit-name">${data.madadgarName}${data.city ? ', ' + data.city : ''}</span>
+        ${data.madadgarBadge ? `<span class="seva-level-badge">${data.madadgarBadge}</span>` : ''}
+      </div>
+    </div>
+  ` : '';
+
   card.innerHTML = `
     <div class="story-video">
       ${videoEmbedHtml}
@@ -203,10 +220,17 @@ function createStoryCard(data) {
       <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
       <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
     </div>
-    <div class="story-info">
-      <div class="story-impact">🎉 Help Mili!</div>
+    <div class="story-body">
+      <div class="story-badge-row">
+        <span class="badge-helped">❤️ Help Mili!</span>
+      </div>
+      <div class="inspire-box">
+        <strong>✨ Ek Madadgar Ki Wajah Se</strong>
+        ${data.zaruratmandName || 'Ek zarooratmand'} ko ${data.category || 'zarurat'} mein madad mili
+      </div>
       <h3>${data.zaruratmandName || 'Ek zarooratmand'} ki kahani — ${data.city || ''}</h3>
-      <p>${data.category ? 'Category: ' + data.category : ''}</p>
+      ${storyText ? `<p style="word-wrap:break-word; overflow-wrap:break-word;">${storyText}</p>` : ''}
+      ${madadgarCreditHtml}
       <button class="btn-share-story" onclick="shareStory('${data.caseId || ''}','${data.zaruratmandName || ''}')">📤 Is Kahani Ko Share Karo</button>
     </div>
   `;
