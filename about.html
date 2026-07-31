@@ -22,6 +22,43 @@
    ABOUT PAGE — SPECIFIC STYLES
 ============================================ */
 
+.founder-note {
+  background: #fff;
+  padding: 70px 5% 40px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.founder-note-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.founder-photo {
+  width: 220px;
+  height: 207px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.14);
+  flex-shrink: 0;
+}
+.founder-text { flex: 1; min-width: 260px; }
+.founder-text p {
+  font-size: 1.02rem;
+  color: #444;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.founder-signature {
+  font-weight: 700;
+  color: #1a1a2e;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .founder-note-inner { flex-direction: column; text-align: center; }
+}
+
 /* HERO */
 .about-hero {
   background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 50%, #004E89 100%);
@@ -476,6 +513,23 @@
     <div class="hamburger" onclick="toggleNav()">☰</div>
   </div>
 </nav>
+
+<!-- FOUNDER'S NOTE -->
+<section class="founder-note">
+  <div class="founder-note-inner">
+    <img src="sanjeev-founder.webp" alt="Sanjeev Khajuria — Founder, Seva Connect" class="founder-photo" loading="lazy" width="220" height="207">
+    <div class="founder-text">
+      <span class="section-label">Founder Ki Awaaz Mein</span>
+      <p>
+        Yeh mission maine tab shuru kiya jab maine dekha ki kayi zarooratmand log sahi jagah tak pahunch hi nahi paate — aur kayi log jo dil se madad karna chahte hain, unhe bharosemand raasta nahi milta. Seva Connect isi doori ko khatam karne ke liye bana hai — taaki har madad seedhe sahi haathon tak pahunche, bina kisi beech ke.
+      </p>
+      <p>
+        Yeh mission akela nahi chal sakta. Har Madadgar, har Seva Saathi, aur har Zaruratmand jo iss platform se judta hai — wahi iski asli taaqat hai.
+      </p>
+      <p class="founder-signature">— Sanjeev Khajuria, Founder</p>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="about-hero">
