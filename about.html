@@ -23,40 +23,68 @@
 ============================================ */
 
 .founder-note {
-  background: #fff;
-  padding: 70px 5% 40px;
+  background: linear-gradient(135deg, #fff8f5 0%, #fff 55%);
+  padding: 80px 5% 60px;
   border-bottom: 1px solid #f0f0f0;
 }
 .founder-note-inner {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 48px;
   flex-wrap: wrap;
 }
-.founder-photo {
-  width: 220px;
-  height: 207px;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(0,0,0,0.14);
+.founder-photo-wrap {
+  position: relative;
   flex-shrink: 0;
 }
-.founder-text { flex: 1; min-width: 260px; }
+.founder-photo {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 14px 40px rgba(255,107,53,0.22), 0 0 0 3px #FF6B35;
+}
+.founder-photo-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 4px;
+  background: #FF6B35;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  white-space: nowrap;
+}
+.founder-text { flex: 1; min-width: 280px; }
+.founder-welcome {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.4;
+  margin: 10px 0 18px;
+}
 .founder-text p {
-  font-size: 1.02rem;
-  color: #444;
+  font-size: 1.03rem;
+  color: #555;
   line-height: 1.9;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .founder-signature {
   font-weight: 700;
-  color: #1a1a2e;
+  color: #FF6B35;
   font-style: italic;
+  border-top: 1px solid #f0dcd0;
+  padding-top: 14px;
+  display: inline-block;
 }
 @media (max-width: 600px) {
   .founder-note-inner { flex-direction: column; text-align: center; }
+  .founder-photo-badge { right: 50%; transform: translateX(50%); bottom: -10px; }
 }
 
 /* HERO */
@@ -517,14 +545,18 @@
 <!-- FOUNDER'S NOTE -->
 <section class="founder-note">
   <div class="founder-note-inner">
-    <img src="sanjeev-founder.webp" alt="Sanjeev Khajuria — Founder, Seva Connect" class="founder-photo" loading="lazy" width="220" height="207">
+    <div class="founder-photo-wrap">
+      <img src="sanjeev-founder.webp" alt="Sanjeev Khajuria — Founder, Seva Connect" class="founder-photo" loading="lazy" width="260" height="260">
+      <span class="founder-photo-badge">🙏 Founder</span>
+    </div>
     <div class="founder-text">
       <span class="section-label">Founder Ki Awaaz Mein</span>
+      <h2 class="founder-welcome">Namaste, aur Seva Connect mein aapka dil se swagat hai 🙏</h2>
       <p>
-        Yeh mission maine tab shuru kiya jab maine dekha ki kayi zarooratmand log sahi jagah tak pahunch hi nahi paate — aur kayi log jo dil se madad karna chahte hain, unhe bharosemand raasta nahi milta. Seva Connect isi doori ko khatam karne ke liye bana hai — taaki har madad seedhe sahi haathon tak pahunche, bina kisi beech ke.
+        Main Sanjeev Khajuria hoon — iss platform ka Founder. Yeh mission maine tab shuru kiya jab maine dekha ki kayi zarooratmand log sahi jagah tak pahunch hi nahi paate, aur kayi log jo dil se madad karna chahte hain unhe bharosemand raasta nahi milta. Seva Connect isi doori ko khatam karne ke liye bana hai — taaki har madad seedhe sahi haathon tak pahunche, bina kisi beech ke.
       </p>
       <p>
-        Yeh mission akela nahi chal sakta. Har Madadgar, har Seva Saathi, aur har Zaruratmand jo iss platform se judta hai — wahi iski asli taaqat hai.
+        Yeh mission akela nahi chal sakta. Har Madadgar, har Seva Saathi, aur har Zaruratmand jo iss platform se judta hai — wahi iski asli taaqat hai. Aaiye, mil kar iss mission ko aage badhayein.
       </p>
       <p class="founder-signature">— Sanjeev Khajuria, Founder</p>
     </div>
