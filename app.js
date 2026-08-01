@@ -119,6 +119,7 @@ function createCaseCard(data) {
       🎬 Poori kahani aur aisi hi aur cases dekhne ke liye humare
       <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a> ya
       <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> channel par jaayein
+	  <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
     </div>
     <div class="case-info">
       <div class="case-badges">
