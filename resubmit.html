@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document/Video Submit Karo | Seva Connect</title>
+<meta name="description" content="Apna case ke liye naya document ya video submit karo.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sevaconnect.in/resubmit.html">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="form.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+.resubmit-hero {
+  background: linear-gradient(135deg, #fff8f5, #ffe9dc);
+  padding: 120px 5% 50px;
+  text-align: center;
+}
+.resubmit-hero h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); margin-bottom: 14px; color: #FF6B35; }
+.resubmit-hero p { font-size: 1.05rem; color: #444; max-width: 560px; margin: 0 auto; }
+
+.form-container { max-width: 600px; margin: 40px auto 70px; padding: 0 16px; }
+.resubmit-form-box {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.reason-box {
+  background: #fff8f5;
+  border-left: 4px solid #FF6B35;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+  color: #333;
+}
+.rs-success, .rs-error-state { display: none; text-align: center; padding: 20px; }
+.rs-success.show, .rs-error-state.show { display: block; }
+.rs-success .icon, .rs-error-state .icon { font-size: 3rem; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="index.html" class="logo">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:50px;height:50px;object-fit:contain;border-radius:50%;">
+<div>
+<span class="logo-text">Seva Connect</span>
+<span class="logo-tagline">Connecting Hearts, Changing Lives</span>
+</div>
+</a>
+<div class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="cases.html">Cases</a>
+<a href="stories.html">Stories</a>
+<a href="about.html">About</a>
+<a href="seva-saathi.html">Seva Saathi</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="hamburger" onclick="toggleNav()">☰</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="resubmit-hero">
+<h1>📤 Document/Video Submit Karo</h1>
+<p>Aapka case active hai — bas verify karne ke liye ek chhoti si aur jaankari chahiye.</p>
+</section>
+
+<!-- FORM -->
+<div class="form-container">
+<div class="resubmit-form-box">
+
+<div id="rsLoadingCheck" style="text-align:center; padding: 20px; color:#888;">Case check ho raha hai...</div>
+
+<div id="rsInvalidState" class="rs-error-state">
+<div class="icon">❌</div>
+<h2>Yeh Link Ab Valid Nahi Hai</h2>
+<p id="rsInvalidMsg">Yeh case pehle se resubmit ho chuka hai, ya link galat hai.</p>
+<p style="margin-top:16px;">Koi sawaal ho to: <a href="contact.html">Contact page</a> se sampark karein.</p>
+</div>
+
+<form id="resubmitForm" style="display:none;">
+<div class="reason-box" id="rsReasonBox">
+<strong>Hamari team ne bataya:</strong> <span id="rsReasonText"></span>
+</div>
+
+<div class="form-group">
+<label class="form-label">Naya Document Ka Google Drive Link</label>
+<input type="url" id="rsDocumentUrl" class="form-input" placeholder="https://drive.google.com/file/d/...">
+</div>
+
+<div class="form-group">
+<label class="form-label">Naya Video Ka Google Drive Link</label>
+<input type="url" id="rsVideoUrl" class="form-input" placeholder="https://drive.google.com/file/d/...">
+<p class="hint-text">📁 Kam se kam ek link (document ya video) daalna zaroori hai. Dono bhi daal sakte ho.</p>
+</div>
+
+<button type="submit" class="btn-submit-final" id="rsSubmitBtn">Submit Karo</button>
+<p id="rsFormMsg" style="text-align:center; margin-top: 14px; font-size: 0.9rem; color: #dc3545;"></p>
+</form>
+
+<div class="rs-success" id="rsSuccess">
+<div class="icon">✅</div>
+<h2>Submit Ho Gaya!</h2>
+<p>Hamari team jald hi dobara verify karegi.</p>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo">🙏 Seva Connect</div>
+<p class="footer-tagline">Connecting Hearts, Changing Lives</p>
+<p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
+<div class="social-links">
+<a href="https://youtube.com/@officialsevaconnect" target="_blank">📺</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank">📸</a>
+<a href="https://facebook.com/officialsevaconnect" target="_blank">👥</a>
+<a href="https://wa.me/919858105224" target="_blank">💬</a>
+</div>
+</div>
+<div class="footer-links-group">
+<h4>Platform</h4>
+<a href="cases.html">Active Cases</a>
+<a href="stories.html">Success Stories</a>
+<a href="about.html">About Us</a>
+<a href="gallery.html">Gallery</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-links-group">
+<h4>Join Us</h4>
+<a href="register-madadgar.html">Madadgar Bano</a>
+<a href="register-needy.html">Help Maango</a>
+<a href="seva-saathi.html">Seva Saathi Bano</a>
+<a href="submit-shukriya.html">Shukriya Video Bhejo</a>
+</div>
+<div class="footer-links-group">
+<h4>Legal</h4>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="verification-policy.html">Verification Policy</a>
+<a href="community-guidelines.html">Community Guidelines</a>
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
+</div>
+</footer>
+
+<script>
+const FUNCTIONS_BASE_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
+
+function getCaseIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('caseId');
+}
+
+const caseId = getCaseIdFromUrl();
+const loadingEl = document.getElementById('rsLoadingCheck');
+const invalidEl = document.getElementById('rsInvalidState');
+const formEl = document.getElementById('resubmitForm');
+
+if (!caseId) {
+  loadingEl.style.display = 'none';
+  document.getElementById('rsInvalidMsg').textContent = 'Case ID nahi mila. Yeh link seedha email se hi khulna chahiye.';
+  invalidEl.classList.add('show');
+} else {
+  fetch(FUNCTIONS_BASE_URL + '/getCaseStatus?caseId=' + encodeURIComponent(caseId))
+    .then(function(r) { return r.json(); })
+    .then(function(result) {
+      loadingEl.style.display = 'none';
+      if (result.success && result.status === 'INFO_NEEDED') {
+        document.getElementById('rsReasonText').textContent = result.reason || 'Document/video dobara chahiye.';
+        formEl.style.display = 'block';
+      } else {
+        document.getElementById('rsInvalidMsg').textContent = 'Yeh case ab resubmit karne ke liye valid nahi hai.';
+        invalidEl.classList.add('show');
+      }
+    })
+    .catch(function() {
+      loadingEl.style.display = 'none';
+      formEl.style.display = 'block';
+      document.getElementById('rsReasonBox').style.display = 'none';
+    });
+}
+
+document.getElementById('resubmitForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('rsSubmitBtn');
+  const msg = document.getElementById('rsFormMsg');
+
+  const documentUrl = document.getElementById('rsDocumentUrl').value.trim();
+  const zaruratVideoLink = document.getElementById('rsVideoUrl').value.trim();
+
+  if (!documentUrl && !zaruratVideoLink) {
+    msg.textContent = 'Kam se kam ek link (document ya video) daalo.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Submit ho raha hai...';
+  msg.textContent = '';
+
+  try {
+    const response = await fetch(FUNCTIONS_BASE_URL + '/submitResubmission', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ caseId: caseId, documentUrl: documentUrl, zaruratVideoLink: zaruratVideoLink })
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      formEl.style.display = 'none';
+      document.getElementById('rsSuccess').classList.add('show');
+    } else {
+      msg.textContent = result.error || 'Kuch gadbad hui, dobara try karo.';
+      btn.disabled = false;
+      btn.textContent = 'Submit Karo';
+    }
+  } catch (error) {
+    msg.textContent = 'Network error. WhatsApp pe bhi bhej sakte ho: +91-9858105224';
+    btn.disabled = false;
+    btn.textContent = 'Submit Karo';
+  }
+});
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('active');
+}
+</script>
+<script src="app.js"></script>
+</body>
+</html>
