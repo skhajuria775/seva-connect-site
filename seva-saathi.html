@@ -12,6 +12,8 @@
 <meta property="og:url" content="https://sevaconnect.in/seva-saathi.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"NGO","name":"Seva Connect","url":"https://sevaconnect.in"}
@@ -345,9 +347,9 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
     <button onclick="copyReferralLink()" style="background: #7b1fa2; color: white; border: none; padding: 8px 18px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; cursor: pointer;">📋 Link Copy Karo</button>
   </div>
 <div class="ss-share-row">
-<a href="https://youtube.com/@officialsevaconnect" target="_blank">📺 YouTube Subscribe</a>
-<a href="https://instagram.com/officialsevaconnect" target="_blank">📸 Instagram Follow</a>
-<a href="https://wa.me/?text=Main%20Seva%20Connect%20ka%20Seva%20Saathi%20ban%20gaya%20hoon!%20Aap%20bhi%20judo%3A%20https%3A%2F%2Fsevaconnect.in%2Fseva-saathi.html" target="_blank">💬 WhatsApp Share</a>
+<a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer">📺 YouTube Subscribe</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">📸 Instagram Follow</a>
+<a href="https://wa.me/?text=Main%20Seva%20Connect%20ka%20Seva%20Saathi%20ban%20gaya%20hoon!%20Aap%20bhi%20judo%3A%20https%3A%2F%2Fsevaconnect.in%2Fseva-saathi.html" target="_blank" rel="noopener noreferrer">💬 WhatsApp Share</a>
 </div>
 </div>
 </section>
@@ -360,10 +362,10 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 <p class="footer-tagline">Connecting Hearts, Changing Lives</p>
 <p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
 <div class="social-links">
-<a href="https://youtube.com/@officialsevaconnect" target="_blank" title="YouTube">📺</a>
-<a href="https://instagram.com/officialsevaconnect" target="_blank" title="Instagram">📸</a>
-<a href="https://facebook.com/officialsevaconnect" target="_blank" title="Facebook">👥</a>
-<a href="https://wa.me/919858105224" target="_blank" title="WhatsApp">💬</a>
+<a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer" title="YouTube">📺</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer" title="Instagram">📸</a>
+<a href="https://facebook.com/officialsevaconnect" target="_blank" rel="noopener noreferrer" title="Facebook">👥</a>
+<a href="https://wa.me/919858105224" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
 </div>
 </div>
 <div class="footer-links-group">
@@ -547,7 +549,7 @@ async function loadSevaSaathiWall() {
       card.className = 'donor-wall-card';
       const photoId = extractDriveFileId(ss.profilePhoto);
       const avatarHtml = photoId
-        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
+        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" alt="Donor" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
         : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
         ${avatarHtml}

@@ -16,6 +16,8 @@
 {"@context":"https://schema.org","@type":"NGO","name":"Seva Connect","url":"https://sevaconnect.in","description":"India ka pehla verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai. Zero commission, zero middleman.","email":"helpsevaconnect@gmail.com"}
 </script>
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-063BL2455T"></script>
@@ -60,16 +62,23 @@
   <div class="hero-slide" style="background-image:url('hero-slide-1.webp');">
     <p class="hero-slide-caption">Connecting Hearts</p>
   </div>
-  <div class="hero-slide" style="background-image:url('hero-slide-2.webp');">
+  <div class="hero-slide" data-bg="hero-slide-2.webp">
     <p class="hero-slide-caption">Koi Sapna Na Toote</p>
   </div>
-  <div class="hero-slide" style="background-image:url('hero-slide-3.webp');">
+  <div class="hero-slide" data-bg="hero-slide-3.webp">
     <p class="hero-slide-caption">Koi Akela Na Rahe</p>
   </div>
-  <div class="hero-slide" style="background-image:url('hero-slide-4.webp');">
+  <div class="hero-slide" data-bg="hero-slide-4.webp">
     <p class="hero-slide-caption">Shukriya, Insaniyat</p>
   </div>
 </div>
+<script>
+window.addEventListener('load', function() {
+  document.querySelectorAll('.hero-slide[data-bg]').forEach(function(el) {
+    el.style.backgroundImage = "url('" + el.getAttribute('data-bg') + "')";
+  });
+});
+</script>
 <div class="hero-bg-overlay"></div>
 <div class="hero-content">
 <div class="hero-badge"><img src="https://flagcdn.com/w20/in.png" alt="India" style="height:14px;vertical-align:middle;margin-right:4px;"> India Ka #1 Free Seva Platform</div>
@@ -236,7 +245,7 @@ Har zaroorat ke peeche ek kahani hoti hai, aur har kahani ko ek madadgar ki zaro
 
     <!-- WhatsApp -->
     <a href="https://wa.me/?text=🙏%20Seva%20Connect%20-%20India%20ka%20free%20platform%20jo%20genuine%20zarooratmandon%20ko%20seedha%20Madadgars%20se%20milata%20hai.%20Zero%20commission%2C%20zero%20middleman.%0A%0AJoin%20karo%3A%20https%3A%2F%2Fsevaconnect.in%0A%0A%23SevaConnect%20%23Insaniyat"
-       target="_blank"
+       target="_blank" rel="noopener noreferrer"
        style="background:#25D366; color:white; padding:11px 20px;
               border-radius:50px; text-decoration:none; font-weight:700;
               font-size:0.88rem;">
@@ -245,7 +254,7 @@ Har zaroorat ke peeche ek kahani hoti hai, aur har kahani ko ek madadgar ki zaro
 
     <!-- Facebook -->
     <a href="https://www.facebook.com/sharer/sharer.php?u=https://sevaconnect.in"
-       target="_blank"
+       target="_blank" rel="noopener noreferrer"
        style="background:#1877F2; color:white; padding:11px 20px;
               border-radius:50px; text-decoration:none; font-weight:700;
               font-size:0.88rem;">
@@ -254,7 +263,7 @@ Har zaroorat ke peeche ek kahani hoti hai, aur har kahani ko ek madadgar ki zaro
 
     <!-- Twitter/X -->
     <a href="https://twitter.com/intent/tweet?text=🙏%20Seva%20Connect%20-%20India%20ka%20free%20platform%20jo%20genuine%20zarooratmandon%20ko%20seedha%20Madadgars%20se%20milata%20hai.%20Zero%20commission%2C%20zero%20middleman.%0A%0AJoin%20karo%3A%20https%3A%2F%2Fsevaconnect.in%0A%23SevaConnect"
-       target="_blank"
+       target="_blank" rel="noopener noreferrer"
        style="background:#000000; color:white; padding:11px 20px;
               border-radius:50px; text-decoration:none; font-weight:700;
               font-size:0.88rem;">
@@ -263,7 +272,7 @@ Har zaroorat ke peeche ek kahani hoti hai, aur har kahani ko ek madadgar ki zaro
 
     <!-- LinkedIn -->
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sevaconnect.in"
-       target="_blank"
+       target="_blank" rel="noopener noreferrer"
        style="background:#0A66C2; color:white; padding:11px 20px;
               border-radius:50px; text-decoration:none; font-weight:700;
               font-size:0.88rem;">
@@ -465,10 +474,10 @@ Har zaroorat ke peeche ek kahani hoti hai, aur har kahani ko ek madadgar ki zaro
 <p class="footer-tagline">Connecting Hearts, Changing Lives</p>
 <p class="footer-desc">India ka pehla free verified platform jo genuine zarooratmandon ko directly Madadgar se milata hai.</p>
 <div class="social-links">
-<a href="https://youtube.com/@officialsevaconnect" target="_blank" title="YouTube">📺</a>
-<a href="https://instagram.com/officialsevaconnect" target="_blank" title="Instagram">📸</a>
-<a href="https://facebook.com/officialsevaconnect" target="_blank" title="Facebook">👥</a>
-<a href="https://wa.me/919858105224" target="_blank" title="WhatsApp">💬</a>
+<a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer" title="YouTube">📺</a>
+<a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer" title="Instagram">📸</a>
+<a href="https://facebook.com/officialsevaconnect" target="_blank" rel="noopener noreferrer" title="Facebook">👥</a>
+<a href="https://wa.me/919858105224" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
 </div>
 </div>
 <div class="footer-links-group">

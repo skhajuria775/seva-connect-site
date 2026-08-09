@@ -117,9 +117,9 @@ function createCaseCard(data) {
     </div>
     <div class="video-social-note">
       🎬 Poori kahani aur aisi hi aur cases dekhne ke liye humare
-      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a>,
-      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
-      <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
+      <a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Instagram</a>,
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer">YouTube</a> ya
+      <a href="https://facebook.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Facebook</a> par jaayein
     </div>
     <div class="case-info">
       <div class="case-badges">
@@ -217,9 +217,9 @@ function createStoryCard(data) {
     </div>
     <div class="video-social-note">
       🎬 Poori kahani aur aisi hi aur inspiring stories dekhne ke liye humare
-      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a>,
-      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
-      <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
+      <a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Instagram</a>,
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer">YouTube</a> ya
+      <a href="https://facebook.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Facebook</a> par jaayein
     </div>
     <div class="story-body">
       <div class="story-badge-row">
@@ -305,9 +305,9 @@ function createMadadgarVideoCard(data) {
     <div class="story-video">${embedHtml}</div>
     <div class="video-social-note">
       🎬 Aisi hi aur inspiring baatein sunne ke liye humare
-      <a href="https://instagram.com/officialsevaconnect" target="_blank">Instagram</a>,
-      <a href="https://youtube.com/@officialsevaconnect" target="_blank">YouTube</a> ya
-      <a href="https://facebook.com/officialsevaconnect" target="_blank">Facebook</a> par jaayein
+      <a href="https://instagram.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Instagram</a>,
+      <a href="https://youtube.com/@officialsevaconnect" target="_blank" rel="noopener noreferrer">YouTube</a> ya
+      <a href="https://facebook.com/officialsevaconnect" target="_blank" rel="noopener noreferrer">Facebook</a> par jaayein
     </div>
     <div class="story-info">
       <div class="story-impact">🤝 Madadgar Ki Soch</div>
@@ -340,9 +340,9 @@ function showShareModal(text, url) {
       <h3>Share Karo 📤</h3>
       <p>Jitne zyada log dekhenge, utna jaldi help milegi!</p>
       <div class="share-buttons">
-        <a href="${waUrl}" target="_blank" class="share-btn whatsapp">💬 WhatsApp</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" class="share-btn facebook">👥 Facebook</a>
-        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}" target="_blank" class="share-btn twitter">🐦 Twitter</a>
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp">💬 WhatsApp</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn facebook">👥 Facebook</a>
+        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="share-btn twitter">🐦 Twitter</a>
         <button onclick="copyText('${url}')" class="share-btn copy">📋 Link Copy Karo</button>
       </div>
       <button onclick="closeModal()" class="close-modal">✕ Close</button>
