@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const frame = document.getElementById('previewFrame');
 
             if (videoId) {
-                frame.src = `https://www.youtube.com/embed/${videoId}`;
+                frame.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
                 preview.style.display = 'block';
             } else {
                 const driveFileId = extractDriveFileId(url);

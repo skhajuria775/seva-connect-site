@@ -104,7 +104,7 @@ function createCaseCard(data) {
   const videoId = extractYouTubeId(data.youtubeLink);
   let caseVideoHtml = '';
   if (videoId) {
-    caseVideoHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+    caseVideoHtml = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
   } else {
     const driveFileId = extractDriveFileId(data.youtubeLink);
     if (driveFileId) {
@@ -187,7 +187,7 @@ function createStoryCard(data) {
   const videoId = data.youtubeVideoId || extractYouTubeId(data.youtubeLink);
   let videoEmbedHtml = '';
   if (videoId) {
-    videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+    videoEmbedHtml = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
   } else {
     const driveFileId = extractDriveFileId(data.youtubeLink);
     if (driveFileId) {
@@ -294,7 +294,7 @@ function createMadadgarVideoCard(data) {
   const videoId = extractYouTubeId(url);
   let embedHtml = '';
   if (videoId) {
-    embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
+    embedHtml = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" allowfullscreen loading="lazy"></iframe>`;
   } else {
     const driveFileId = extractDriveFileId(url);
     if (driveFileId) {
