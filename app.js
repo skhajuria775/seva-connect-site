@@ -134,7 +134,7 @@ function createCaseCard(data) {
         <span>📍 ${data.city}</span>
       </div>
       <div class="case-actions">
-        <a href="register-madadgar.html?case=${data.id}" class="btn-help-now">❤️ Abhi Help Karo</a>
+        <a href="register-madadgar?case=${data.id}" class="btn-help-now">❤️ Abhi Help Karo</a>
         <button class="btn-share-case" onclick="shareCase('${data.id}','${data.name}','${data.city}')">📤 Share</button>
       </div>
     </div>
@@ -320,13 +320,13 @@ function createMadadgarVideoCard(data) {
 
 // ===== SHARE FUNCTIONS =====
 function shareCase(caseId, name, city) {
-  const url = `https://sevaconnect.in/cases.html?id=${caseId}`;
+  const url = `https://sevaconnect.in/cases?id=${caseId}`;
   const text = `🙏 Ek zaruratmand ko abhi madad chahiye!\n\n${name} (${city}) - verified case hai Seva Connect pe.\n\nKya aap ya aapka koi jaan-pehchaan ka madad kar sakta hai?\n\n${url}\n\nAapka ek share kisi ki zindagi badal sakta hai! 🤲`;
   showShareModal(text, url);
 }
 
 function shareStory(storyId, personName) {
-  const url = `https://sevaconnect.in/stories.html?id=${storyId}`;
+  const url = `https://sevaconnect.in/stories?id=${storyId}`;
   const text = `❤️ Ek sachchi kahani!\n\n${personName} ki madad ho gayi hai — kisi Madadgar ne dil se seva ki! Yeh dekh ke dil khush ho gaya!\n\nAap bhi yeh feeling experience karo:\n${url}\n\n#SevaConnect #Insaniyat`;
   showShareModal(text, url);
 }

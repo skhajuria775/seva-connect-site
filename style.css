@@ -1866,3 +1866,11 @@ transform 0.5s ease;
 opacity: 1;
 transform: translateY(0);
 }
+.hero-keywords {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.4;
+}
