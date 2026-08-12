@@ -211,6 +211,15 @@ text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 color: var(--orange);
 display: block;
 }
+.hero-keywords {
+display: block;
+font-size: 1rem;
+font-weight: 400;
+color: rgba(255,255,255,0.7);
+line-height: 1.5;
+margin-top: 14px;
+text-shadow: none;
+}
 .hero-subtitle {
 font-size: 1.15rem;
 color: rgba(255,255,255,0.78);
@@ -1760,6 +1769,7 @@ border-radius: 10px;
 }
 .hamburger { display: block; }
 .hero-title { font-size: 2.2rem; }
+.hero-keywords { font-size: 0.85rem; margin-top: 10px; }
 .hero-subtitle { font-size: 1rem; }
 .live-stats-bar {
 padding: 16px;
@@ -1816,6 +1826,7 @@ grid-template-columns: repeat(2, 1fr);
 }
 @media (max-width: 480px) {
 .hero-title { font-size: 1.8rem; }
+.hero-keywords { font-size: 0.78rem; }
 .btn-hero-primary,
 .btn-hero-secondary {
 padding: 14px 24px;
