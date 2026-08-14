@@ -253,7 +253,7 @@ async function loadMadadgarWall() {
       card.className = 'donor-wall-card';
       const photoId = extractDriveFileId(madadgar.profilePhoto);
       const avatarHtml = photoId
-        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
+        ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" alt="Donor" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
         : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
         ${avatarHtml}
