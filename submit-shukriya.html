@@ -6,6 +6,11 @@
 <title>Shukriya Video Bhejo | Seva Connect</title>
 <meta name="description" content="Agar aapko madad mil gayi hai, apna Shukriya video yahan submit karo — sirf 1 minute mein, bilkul free.">
 <link rel="canonical" href="https://sevaconnect.in/submit-shukriya">
+<meta property="og:title" content="Madad Mil Gayi? Shukriya Video Bhejo">
+<meta property="og:description" content="Sirf 1 minute mein apna Shukriya video bhejo — bilkul free, koi charge nahi.">
+<meta property="og:url" content="https://sevaconnect.in/submit-shukriya">
+<meta property="og:image" content="https://sevaconnect.in/logo-full.webp">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="form.css">
@@ -283,7 +288,7 @@
 </footer>
 
 <script>
-const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
+const CLOUD_FUNCTIONS_BASE = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
 
 // ===== NEW: Case ID daalne ke baad matched Madadgar fetch karo =====
 // (blur event — jab user Case ID field se bahar click karta hai)
@@ -305,7 +310,7 @@ document.getElementById('caseId').addEventListener('blur', async function () {
   list.innerHTML = '';
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL + '/getMatchedMadadgars?caseId=' + encodeURIComponent(caseId));
+    const response = await fetch(CLOUD_FUNCTIONS_BASE + '/getMatchedMadadgars?caseId=' + encodeURIComponent(caseId));
     const result = await response.json();
     const madadgars = result && result.madadgars ? result.madadgars : [];
 
@@ -362,13 +367,11 @@ document.getElementById('shukriyaForm').addEventListener('submit', async functio
   btn.textContent = 'Bhej rahe hain...';
   msg.textContent = '';
 
-  // NOTE: Yeh 'submitVideo' action use karta hai jo pehle se Code.gs
-  // mein hai. selectedMadadgarIds bhejne se, jab admin video ko
-  // "APPROVED" karega, Code.gs automatically sabhi selected Madadgar
-  // ko apna certificate/badge/helpcount de dega — koi extra admin
-  // step nahi (Matches sheet manually edit karne ki zaroorat nahi).
+  // NOTE: selectedMadadgarIds bhejne se, jab admin video ko
+  // "APPROVED" karega, onVideoApproved trigger (functions/index.js)
+  // automatically sabhi selected Madadgar ko apna certificate/badge/
+  // helpcount de dega — koi extra admin step nahi.
   const formData = {
-    action: 'submitVideo',
     caseId: caseId,
     zaruratmandName: name,
     videoType: 'SHUKRIYA',
@@ -379,7 +382,7 @@ document.getElementById('shukriyaForm').addEventListener('submit', async functio
   };
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL + '/submitVideo', {
+    const response = await fetch(CLOUD_FUNCTIONS_BASE + '/submitVideo', {
       method: 'POST',
 	  headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

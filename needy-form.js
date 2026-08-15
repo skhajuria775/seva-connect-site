@@ -1,5 +1,5 @@
 // ===== CONFIGURATION =====
-const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerNeedy';
+const CLOUD_FUNCTION_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerNeedy';
 const WHATSAPP_NUMBER = '919858105224';
 
 // ===== STEP NAVIGATION =====
@@ -71,9 +71,9 @@ function validateStep(stepNum) {
         // Story
         const story = document.getElementById('story').value.trim();
         const wordCount = story.split(/\s+/).filter(w => w.length > 0).length;
-        if (wordCount < 30) {
+        if (wordCount < 80) {
             valid = false;
-            alert('Apni kahani thodi aur detail mein likhiye (kam se kam 30 words)');
+            alert('Apni kahani thodi aur detail mein likhiye (kam se kam 80 words)');
         }
 
         // Amount
@@ -147,7 +147,7 @@ function validateNameField() {
 
 function validatePhoneField() {
     const phone = document.getElementById('phone').value.trim();
-    if (!phone || phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+        if (!phone || !/^[6-9][0-9]{9}$/.test(phone)) {
         showError('phoneError', 'Sahi 10 digit phone number daalo');
         return false;
     }
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const count = words.length;
             const counter = document.getElementById('wordCount');
             counter.textContent = count;
-            counter.style.color = count >= 30 ? '#28A745' : '#FF6B35';
+            counter.style.color = count >= 80 ? '#28A745' : '#FF6B35';
         });
     }
 });
@@ -402,12 +402,11 @@ document.getElementById('needyForm').addEventListener('submit', async function (
     document.getElementById('loadingOverlay').style.display = 'flex';
 
     // Collect all data
-    // NOTE: field names yahan Code.gs ke registerNeedy() function se match karte hain:
+    // NOTE: field names yahan functions/index.js ke registerNeedy() se match karte hain:
     //   - zaruratVideoLink (NOT youtubeLink)
     //   - documentUrl (NOT documentLink)
     //   - noOtherHelp (NOT otherHelpSought) — calculateUrgency() isi naam se check karta hai
     const formData = {
-        action: 'registerNeedy',
         name: document.getElementById('name').value.trim(),
         phone: document.getElementById('phone').value.trim(),
 		email: document.getElementById('email')?.value.trim() || '',
@@ -432,7 +431,7 @@ document.getElementById('needyForm').addEventListener('submit', async function (
     };
 
     try {
-        const response = await fetch(APPS_SCRIPT_URL, {
+        const response = await fetch(CLOUD_FUNCTION_URL, {
             method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

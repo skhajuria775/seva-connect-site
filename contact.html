@@ -8,6 +8,8 @@
 <link rel="canonical" href="https://sevaconnect.in/contact">
 <meta property="og:title" content="Contact Seva Connect | WhatsApp, Email & Support">
 <meta property="og:description" content="Seva Connect se WhatsApp, email ya message ke through sampark karein. Koi sawaal ya platform se judi problem ho, humse contact karein.">
+<meta property="og:image" content="https://sevaconnect.in/logo-full.webp">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://sevaconnect.in/contact">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
 <link rel="stylesheet" href="style.css">
@@ -279,9 +281,7 @@ function toggleFaq(element) {
   answer.classList.toggle('open');
 }
 
-// NOTE: Form abhi WhatsApp pe redirect karta hai (safe fallback, koi backend dependency nahi).
-// Future mein agar Google Sheet mein bhi save karna ho, Code.gs mein ek 'submitContact'
-// action add karke yahan fetch() call add kiya ja sakta hai (jaisa register-madadgar.html mein hai).
+
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const submitBtn = e.target.querySelector('.btn-contact-submit');
@@ -293,10 +293,10 @@ const phone = document.getElementById('cfPhone').value.trim();
 const email = document.getElementById('cfEmail').value.trim();
 const city = document.getElementById('cfCity').value.trim();
 const message = document.getElementById('cfMessage').value.trim();
-const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/submitContact';
+const CLOUD_FUNCTION_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/submitContact';
 
 try {
-  const response = await fetch(APPS_SCRIPT_URL, {
+  const response = await fetch(CLOUD_FUNCTION_URL, {
     method: 'POST',
 	headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action: 'submitContact', name: name, phone: phone, email: email, city: city, message: message })

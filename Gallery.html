@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><title>Seva Connect Gallery | Real Seva Moments & Community Impact</title></title>
+<title>Seva Connect Gallery | Real Seva Moments & Community Impact</title>
 <meta name="description" content="Seva Connect gallery mein real seva moments dekhiye — Madadgars, Zarooratmandon aur community ke un lamhon ki tasveerein jo insaniyat aur madad ki kahani bayan karti hain.">
 <link rel="canonical" href="https://sevaconnect.in/Gallery">
 <meta property="og:title" content="Seva Connect Gallery | Real Seva Moments & Community Impact">
 <meta property="og:description" content="Real seva moments, tasveeron mein — Madadgars, Zarooratmandon aur community se judi insaniyat ki sachchi kahaniyan.">
+<meta property="og:image" content="https://sevaconnect.in/logo-full.webp">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://sevaconnect.in/Gallery">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
@@ -284,7 +286,7 @@
 // aur submit-shukriya.html mein hai — sab ek hi deployment URL use
 // karein, warna real content load nahi hoga (fallback placeholder
 // hi dikhega, jo dekhne mein normal lagega par galat reason se).
-const GALLERY_APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
+const GALLERY_CLOUD_FUNCTIONS_BASE = 'https://us-central1-seva-connect-backend.cloudfunctions.net';
 
 // ===== REAL PHOTOS SE GALLERY BHARO (VIDEOS NAHI — yeh photo gallery hai) =====
 // Same API jo Stories page use karta hai (getShukriyaVideos), lekin
@@ -295,8 +297,8 @@ const GALLERY_APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudf
 async function loadGalleryFromPhotos() {
   try {
     const [shukriyaRes, momentsRes] = await Promise.all([
-      fetch(GALLERY_APPS_SCRIPT_URL + '/getShukriyaVideos').then(r => r.json()).catch(() => ({videos: []})),
-      fetch(GALLERY_APPS_SCRIPT_URL + '/getGalleryPhotos').then(r => r.json()).catch(() => ({photos: []}))
+      fetch(GALLERY_CLOUD_FUNCTIONS_BASE + '/getShukriyaVideos').then(r => r.json()).catch(() => ({videos: []})),
+      fetch(GALLERY_CLOUD_FUNCTIONS_BASE + '/getGalleryPhotos').then(r => r.json()).catch(() => ({photos: []}))
     ]);
 
     const shukriyaPhotos = (shukriyaRes.videos || []).filter(function (v) { return v.photoLink; });

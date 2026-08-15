@@ -8,6 +8,8 @@
 <link rel="canonical" href="https://sevaconnect.in/register-madadgar">
 <meta property="og:title" content="Madadgar Bano - Seva Connect">
 <meta property="og:description" content="Aapka ek kadam kisi ki zindagi badal sakta hai. Abhi register karo.">
+<meta property="og:image" content="https://sevaconnect.in/logo-full.webp">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://sevaconnect.in/register-madadgar">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
 <link rel="stylesheet" href="style.css">
@@ -873,7 +875,7 @@
 </footer>
 
 <script>
-const APPS_SCRIPT_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerMadadgar';
+const CLOUD_FUNCTION_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerMadadgar';
 const WHATSAPP_NUMBER = '919858105224';
 
 // ===== STEP NAVIGATION =====
@@ -1114,7 +1116,6 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
     : budgetValue;
 
   const formData = {
-    action: 'registerMadadgar',
     name: document.getElementById('name').value.trim(),
     phone: document.getElementById('phone').value.trim(),
     email: document.getElementById('email').value.trim(),
@@ -1132,7 +1133,7 @@ document.getElementById('madadgarForm').addEventListener('submit', async functio
   };
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL, {
+    const response = await fetch(CLOUD_FUNCTION_URL, {
       method: 'POST',
 	  headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seva Saathi Bano | Seva Connect — Connecting Hearts, Changing Lives</title>
-<meta name="description" content="Seva Saathi baniye — apne network mein umeed failaiye, zaruratmandon tak madad pahunchaiye, aur is mission ka hissa baniye. Community recognition, badges, aur certificates ke saath.">
+<title>Seva Saathi Kaise Bane | Seva Connect</title>
+<meta name="description" content="Seva Saathi kaise bane, registration kaise karein, referral link kaise kaam karta hai aur 7 levels ke system ke baare mein jaankari paayein.">
 <link rel="canonical" href="https://sevaconnect.in/seva-saathi">
-<meta property="og:title" content="Seva Saathi Bano | Seva Connect">
-<meta property="og:description" content="Aap bhi badal sakte hain kisi ki zindagi — Seva Saathi baniye aur is mission ko aage badhaiye.">
-<meta property="og:image" content="https://sevaconnect.in/assets/og-seva-saathi.webp">
+<meta property="og:title" content="Seva Saathi Kaise Bane | Seva Connect">
+<meta property="og:description" content="Seva Saathi ka role, registration, personal referral link aur 7 levels ke system ko simple language mein samjhiye.">
+<meta property="og:image" content="https://sevaconnect.in/logo-full.webp">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://sevaconnect.in/seva-saathi">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
@@ -140,16 +141,16 @@
 
 <!-- HERO (reuses .promoter-hero — deep purple gradient) -->
 <section class="promoter-hero">
-<h1>Aap Bhi Badal Sakte Hain<br>Kisi Ki Zindagi</h1>
-<p>Seva Saathi banke aap sirf register nahi karte — aap is mission ko apne shehar, apne mohalle, apne network tak le jaate hain. Har naya Madadgar jo aapki wajah se judta hai, ek naya rasta khulta hai kisi zaruratmand ke liye.</p>
-<a href="#ss-join-form" class="btn-cta-main">🌱 Seva Saathi Bano </a>
+<h1>Aap Bhi Badal Sakte Hain Kisi Ki Zindagi<br>Seva Saathi Kaise Bane?</h1>
+<p>Seva Saathi banke aap is mission ko aur Seva Connect ke baare mein sahi information apne shehar, mohalle aur network tak pahunchate hain aur naye Madadgars ko platform se judne mein madad karte hain.</p>
+<a href="#ss-join-form" class="btn-cta-main">🌱 Seva Saathi Bane </a>
 </section>
 
 <!-- MISSION -->
 <section class="why-us">
 <div class="section-header">
 <span class="section-tag purple">🌱 Seva Saathi Mission</span>
-<h2>Seva Saathi Kyun Zaroori Hain</h2>
+<h2>Seva Saathi Kyun Zaroori Hain?</h2>
 <p>Badlaav hamesha ek kadam se shuru hota hai.
 
 Seva Saathi woh log hain jo samaj mein sakaratmak parivartan lane ke liye apna samay, urja aur dil se seva dete hain.</p>
@@ -176,7 +177,7 @@ Seva Saathi woh log hain jo samaj mein sakaratmak parivartan lane ke liye apna s
 <!-- RESPONSIBILITIES — reuses .promoter-process / .process-step / .ps-num -->
 <section class="promoter-process">
 <div class="section-header">
-<h2>Seva Saathi Ka Role</h2>
+<h2>Seva Saathi Ka Role?</h2>
 <p>Dil se mission ko aage badhana.Ek insaan sab kuch nahi badal sakta, lekin ek insaan kisi ek ki poori duniya zaroor badal sakta hai.Aaiye, Seva Saathi baniye aur insaniyat ki is yatra ka hissa baniye in 3 simple steps ke sath.</p>
 </div>
 <div class="process-steps">
@@ -306,7 +307,7 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 </div>
 <div class="form-group">
 <label>Phone Number *</label>
-<input type="tel" id="ssPhone" name="phone" class="form-input" required placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}">
+<input type="tel" id="ssPhone" name="phone" class="form-input" required placeholder="10-digit mobile number" maxlength="10" pattern="[6-9][0-9]{9}">
 <span class="error-msg" id="ssPhoneError"></span>
 </div>
 <div class="form-group">
@@ -401,7 +402,7 @@ Jaise-jaise platform badhega, naye naye benefits future mein add hote jayega.
 
 <script>
 const CONFIG_SS = {
-  SHEET_API: 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerSevaSaathi',
+  REGISTER_API: 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerSevaSaathi',
   STATS_API: 'https://us-central1-seva-connect-backend.cloudfunctions.net'
 };
 
@@ -436,8 +437,8 @@ function validateSSNameField() {
 }
 function validateSSPhoneField() {
   const phone = document.getElementById('ssPhone').value.trim();
-  if (!phone || !/^[0-9]{10}$/.test(phone)) {
-    showSSError('ssPhoneError', 'Phone number 10 digit ka hona chahiye');
+  if (!phone || !/^[6-9][0-9]{9}$/.test(phone)) {
+    showSSError('ssPhoneError', 'Sahi 10 digit mobile number daalo');
     return false;
   }
   hideSSError('ssPhoneError');
@@ -477,7 +478,6 @@ document.getElementById('sevaSaathiForm').addEventListener('submit', async funct
   const msg = document.getElementById('ssFormMsg');
 
   const formData = {
-    action: 'registerSevaSaathi',
     name: form.name.value.trim(),
     phone: form.phone.value.trim(),
     email: form.email.value.trim(),
@@ -502,7 +502,7 @@ document.getElementById('sevaSaathiForm').addEventListener('submit', async funct
   msg.className = 'ss-form-msg';
 
   try {
-    const response = await fetch(CONFIG_SS.SHEET_API, {
+    const response = await fetch(CONFIG_SS.REGISTER_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
