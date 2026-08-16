@@ -13,6 +13,15 @@ INSTAGRAM: 'https://instagram.com/officialsevaconnect',
 FACEBOOK: 'https://facebook.com/officialsevaconnect',
 YOUTUBE: 'https://youtube.com/@officialsevaconnect'
 };
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 // ===== LIVE COUNTER ANIMATION =====
 function animateCounter(elementId, target, duration = 2000) {
@@ -60,7 +69,7 @@ async function loadZaruratVideos() {
   try {
     const response = await fetch(CONFIG.CACHED_API_BASE + '/getActiveCases');
     const result = await response.json();
-    // Code.gs ka getActiveCases() { cases: [...] } shape mein wrap karke bhejta hai
+    // functions/index.js ka getActiveCases() { cases: [...] } shape mein wrap karke bhejta hai
     const cases = result && result.cases ? result.cases : [];
 
     // "Active Cases" counter — live count hai (verifiedCases collection ka asli size),
@@ -100,7 +109,7 @@ function createCaseCard(data) {
     'emergency': '🚨'
   };
   const emoji = categoryEmoji[data.category] || '🤝';
-  // Code.gs ka getActiveCases() 'youtubeLink' field deta hai (full URL), 'youtubeId' nahi
+  // functions/index.js ka getActiveCases() 'youtubeLink' field deta hai (full URL), 'youtubeId' nahi
   const videoId = extractYouTubeId(data.youtubeLink);
   let caseVideoHtml = '';
   if (videoId) {
@@ -127,15 +136,15 @@ function createCaseCard(data) {
         <span class="badge-category">${emoji} ${data.category}</span>
         ${data.urgency >= 8 ? '<span class="badge-urgent">🔴 Urgent</span>' : ''}
       </div>
-      <h3>${data.name} - ${data.city}</h3>
-      <p>"${data.story}"</p>
+      <h3>${escapeHtml(data.name)} - ${escapeHtml(data.city)}</h3>
+      <p>"${escapeHtml(data.story)}"</p>
       <div class="case-need">
         <span>💰 Zarurat: ₹${data.amountNeeded}</span>
-        <span>📍 ${data.city}</span>
+        <span>📍 ${escapeHtml(data.city)}</span>
       </div>
       <div class="case-actions">
         <a href="register-madadgar?case=${data.id}" class="btn-help-now">❤️ Abhi Help Karo</a>
-        <button class="btn-share-case" onclick="shareCase('${data.id}','${data.name}','${data.city}')">📤 Share</button>
+        <button class="btn-share-case" data-share-id="${escapeHtml(data.id)}" data-share-name="${escapeHtml(data.name)}" data-share-city="${escapeHtml(data.city)}">📤 Share</button>
       </div>
     </div>
   `;
@@ -155,7 +164,7 @@ async function loadShukriyaStories() {
   try {
     const response = await fetch(CONFIG.CACHED_API_BASE + '/getShukriyaVideos');
     const result = await response.json();
-    // Code.gs ka getShukriyaVideos() { videos: [...] } shape mein wrap karke bhejta hai
+    // functions/index.js ka getShukriyaVideos() { videos: [...] } shape mein wrap karke bhejta hai
     const stories = result && result.videos ? result.videos : [];
     const container = document.getElementById('shukriyaStories');
     if (!container || !stories.length) return;
@@ -171,9 +180,9 @@ async function loadShukriyaStories() {
 }
 
 // ===== CREATE STORY CARD (Shukriya) =====
-// NOTE: Code.gs ka getShukriyaVideos() sirf yeh fields deta hai:
+// NOTE: functions/index.js ka getShukriyaVideos() sirf yeh fields deta hai:
 // videoId, caseId, zaruratmandName, city, category, youtubeLink, youtubeVideoId, approvedDate
-// Madadgar ka naam/badge yahan available NAHI hai (Code.gs Videos sheet se padhta hai,
+// Madadgar ka naam/badge yahan available NAHI hai (videos collection se padhta hai,
 // jisme MadadgarID hai par naam/badge lookup abhi implement nahi hai).
 function extractDriveFileId(url) {
   if (!url) return null;
@@ -205,8 +214,8 @@ function createStoryCard(data) {
     <div class="madadgar-credit">
       <span class="seva-icon">🌟</span>
       <div class="credit-text">
-        Madadgar: <span class="credit-name">${data.madadgarName}${data.city ? ', ' + data.city : ''}</span>
-        ${data.madadgarBadge ? `<span class="seva-level-badge">${data.madadgarBadge}</span>` : ''}
+        Madadgar: <span class="credit-name">${escapeHtml(data.madadgarName)}${data.city ? ', ' + escapeHtml(data.city) : ''}</span>
+        ${data.madadgarBadge ? `<span class="seva-level-badge">${escapeHtml(data.madadgarBadge)}</span>` : ''}
       </div>
     </div>
   ` : '';
@@ -227,12 +236,12 @@ function createStoryCard(data) {
       </div>
       <div class="inspire-box">
         <strong>✨ Ek Madadgar Ki Wajah Se</strong>
-        ${data.zaruratmandName || 'Ek zarooratmand'} ko ${data.category || 'zarurat'} mein madad mili
+        ${escapeHtml(data.zaruratmandName || 'Ek zarooratmand')} ko ${escapeHtml(data.category || 'zarurat')} mein madad mili
       </div>
-      <h3>${data.zaruratmandName || 'Ek zarooratmand'} ki kahani — ${data.city || ''}</h3>
-      ${storyText ? `<p style="word-wrap:break-word; overflow-wrap:break-word;">${storyText}</p>` : ''}
+      <h3>${escapeHtml(data.zaruratmandName || 'Ek zarooratmand')} ki kahani — ${escapeHtml(data.city || '')}</h3>
+      ${storyText ? `<p style="word-wrap:break-word; overflow-wrap:break-word;">${escapeHtml(storyText)}</p>` : ''}
       ${madadgarCreditHtml}
-      <button class="btn-share-story" onclick="shareStory('${data.caseId || ''}','${data.zaruratmandName || ''}')">📤 Is Kahani Ko Share Karo</button>
+      <button class="btn-share-story" data-share-story-id="${escapeHtml(data.caseId || '')}" data-share-story-name="${escapeHtml(data.zaruratmandName || '')}">📤 Is Kahani Ko Share Karo</button>
     </div>
   `;
   return card;
@@ -243,7 +252,7 @@ async function loadMadadgarWall() {
   try {
     const response = await fetch(CONFIG.CACHED_API_BASE + '/getTopMadadgars');
     const result = await response.json();
-    // Code.gs ka getTopMadadgars() { madadgars: [...] } shape mein wrap karke bhejta hai
+    // functions/index.js ka getTopMadadgars() { madadgars: [...] } shape mein wrap karke bhejta hai
     const madadgars = result && result.madadgars ? result.madadgars : [];
     const container = document.getElementById('madadgarWall');
     if (!container || !madadgars.length) return;
@@ -257,9 +266,9 @@ async function loadMadadgarWall() {
         : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
         ${avatarHtml}
-        <div class="donor-name">${madadgar.name}</div>
-        <div class="donor-badge">${madadgar.badge}</div>
-        <div class="donor-city">📍 ${madadgar.city}</div>
+        <div class="donor-name">${escapeHtml(madadgar.name)}</div>
+        <div class="donor-badge">${escapeHtml(madadgar.badge)}</div>
+        <div class="donor-city">📍 ${escapeHtml(madadgar.city)}</div>
       `;
       container.appendChild(card);
     });
@@ -311,8 +320,8 @@ function createMadadgarVideoCard(data) {
     </div>
     <div class="story-info">
       <div class="story-impact">🤝 Madadgar Ki Soch</div>
-      <h3>${data.name} — ${data.city || ''}</h3>
-      <p>${data.badge || ''}</p>
+      <h3>${escapeHtml(data.name)} — ${escapeHtml(data.city || '')}</h3>
+      <p>${escapeHtml(data.badge || '')}</p>
     </div>
   `;
   return card;
@@ -330,6 +339,18 @@ function shareStory(storyId, personName) {
   const text = `❤️ Ek sachchi kahani!\n\n${personName} ki madad ho gayi hai — kisi Madadgar ne dil se seva ki! Yeh dekh ke dil khush ho gaya!\n\nAap bhi yeh feeling experience karo:\n${url}\n\n#SevaConnect #Insaniyat`;
   showShareModal(text, url);
 }
+
+document.addEventListener('click', function(e) {
+  const shareBtn = e.target.closest('.btn-share-case');
+  if (shareBtn && shareBtn.dataset.shareId) {
+    shareCase(shareBtn.dataset.shareId, shareBtn.dataset.shareName, shareBtn.dataset.shareCity);
+    return;
+  }
+  const storyBtn = e.target.closest('.btn-share-story');
+  if (storyBtn && storyBtn.dataset.shareStoryId) {
+    shareStory(storyBtn.dataset.shareStoryId, storyBtn.dataset.shareStoryName);
+  }
+});
 
 function showShareModal(text, url) {
   const waUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
@@ -389,7 +410,7 @@ function initScrollReveal() {
 }
 
 // ===== MATCHING ALGORITHM (Client Side Preview) =====
-// Yeh sirf frontend preview hai — asli matching Code.gs (backend) mein hoti
+// Yeh sirf frontend preview hai — asli matching functions/index.js (backend) mein hoti
 // hai. Kahin call nahi hoti abhi, future use ke liye rakha hai.
 function findMatch(needyData, madadgarsData) {
   const priorities = ['pincode', 'city', 'state', 'country', 'global'];
