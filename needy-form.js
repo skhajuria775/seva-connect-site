@@ -264,9 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
         storyTextarea.addEventListener('input', function () {
             const words = this.value.trim().split(/\s+/).filter(w => w.length > 0);
             const count = words.length;
-            const counter = document.getElementById('wordCount');
+                        const counter = document.getElementById('wordCount');
             counter.textContent = count;
             counter.style.color = count >= 80 ? '#28A745' : '#FF6B35';
+            const tip = document.getElementById('storyTip');
+            if (tip) tip.style.display = (count >= 80 && count < 150) ? 'block' : 'none';
         });
     }
 });
