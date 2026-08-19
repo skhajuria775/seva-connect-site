@@ -282,6 +282,23 @@ function toggleFaq(element) {
   answer.classList.toggle('open');
 }
 
+// URL se ?caseId= aur ?reason= parse karke message-box pre-fill karo
+(function prefillFromCaseLink() {
+  const params = new URLSearchParams(window.location.search);
+  const caseId = params.get('caseId');
+  const reason = params.get('reason');
+  if (!caseId) return;
+  const msgBox = document.getElementById('cfMessage');
+  if (!msgBox) return;
+  if (reason === 'takedown') {
+    msgBox.value = `Mera case ID ${caseId} hai. Meri kahani/webpage ko private kar dein, ab public dikhne ki zaroorat nahi.`;
+  } else if (reason === 'report') {
+    msgBox.value = `Mujhe case ID ${caseId} mein kuch galat/suspicious laga hai, please check karein.`;
+  } else {
+    msgBox.value = `Case ID: ${caseId}`;
+  }
+})();
+
 
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -294,13 +311,16 @@ const phone = document.getElementById('cfPhone').value.trim();
 const email = document.getElementById('cfEmail').value.trim();
 const city = document.getElementById('cfCity').value.trim();
 const message = document.getElementById('cfMessage').value.trim();
+const urlParams = new URLSearchParams(window.location.search);
+const linkedCaseId = urlParams.get('caseId') || '';
+const linkedReason = urlParams.get('reason') || '';
 const CLOUD_FUNCTION_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/submitContact';
 
 try {
   const response = await fetch(CLOUD_FUNCTION_URL, {
     method: 'POST',
 	headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'submitContact', name: name, phone: phone, email: email, city: city, message: message })
+    body: JSON.stringify({ action: 'submitContact', name: name, phone: phone, email: email, city: city, message: message, caseId: linkedCaseId, reason: linkedReason })
   });
   const result = await response.json();
   if (!result.success) {

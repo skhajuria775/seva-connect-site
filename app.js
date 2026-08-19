@@ -138,8 +138,9 @@ function createCaseCard(data) {
       </div>
       <h3>${escapeHtml(data.name)} - ${escapeHtml(data.city)}</h3>
       <p>"${escapeHtml(data.story)}"</p>
+      ${data.seoSlug ? `<a href="${escapeHtml(data.seoSlug)}" class="btn-read-full-story" style="display:inline-block; margin:8px 0; font-size:0.85rem; color:#FF6B35; font-weight:600; text-decoration:underline;">📖 Poori Kahani Padhein</a>` : ""}
       <div class="case-need">
-        <span>💰 Zarurat: ₹${data.amountNeeded}</span>
+        <span>💰 Zarurat: ₹${escapeHtml(String(data.amountNeeded ?? ''))}</span>
         <span>📍 ${escapeHtml(data.city)}</span>
       </div>
       <div class="case-actions">
@@ -240,6 +241,7 @@ function createStoryCard(data) {
       </div>
       <h3>${escapeHtml(data.zaruratmandName || 'Ek zarooratmand')} ki kahani — ${escapeHtml(data.city || '')}</h3>
       ${storyText ? `<p style="word-wrap:break-word; overflow-wrap:break-word;">${escapeHtml(storyText)}</p>` : ''}
+      ${data.seoSlug ? `<a href="${escapeHtml(data.seoSlug)}" class="btn-read-full-story" style="display:inline-block; margin:8px 0; font-size:0.85rem; color:#FF6B35; font-weight:600; text-decoration:underline;">📖 Poori Kahani Padhein</a>` : ""}
       ${madadgarCreditHtml}
       <button class="btn-share-story" data-share-story-id="${escapeHtml(data.caseId || '')}" data-share-story-name="${escapeHtml(data.zaruratmandName || '')}">📤 Is Kahani Ko Share Karo</button>
     </div>

@@ -2,6 +2,20 @@
 const CLOUD_FUNCTION_URL = 'https://us-central1-seva-connect-backend.cloudfunctions.net/registerNeedy';
 const WHATSAPP_NUMBER = '919858105224';
 
+// ===== MINOR-SAFETY: bachche wale case ke liye consent-checkbox disable karo =====
+function handleMinorCheck(checkbox) {
+    const consentCheckbox = document.getElementById('videoConsent');
+    const note = document.getElementById('minorConsentNote');
+    if (checkbox.checked) {
+        consentCheckbox.checked = false;
+        consentCheckbox.disabled = true;
+        note.style.display = 'block';
+    } else {
+        consentCheckbox.disabled = false;
+        note.style.display = 'none';
+    }
+}
+
 // ===== STEP NAVIGATION =====
 function goToStep(stepNumber) {
     // Validate current step first
@@ -427,8 +441,10 @@ document.getElementById('needyForm').addEventListener('submit', async function (
         // matlab "no other help sought" = true → calculateUrgency mein +7 score milega
         noOtherHelp: (document.querySelector('input[name="otherHelpSought"]:checked')?.value || 'no') === 'no' ? 'yes' : 'no',
         zaruratVideoLink: document.getElementById('youtubeLink')?.value || '',
-        documentUrl: document.getElementById('documentLink')?.value || '',
+                documentUrl: document.getElementById('documentLink')?.value || '',
         videoConsent: document.getElementById('videoConsent')?.checked || false,
+        isMinorCase: document.getElementById('isMinorCase')?.checked || false,
+        extraSafetyRequested: document.getElementById('extraSafetyRequested')?.checked || false,
         timestamp: new Date().toISOString()
     };
 

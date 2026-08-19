@@ -605,12 +605,29 @@ Sachchi baat likhiye - kam se kam 80 words"
 
             <div class="form-group" style="background:#F0F7FF; border:1px solid #B3D7FF; border-radius:8px; padding:12px;">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="videoConsent">
-                    <span class="checkbox-custom"></span>
-                    <span>Main chahta/chahti hun ki meri zarurat (naam, sheher, kahani, aur video) Seva Connect ki Cases page, Home page, aur ek alag public webpage (jo Google search mein bhi dikh sakta hai) par publicly dikhayi jaaye, taaki mujhe jaldi help mil sake. (Optional)</span>
-
+                <input type="checkbox" id="isMinorCase" onchange="handleMinorCheck(this)">
+                <span class="checkbox-custom"></span>
+                <span>Yeh zarurat 18 saal se kam umar ke kisi bachche ke liye hai</span>
                 </label>
-            </div>
+</div>
+
+<div class="form-group" id="videoConsentWrapper" style="background:#F0F7FF; border:1px solid #B3D7FF; border-radius:8px; padding:12px;">
+    <label class="checkbox-label">
+        <input type="checkbox" id="videoConsent">
+        <span class="checkbox-custom"></span>
+        <span>Main chahta/chahti hun ki meri zarurat (naam, sheher, kahani, aur video) Seva Connect ki Cases page, Home page, aur ek alag public webpage (jo Google search mein bhi dikh sakta hai) par publicly dikhayi jaaye, taaki mujhe jaldi help mil sake. (Optional)</span>
+    </label>
+    <p id="minorConsentNote" style="display:none; margin-top:8px; font-size:0.82rem; color:#666;">Bachchon ki safety ke liye, bachchon wale cases ka naam/photo/video public webpage par nahi dikhaya jaata — sirf verified Madadgars tak hi jaankari jaati hai.</p>
+</div>
+
+<div class="form-group">
+    <label class="checkbox-label">
+        <input type="checkbox" id="extraSafetyRequested">
+        <span class="checkbox-custom"></span>
+        <span>Mujhe extra privacy/safety chahiye — is case ka apna alag public webpage na banaya jaaye</span>
+    </label>
+    <p style="margin-top:6px; margin-left:28px; font-size:0.8rem; color:#666;">⚠️ Dhyan rakhein: public webpage hone se case zyada logon tak pahunchta hai aur madad jaldi milne ke chances badh jaate hain. Isse sirf tabhi tick karein jab genuinely zaroori ho.</p>
+</div>
 
             <div class="btn-group">
                 <button type="button" class="btn-back-step" onclick="goToStep(2)">
