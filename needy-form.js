@@ -328,6 +328,13 @@ function extractDriveFileId(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Default option 'youtube' hai (HTML mein 'active' class se), lekin uska inline
+    // style.display kabhi set nahi hota jab tak user click na kare — isse Step-4
+    // validation galat "video missing" error de sakta hai agar user seedha link paste
+    // kar de bina card-header click kiye. Yahan explicitly initialize karke fix kiya.
+    if (typeof selectVideoOption === 'function' && document.getElementById('youtubeBody')) {
+        selectVideoOption('youtube');
+    }
     const ytInput = document.getElementById('youtubeLink');
     if (ytInput) {
         ytInput.addEventListener('input', function () {
