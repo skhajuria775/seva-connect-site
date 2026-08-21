@@ -332,7 +332,7 @@ async function loadGalleryFromPhotos() {
       const driveFileId = extractDriveFileId(photo.photoLink);
       if (!driveFileId) return;
 
-      const caption = photo.name + ' — ' + (photo.city || '');
+      const caption = escapeHtml(photo.name) + ' — ' + escapeHtml(photo.city || '');
       const thumbUrl = 'https://drive.google.com/thumbnail?id=' + driveFileId + '&sz=w400';
       const item = document.createElement('div');
       item.className = 'g-item';

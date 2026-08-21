@@ -326,8 +326,8 @@ document.getElementById('caseId').addEventListener('blur', async function () {
       const label = document.createElement('label');
       label.className = 'madadgar-check-item';
       label.innerHTML =
-        '<input type="checkbox" name="selectedMadadgar" value="' + m.id + '">' +
-        '<span>' + m.name + (m.city ? ' (' + m.city + ')' : '') + '</span>';
+  '<input type="checkbox" name="selectedMadadgar" value="' + m.id + '">' +
+  '<span>' + escapeHtml(m.name) + (m.city ? ' (' + escapeHtml(m.city) + ')' : '') + '</span>';
       list.appendChild(label);
     });
   } catch (error) {

@@ -553,11 +553,11 @@ async function loadSevaSaathiWall() {
         ? `<img src="https://drive.google.com/thumbnail?id=${photoId}&sz=w200" alt="Donor" class="donor-avatar-img" onerror="this.outerHTML='<div class=&quot;donor-avatar&quot;>👤</div>'">`
         : `<div class="donor-avatar">👤</div>`;
       card.innerHTML = `
-        ${avatarHtml}
-        <div class="donor-name">${ss.name}</div>
-        <div class="donor-badge">${ss.levelEmoji} ${ss.levelName}</div>
-        <div class="donor-city">📍 ${ss.city}</div>
-      `;
+  ${avatarHtml}
+  <div class="donor-name">${escapeHtml(ss.name)}</div>
+  <div class="donor-badge">${escapeHtml(ss.levelEmoji)} ${escapeHtml(ss.levelName)}</div>
+  <div class="donor-city">📍 ${escapeHtml(ss.city)}</div>
+`;
       container.appendChild(card);
     });
   } catch (error) {

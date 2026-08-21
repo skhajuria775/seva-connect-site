@@ -18,11 +18,13 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mujhe paise chahiye, Seva Connect kaise madad karega?","acceptedAnswer":{"@type":"Answer","text":"Register karke apni zarurat batao, verification ke baad verified Madadgar se seedha connect kar diya jaata hai — bilkul free, koi commission nahi."}},{"@type":"Question","name":"Ration ya khaane ke liye NGO kaise dhoondhein?","acceptedAnswer":{"@type":"Answer","text":"Seva Connect par 'Khaana' category select karke register karo, nearby verified Madadgars se match kiya jaata hai."}},{"@type":"Question","name":"Emergency medical help kaise milegi?","acceptedAnswer":{"@type":"Answer","text":"Emergency aur Medical categories ko matching mein priority milti hai — register karte hi verification process shuru ho jaata hai."}}]}
 </script>
+<link rel="preload" as="image" href="hero-slide-1.webp" fetchpriority="high">
 <link rel="icon" type="image/webp" href="logo-icon.webp">
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"></noscript>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-063BL2455T"></script>
 <script>
@@ -37,7 +39,7 @@
 <nav class="navbar" id="navbar">
 <div class="nav-inner">
 <a href="index" class="logo">
-<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" style="width:50px;height:50px;object-fit:contain;border-radius:50%;">
+<img src="logo-icon.webp" alt="Seva Connect" class="logo-emoji" width="50" height="50" style="width:50px;height:50px;object-fit:contain;border-radius:50%;">
 <div>
 <span class="logo-text">Seva Connect</span>
 <span class="logo-tagline">Connecting Hearts, Changing Lives</span>
@@ -45,13 +47,11 @@
 </a>
 <div class="nav-links" id="navLinks">
 <a href="index">Home</a>
-<a href="about">About</a>
 <a href="cases">Cases</a>
 <a href="stories">Stories</a>
 <a href="blog">Blog</a>
-<a href="Gallery">Gallery</a>
+<a href="about">About</a>
 <a href="seva-saathi">Seva Saathi</a>
-<a href="submit-shukriya">Shukriya Video</a>
 <a href="contact">Contact</a>
 <a href="register-madadgar" class="btn-nav-donor">🤝 Madadgar Bano</a>
 <a href="register-needy" class="btn-nav-needy">🙏 Help Chahiye</a>
@@ -85,7 +85,7 @@ window.addEventListener('load', function() {
 </script>
 <div class="hero-bg-overlay"></div>
 <div class="hero-content">
-<div class="hero-badge"><img src="https://flagcdn.com/w80/in.png" alt="India" style="height:14px;vertical-align:middle;margin-right:4px;"> India Ka Free Seva Platform</div>
+<div class="hero-badge"><img src="https://flagcdn.com/w80/in.png" alt="India" width="19" height="14" style="height:14px;aspect-ratio:4/3;vertical-align:middle;margin-right:4px;"> India Ka Free Seva Platform</div>
 <h1 class="hero-title">
 Koi Bhookha Na Soye,<br>
 Koi Sapna Na Toote,<br>
