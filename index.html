@@ -485,6 +485,23 @@ Free Help in India: Medical, Education, Food, Ration & Emergency Needs
 </div>
 </section>
 
+<!-- FAQ SECTION -->
+<section class="home-faq" style="padding:60px 20px; max-width:800px; margin:0 auto;">
+<h2 style="text-align:center; margin-bottom:30px;">Aksar Puche Jaane Wale Sawaal</h2>
+<div class="faq-item" style="background:#fff; border-radius:12px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow:hidden;">
+<div class="faq-q" onclick="toggleHomeFaq(this)" style="padding:18px 20px; font-weight:600; cursor:pointer;">Mujhe paise chahiye, Seva Connect kaise madad karega? ▼</div>
+<div class="faq-a" style="padding:0 20px; max-height:0; overflow:hidden; transition:all 0.3s; color:#666; line-height:1.6;">Register karke apni zarurat batao, verification ke baad verified Madadgar se seedha connect kar diya jaata hai — bilkul free, koi commission nahi.</div>
+</div>
+<div class="faq-item" style="background:#fff; border-radius:12px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow:hidden;">
+<div class="faq-q" onclick="toggleHomeFaq(this)" style="padding:18px 20px; font-weight:600; cursor:pointer;">Ration ya khaane ke liye NGO kaise dhoondhein? ▼</div>
+<div class="faq-a" style="padding:0 20px; max-height:0; overflow:hidden; transition:all 0.3s; color:#666; line-height:1.6;">Seva Connect par 'Khaana' category select karke register karo, nearby verified Madadgars se match kiya jaata hai.</div>
+</div>
+<div class="faq-item" style="background:#fff; border-radius:12px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow:hidden;">
+<div class="faq-q" onclick="toggleHomeFaq(this)" style="padding:18px 20px; font-weight:600; cursor:pointer;">Emergency medical help kaise milegi? ▼</div>
+<div class="faq-a" style="padding:0 20px; max-height:0; overflow:hidden; transition:all 0.3s; color:#666; line-height:1.6;">Emergency aur Medical categories ko matching mein priority milti hai — register karte hi verification process shuru ho jaata hai.</div>
+</div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta">
 <div class="cta-content">
@@ -494,7 +511,7 @@ Free Help in India: Medical, Education, Food, Ration & Emergency Needs
 <a href="register-madadgar" class="btn-cta-main">🤝 Madadgar Bano </a>
 <a href="cases" class="btn-cta-secondary">👁️ Cases Dekho</a>
 </div>
-<p class="cta-note">Registration aur platform use free hai. Koi platform fee nahi.</p>
+<p class="cta-note">Registration aur platform use free hai. Koi platform fee nahi. Platform ko chalaye rakhne ke liye minimal advertising ka use hota hai — kisi bhi madad ya donation se koi paisa nahi liya jaata.</p>
 </div>
 </section>
 
@@ -542,6 +559,14 @@ Free Help in India: Medical, Education, Food, Ration & Emergency Needs
 <p>© 2026 Seva Connect | Hum sirf connect karte hain - koi financial transaction nahi | Made with ❤️ for India</p>
 </div>
 </footer>
+<script>
+function toggleHomeFaq(el) {
+  const ans = el.nextElementSibling;
+  const isOpen = ans.style.maxHeight && ans.style.maxHeight !== "0px";
+  ans.style.maxHeight = isOpen ? "0" : "220px";
+  ans.style.padding = isOpen ? "0 20px" : "15px 20px";
+}
+</script>
 <script src="app.js"></script>
 </body>
 </html>

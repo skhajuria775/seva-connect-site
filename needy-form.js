@@ -412,6 +412,30 @@ function fillSummary() {
 
 // ===== FORM SUBMIT =====
 
+function showConsentNudgeDialog() {
+    return new Promise((resolve) => {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;';
+        overlay.innerHTML = `
+            <div style="background:#fff;border-radius:12px;padding:24px;max-width:420px;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+                <p style="margin:0 0 12px;font-weight:600;color:#222;">Aapne apni kahani ko public/shareable nahi banaya hai.</p>
+                <p style="margin:0 0 12px;font-size:0.92rem;color:#444;">Public story se ye extra fayda milta hai:</p>
+                <ul style="margin:0 0 16px;padding-left:20px;font-size:0.9rem;color:#444;line-height:1.6;">
+                    <li>Aap ise WhatsApp/social media par share kar sakte hain</li>
+                    <li>Zyada log dekh sakte hain aur directly madad bhej sakte hain</li>
+                    <li>Aapki official matching speed par koi asar nahi &mdash; ye sirf extra reach hai</li>
+                </ul>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <button id="consentNudgeMakePublic" style="flex:1;padding:11px;border-radius:8px;border:none;background:#FF6B35;color:#fff;font-weight:600;cursor:pointer;">Public rehne do</button>
+                    <button id="consentNudgeKeepPrivate" style="flex:1;padding:11px;border-radius:8px;border:1px solid #ccc;background:#fff;color:#333;font-weight:600;cursor:pointer;">Bina public kiye submit karo</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+        overlay.querySelector('#consentNudgeMakePublic').onclick = () => { overlay.remove(); resolve(true); };
+        overlay.querySelector('#consentNudgeKeepPrivate').onclick = () => { overlay.remove(); resolve(false); };
+    });
+}
+
 document.getElementById('needyForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -420,6 +444,20 @@ document.getElementById('needyForm').addEventListener('submit', async function (
     const submitBtn = document.getElementById('submitBtn');
     if (submitBtn.disabled) return;
     submitBtn.disabled = true;
+
+    const videoConsentBox = document.getElementById('videoConsent');
+    const isMinorBox = document.getElementById('isMinorCase');
+    const extraSafetyBox = document.getElementById('extraSafetyRequested');
+    const isMinor = isMinorBox && isMinorBox.checked;
+
+    if (!isMinor && videoConsentBox && !videoConsentBox.checked) {
+        const wantsPublic = await showConsentNudgeDialog();
+        if (wantsPublic) videoConsentBox.checked = true;
+    } else if (!isMinor && videoConsentBox && videoConsentBox.checked && extraSafetyBox && extraSafetyBox.checked) {
+        const wantsPublic = await showConsentNudgeDialog();
+        if (wantsPublic) extraSafetyBox.checked = false;
+    }
+    
 
     // Show loading
     document.getElementById('loadingOverlay').style.display = 'flex';
