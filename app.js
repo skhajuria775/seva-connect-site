@@ -363,8 +363,8 @@ function showShareModal(text, url) {
       <h3>Share Karo 📤</h3>
       <p>Jitne zyada log dekhenge, utna jaldi help milegi!</p>
       <div class="share-buttons">
-        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp">💬 WhatsApp</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn facebook">👥 Facebook</a>
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="share-btn facebook"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
         <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}" target="_blank" rel="noopener noreferrer" class="share-btn twitter">🐦 Twitter</a>
         <button onclick="copyText('${url}')" class="share-btn copy">📋 Link Copy Karo</button>
       </div>
