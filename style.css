@@ -1133,6 +1133,10 @@ text-decoration: none;
 .social-links a:hover {
 transform: scale(1.2) rotate(-5deg);
 }
+.social-links a:nth-child(1) { color: #FF0000; }
+.social-links a:nth-child(2) { color: #E1306C; }
+.social-links a:nth-child(3) { color: #1877F2; }
+.social-links a:nth-child(4) { color: #25D366; }
 .footer-links-group h4 {
 color: var(--orange);
 font-size: 0.9rem;
