@@ -382,6 +382,17 @@ Sachchi baat likhiye - kam se kam 80 words"
                                 <div class="word-count">
                     <span id="wordCount">0</span>/80 words minimum
                 </div>
+				                <div id="storyMicWrap" style="display:none; margin-top:10px;">
+                    <button type="button" id="storyMicBtn" onclick="toggleStoryMic()"
+                        style="background:#FF6B35; color:#fff; border:none; border-radius:50px; padding:10px 18px; font-weight:600; cursor:pointer; font-size:0.9rem;">
+                        🎤 Bol Kar Likho
+                    </button>
+                    <span id="storyMicStatus" style="margin-left:10px; font-size:0.85rem; color:#666;"></span>
+                    <p style="margin:6px 0 0; font-size:0.78rem; color:#888;">
+                        Hindi ya English mein bolein — apne aap likha jayega.
+                         Baad mein aap ise edit bhi kar sakte hain.
+                    </p>
+                </div>
                                 <div class="story-tip" id="storyTip" style="display:none; margin-top:6px; font-size:0.85rem; color:#FF6B35; font-weight:600;">
                     💡 Bas thoda aur likhiye! Jitni zyada detailed kahani hogi, utni jaldi aur zyada log aapki madad karna chahenge
                 </div>
@@ -509,7 +520,7 @@ Sachchi baat likhiye - kam se kam 80 words"
                         <div class="inst-number">3</div>
                         <div class="inst-text">
                             <strong>Upload karo</strong><br>
-                            Google Drive pe upload karo ya WhatsApp karo
+                            Google Drive pe upload karo aur uska link neeche paste karo
                         </div>
                     </div>
                 </div>
@@ -557,7 +568,7 @@ Sachchi baat likhiye - kam se kam 80 words"
                 </div>
 
                 <!-- OPTION 2: WhatsApp Submit -->
-                <div class="video-option-card" id="optionWhatsapp">
+                <div class="video-option-card" id="optionWhatsapp" style="display:none;">
                     <div class="option-header" onclick="selectVideoOption('whatsapp')">
                         <div class="option-icon">💬</div>
                         <div class="option-info">
@@ -585,7 +596,7 @@ Sachchi baat likhiye - kam se kam 80 words"
                 </div>
 
                 <!-- OPTION 3: Skip for Now -->
-                <div class="video-option-card" id="optionSkip">
+                <div class="video-option-card" id="optionSkip" style="display:none;">
                     <div class="option-header" onclick="selectVideoOption('skip')">
                         <div class="option-icon">⏭️</div>
                         <div class="option-info">
@@ -674,7 +685,7 @@ Sachchi baat likhiye - kam se kam 80 words"
                             WhatsApp pe bhej dunga/dungi
                         </label>
                         -->
-                        <label class="radio-item">
+                        <label class="radio-item" style="display:none;">
                             <input type="radio" name="docChoice" 
                                    value="skip"
                                    onchange="showDocOption('skip')">

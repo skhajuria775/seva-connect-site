@@ -287,6 +287,95 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// ===== VOICE TO TEXT (free — browser ka built-in Web Speech API, koi cost nahi) =====
+let storyRecognition = null;
+let storyMicOn = false;
+let storyBaseText = '';
+let storyFinalText = '';
+
+function setStoryMicUI(listening) {
+    const btn = document.getElementById('storyMicBtn');
+    const status = document.getElementById('storyMicStatus');
+    if (!btn) return;
+    if (listening) {
+        btn.textContent = '⏹️ Bolna Band Karo';
+        btn.style.background = '#dc3545';
+        if (status) status.textContent = '🔴 Sun raha hun... boliye';
+    } else {
+        btn.textContent = '🎤 Bol Kar Likho';
+        btn.style.background = '#FF6B35';
+        if (status) status.textContent = '';
+    }
+}
+
+function toggleStoryMic() {
+    if (!storyRecognition) return;
+    if (storyMicOn) {
+        storyRecognition.stop();
+        return;
+    }
+    const textarea = document.getElementById('story');
+    storyBaseText = textarea.value.trim();
+    storyFinalText = '';
+    try {
+        storyRecognition.start();
+    } catch (err) {
+        // pehle se chal raha ho to ignore
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const wrap = document.getElementById('storyMicWrap');
+    const textarea = document.getElementById('story');
+    if (!SR || !wrap || !textarea) return; // support nahi hai to button chhupa hi rahega
+
+    wrap.style.display = 'block';
+
+    storyRecognition = new SR();
+    storyRecognition.lang = 'hi-IN';       // Hindi + Hinglish dono theek pakadta hai
+    storyRecognition.continuous = true;
+    storyRecognition.interimResults = true;
+
+    storyRecognition.onstart = function () {
+        storyMicOn = true;
+        setStoryMicUI(true);
+    };
+
+    storyRecognition.onresult = function (event) {
+        let interim = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const t = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                storyFinalText += t + ' ';
+            } else {
+                interim += t;
+            }
+        }
+        textarea.value = (storyBaseText + ' ' + storyFinalText + interim).trim();
+        textarea.dispatchEvent(new Event('input')); // word-count update ho jaye
+    };
+
+    storyRecognition.onerror = function (event) {
+        const status = document.getElementById('storyMicStatus');
+        if (!status) return;
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+            status.textContent = '⚠️ Mic ki permission deni hogi (browser settings mein).';
+        } else if (event.error === 'no-speech') {
+            status.textContent = 'Kuch sunai nahi diya — dobara try karein.';
+        } else {
+            status.textContent = '⚠️ Abhi kaam nahi kar raha — aap type kar sakte hain.';
+        }
+    };
+
+    storyRecognition.onend = function () {
+        storyMicOn = false;
+        setStoryMicUI(false);
+        storyBaseText = textarea.value.trim();
+        storyFinalText = '';
+    };
+});
+
 // ===== VIDEO OPTION SELECTION =====
 function selectVideoOption(option) {
     // Hide all bodies
@@ -367,13 +456,16 @@ function extractYouTubeId(url) {
 
 // ===== DOCUMENT OPTION =====
 function showDocOption(option) {
-    document.getElementById('driveOption').style.display = 'none';
-    document.getElementById('whatsappDocOption').style.display = 'none';
+    const driveEl = document.getElementById('driveOption');
+    const waEl = document.getElementById('whatsappDocOption'); // filhal comment-out hai, isliye null ho sakta hai
 
-    if (option === 'drive') {
-        document.getElementById('driveOption').style.display = 'block';
-    } else if (option === 'whatsapp') {
-        document.getElementById('whatsappDocOption').style.display = 'block';
+    if (driveEl) driveEl.style.display = 'none';
+    if (waEl) waEl.style.display = 'none';
+
+    if (option === 'drive' && driveEl) {
+        driveEl.style.display = 'block';
+    } else if (option === 'whatsapp' && waEl) {
+        waEl.style.display = 'block';
     }
 }
 
