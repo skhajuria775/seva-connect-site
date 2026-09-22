@@ -292,6 +292,7 @@ let storyRecognition = null;
 let storyMicOn = false;
 let storyMicUserStopped = false; // true jab user ne khud "Rukiye" dabaya ho
 let storyBaseText = '';
+let storyMicLang = 'hi-IN'; // default: हिंदी
 
 function setStoryMicUI(listening) {
     const btn = document.getElementById('storyMicBtn');
@@ -311,6 +312,18 @@ function setStoryMicUI(listening) {
     }
 }
 
+function setStoryMicLang(lang, btnEl) {
+    if (storyMicOn) return; // sun rahe waqt language switch nahi karne dena — confusion se bachne ke liye
+    storyMicLang = lang;
+    if (storyRecognition) storyRecognition.lang = lang;
+    document.getElementById('micLangHi').style.background = (lang === 'hi-IN') ? '#FF6B35' : '#fff';
+    document.getElementById('micLangHi').style.color = (lang === 'hi-IN') ? '#fff' : '#666';
+    document.getElementById('micLangHi').style.borderColor = (lang === 'hi-IN') ? '#FF6B35' : '#ccc';
+    document.getElementById('micLangEn').style.background = (lang === 'en-IN') ? '#FF6B35' : '#fff';
+    document.getElementById('micLangEn').style.color = (lang === 'en-IN') ? '#fff' : '#666';
+    document.getElementById('micLangEn').style.borderColor = (lang === 'en-IN') ? '#FF6B35' : '#ccc';
+}
+
 function toggleStoryMic() {
     if (!storyRecognition) return;
     if (storyMicOn) {
@@ -321,6 +334,7 @@ function toggleStoryMic() {
     const textarea = document.getElementById('story');
     storyBaseText = textarea.value.trim();
     storyMicUserStopped = false;
+    storyRecognition.lang = storyMicLang; // jo language upar chuni hai wahi use hogi
     try {
         storyRecognition.start();
     } catch (err) {
@@ -337,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
     wrap.style.display = 'block';
 
     storyRecognition = new SR();
-    storyRecognition.lang = 'hi-IN';       // Accurate hai dono devices par — script Devanagari mein aati hai
+    storyRecognition.lang = storyMicLang;
     storyRecognition.continuous = true;
     storyRecognition.interimResults = true;
 
@@ -348,8 +362,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     storyRecognition.onresult = function (event) {
         // Poore event.results se HAR BAAR dobara text banaya jaata hai (jod-jod
-        // kar nahi) — mobile par kabhi-kabhi wahi result dobara aata hai, isse
-        // ab duplicate words/lines nahi banenge.
+        // kar nahi) — mobile par jo results kabhi-kabhi dobara/refire hote hain,
+        // unse ab duplicate/jumbled words nahi banenge.
         let final = '';
         let interim = '';
         for (let i = 0; i < event.results.length; i++) {
@@ -371,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (status) status.textContent = '⚠️ Mic ki permission deni hogi (browser settings mein).';
         } else if (event.error === 'no-speech') {
             // Thodi der chup rehne par mobile yeh error de sakta hai — normal hai,
-            // onend khud dobara start kar dega, isliye yahan kuch dikhane ki zarurat nahi.
+            // onend khud dobara start kar dega.
         } else if (event.error === 'aborted') {
             // Stop button dabane ya dobara start hone par aata hai — ignore karo.
         } else if (status) {
