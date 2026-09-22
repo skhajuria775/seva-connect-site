@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     storyRecognition = new SR();
     storyRecognition.lang = storyMicLang;
-    storyRecognition.continuous = true;
+    storyRecognition.continuous = false;   // Mobile (Android) par 'true' hone par audio segments kabhi-kabhi duplicate/overlap ho jaate the — 'false' + auto-restart isse rokta hai
     storyRecognition.interimResults = true;
 
     storyRecognition.onstart = function () {
