@@ -295,15 +295,18 @@ let storyFinalText = '';
 
 function setStoryMicUI(listening) {
     const btn = document.getElementById('storyMicBtn');
+    const label = document.getElementById('storyMicLabel');
     const status = document.getElementById('storyMicStatus');
     if (!btn) return;
     if (listening) {
-        btn.textContent = '⏹️ Bolna Band Karo';
-        btn.style.background = '#dc3545';
+        btn.style.background = '#FF6B35';
+        btn.style.color = '#fff';
+        if (label) label.textContent = 'Rukiye';
         if (status) status.textContent = '🔴 Sun raha hun... boliye';
     } else {
-        btn.textContent = '🎤 Bol Kar Likho';
-        btn.style.background = '#FF6B35';
+        btn.style.background = '#fff';
+        btn.style.color = '#FF6B35';
+        if (label) label.textContent = 'Bol Kar Likho';
         if (status) status.textContent = '';
     }
 }
@@ -333,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
     wrap.style.display = 'block';
 
     storyRecognition = new SR();
-    storyRecognition.lang = 'hi-IN';       // Hindi + Hinglish dono theek pakadta hai
+    storyRecognition.lang = 'en-IN';       // Hindi + Hinglish dono theek pakadta hai
     storyRecognition.continuous = true;
     storyRecognition.interimResults = true;
 
