@@ -290,8 +290,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===== VOICE TO TEXT (free — browser ka built-in Web Speech API, koi cost nahi) =====
 let storyRecognition = null;
 let storyMicOn = false;
+let storyMicUserStopped = false; // true jab user ne khud "Rukiye" dabaya ho
 let storyBaseText = '';
-let storyFinalText = '';
 
 function setStoryMicUI(listening) {
     const btn = document.getElementById('storyMicBtn');
@@ -314,12 +314,13 @@ function setStoryMicUI(listening) {
 function toggleStoryMic() {
     if (!storyRecognition) return;
     if (storyMicOn) {
+        storyMicUserStopped = true; // user ne khud roka — ab auto-restart nahi hoga
         storyRecognition.stop();
         return;
     }
     const textarea = document.getElementById('story');
     storyBaseText = textarea.value.trim();
-    storyFinalText = '';
+    storyMicUserStopped = false;
     try {
         storyRecognition.start();
     } catch (err) {
@@ -336,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
     wrap.style.display = 'block';
 
     storyRecognition = new SR();
-    storyRecognition.lang = 'en-IN';       // Hindi + Hinglish dono theek pakadta hai
+    storyRecognition.lang = 'en-IN';       // Hindi bolne par bhi Latin/Hinglish letters mein likhta hai
     storyRecognition.continuous = true;
     storyRecognition.interimResults = true;
 
@@ -346,36 +347,58 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     storyRecognition.onresult = function (event) {
+        // Poore event.results se HAR BAAR dobara text banaya jaata hai (jod-jod
+        // kar nahi) — mobile par kabhi-kabhi wahi result dobara aata hai, isse
+        // ab duplicate words/lines nahi banenge.
+        let final = '';
         let interim = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
+        for (let i = 0; i < event.results.length; i++) {
             const t = event.results[i][0].transcript;
             if (event.results[i].isFinal) {
-                storyFinalText += t + ' ';
+                final += t + ' ';
             } else {
                 interim += t;
             }
         }
-        textarea.value = (storyBaseText + ' ' + storyFinalText + interim).trim();
+        textarea.value = (storyBaseText + ' ' + final + interim).trim();
         textarea.dispatchEvent(new Event('input')); // word-count update ho jaye
     };
 
     storyRecognition.onerror = function (event) {
         const status = document.getElementById('storyMicStatus');
-        if (!status) return;
         if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-            status.textContent = '⚠️ Mic ki permission deni hogi (browser settings mein).';
+            storyMicUserStopped = true; // permission nahi hai — dobara try karne se koi fayda nahi
+            if (status) status.textContent = '⚠️ Mic ki permission deni hogi (browser settings mein).';
         } else if (event.error === 'no-speech') {
-            status.textContent = 'Kuch sunai nahi diya — dobara try karein.';
-        } else {
+            // Thodi der chup rehne par mobile yeh error de sakta hai — normal hai,
+            // onend khud dobara start kar dega, isliye yahan kuch dikhane ki zarurat nahi.
+        } else if (event.error === 'aborted') {
+            // Stop button dabane ya dobara start hone par aata hai — ignore karo.
+        } else if (status) {
             status.textContent = '⚠️ Abhi kaam nahi kar raha — aap type kar sakte hain.';
         }
     };
 
     storyRecognition.onend = function () {
+        storyBaseText = textarea.value.trim();
+        // Mobile Chrome thodi si chup par bhi khud-ba-khud band kar deta hai, chahe
+        // "continuous: true" ho. Agar user ne khud "Rukiye" nahi dabaya, to turant
+        // dobara start karo — isse dictation seamless mehsoos hota hai.
+        if (!storyMicUserStopped) {
+            try {
+                storyRecognition.start();
+                return; // "Sun raha hun" state hi bani rahegi
+            } catch (err) {
+                setTimeout(function () {
+                    if (!storyMicUserStopped) {
+                        try { storyRecognition.start(); } catch (e) {}
+                    }
+                }, 300);
+                return;
+            }
+        }
         storyMicOn = false;
         setStoryMicUI(false);
-        storyBaseText = textarea.value.trim();
-        storyFinalText = '';
     };
 });
 
