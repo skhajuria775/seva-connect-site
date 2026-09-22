@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
     wrap.style.display = 'block';
 
     storyRecognition = new SR();
-    storyRecognition.lang = 'en-IN';       // Hindi bolne par bhi Latin/Hinglish letters mein likhta hai
+    storyRecognition.lang = 'hi-IN';       // Accurate hai dono devices par — script Devanagari mein aati hai
     storyRecognition.continuous = true;
     storyRecognition.interimResults = true;
 
